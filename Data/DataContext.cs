@@ -18,6 +18,7 @@ namespace HaloBiz.Data
     public DbSet<Services> Services { get; set; }
     public DbSet<StrategicBusinessUnit> StrategicBusinessUnits { get; set; }
     public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<ModificationHistory> ModificationHistories { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -97,6 +98,13 @@ namespace HaloBiz.Data
                .Property(p => p.UpdatedAt)
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
             builder.Entity<UserProfile>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ModificationHistory>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            builder.Entity<ModificationHistory>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
         }

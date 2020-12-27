@@ -1,4 +1,4 @@
-namespace HaloBiz.DTOs
+namespace HaloBiz.DTOs.TransferDTOs
 {
     public class LGATransferDTO
     {

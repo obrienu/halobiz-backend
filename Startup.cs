@@ -34,6 +34,7 @@ namespace HaloBiz
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IStatesService, StatesServiceImpl>();
+            services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
 
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
@@ -44,6 +45,8 @@ namespace HaloBiz
             services.AddScoped<IServiceGroupRepository, ServiceGroupRepositoryImpl>();
             services.AddScoped<IStrategicBusinessUnitRepository, StrategicBusinessUnitRepositoryImpl>();
             services.AddScoped<IUserProfileRepository, UserProfileRepositoryImpl>();
+            services.AddScoped<IModificationHistoryRepository, ModificationHistoryRepositoryImpl>();
+            
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<DataContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using HaloBiz.Model_;
 
-namespace HaloBiz.DTOs
+namespace HaloBiz.DTOs.TransferDTOs
 {
     public class StateTransferDTO
     {

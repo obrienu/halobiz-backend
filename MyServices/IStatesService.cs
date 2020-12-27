@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using HaloBiz.DTOs;
-using HaloBiz.Model_;
+using HaloBiz.DTOs.ApiDTOs;
 
 namespace HaloBiz.MyServices
 {

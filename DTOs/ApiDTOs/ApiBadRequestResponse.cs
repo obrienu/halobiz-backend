@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace HaloBiz.DTOs
+namespace HaloBiz.DTOs.ApiDTOs
 {
     public class ApiBadRequestResponse : ApiResponse
     {

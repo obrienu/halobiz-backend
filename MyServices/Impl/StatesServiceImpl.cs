@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using HaloBiz.DTOs;
+using HaloBiz.DTOs.ApiDTOs;
+using HaloBiz.DTOs.TransferDTOs;
 using HaloBiz.Model_;
 using HaloBiz.Repository;
 using Microsoft.Extensions.Logging;

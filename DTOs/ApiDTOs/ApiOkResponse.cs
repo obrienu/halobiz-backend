@@ -1,4 +1,4 @@
-namespace HaloBiz.DTOs
+namespace HaloBiz.DTOs.ApiDTOs
 {
     public class ApiOkResponse : ApiResponse
     {
