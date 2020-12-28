@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HaloBiz.Data;
-using HaloBiz.Model_;
+using HaloBiz.Model;
 using HaloBiz.Repository.Impl;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

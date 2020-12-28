@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HaloBiz.Model_
+namespace HaloBiz.Model
 {
     public class Services
     {

@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HaloBiz.Model_
+namespace HaloBiz.Model
 {
-    public class State
+    public class ServiceGroup
     {
         [Key]
         public long Id { get; set; }
-        [Required]
-        public int StateCode { get; set; }
-        [Required]
+        [Required, MinLength(3), MaxLength(50)]
         public string Name { get; set; }
+        [Required, MinLength(3), MaxLength(255)]
+        public string Description { get; set; }
         [Required]
-        public string Capital { get; set; }
-        [Required]
-        public string  Slogan { get; set; }
-        public IEnumerable<LGA> LGAs { get; set; }
+        public long OperatingEntityId { get; set; }
+        public virtual OperatingEntity OperatingEntity { get; set; }
+        public IEnumerable<ServiceCategory> ServiceCategories { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HaloBiz.Data;
-using HaloBiz.Model_;
+using HaloBiz.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace HaloBiz.Repository.Impl

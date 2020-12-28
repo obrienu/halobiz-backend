@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HaloBiz.Model_;
+using HaloBiz.Model;
 
 namespace HaloBiz.Repository
 {

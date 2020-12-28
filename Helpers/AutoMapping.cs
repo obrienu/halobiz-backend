@@ -1,7 +1,7 @@
 using AutoMapper;
 using HaloBiz.DTOs.ReceivingDTO;
 using HaloBiz.DTOs.TransferDTOs;
-using HaloBiz.Model_;
+using HaloBiz.Model;
 
 namespace HaloBiz.Helpers
 {

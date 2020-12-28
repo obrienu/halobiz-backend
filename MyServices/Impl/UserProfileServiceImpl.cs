@@ -5,7 +5,7 @@ using AutoMapper;
 using HaloBiz.DTOs.ApiDTOs;
 using HaloBiz.DTOs.ReceivingDTO;
 using HaloBiz.DTOs.TransferDTOs;
-using HaloBiz.Model_;
+using HaloBiz.Model;
 using HaloBiz.Repository;
 
 namespace HaloBiz.MyServices.Impl

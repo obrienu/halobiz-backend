@@ -1,4 +1,4 @@
-using HaloBiz.Model_;
+using HaloBiz.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace HaloBiz.Data
