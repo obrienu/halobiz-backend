@@ -1,5 +1,6 @@
 using AutoMapper;
 using HaloBiz.DTOs.ReceivingDTO;
+using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs;
 using HaloBiz.Model;
 
@@ -13,6 +14,8 @@ namespace HaloBiz.Helpers
             CreateMap<LGA, LGATransferDTO>();
             CreateMap<UserProfileReceivingDTO, UserProfile>();
             CreateMap<UserProfile, UserProfileTransferDTO>();
+            CreateMap<Branch, BranchTransferDTO>();
+            CreateMap<BranchReceivingDTO, Branch>();
         }
     }
 }

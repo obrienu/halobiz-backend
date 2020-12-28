@@ -14,8 +14,8 @@ namespace HaloBiz.Model
         [Required, MinLength(3), MaxLength(255)]
         public string Description { get; set; }
         [Required]
-        public int HeadId { get; set; }
-        public UserProfile Head { get; set; }
+        public long HeadId { get; set; }
+        public virtual UserProfile Head { get; set; }
         public IEnumerable<Office> Offices { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }

@@ -4,14 +4,16 @@ using HaloBiz.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HaloBiz.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20201228210621_index_issues")]
+    partial class index_issues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,10 @@ namespace HaloBiz.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<long>("HeadId")
+                    b.Property<int>("HeadId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("HeadId1")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
@@ -51,7 +56,7 @@ namespace HaloBiz.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HeadId");
+                    b.HasIndex("HeadId1");
 
                     b.ToTable("Branches");
                 });
@@ -542,9 +547,7 @@ namespace HaloBiz.Migrations
                 {
                     b.HasOne("HaloBiz.Model.UserProfile", "Head")
                         .WithMany()
-                        .HasForeignKey("HeadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HeadId1");
 
                     b.Navigation("Head");
                 });

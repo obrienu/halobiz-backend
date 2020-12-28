@@ -19,7 +19,7 @@ namespace HaloBiz.Repository.Impl
 
         }
 
-        public async Task<Branch> SaveUserProfile(Branch branch)
+        public async Task<Branch> SaveBranch(Branch branch)
         {
             var BranchEntity = await _context.Branches.AddAsync(branch);
             if(await SaveChanges())
