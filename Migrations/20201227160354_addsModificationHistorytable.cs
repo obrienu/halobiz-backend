@@ -27,7 +27,7 @@ namespace HaloBiz.Migrations
                         column: x => x.ChangedById,
                         principalTable: "UserProfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
