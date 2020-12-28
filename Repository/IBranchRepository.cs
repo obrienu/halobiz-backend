@@ -7,7 +7,7 @@ namespace HaloBiz.Repository
     public interface IBranchRepository
     {
 
-        Task<Branch> SaveUserProfile(Branch branch);
+        Task<Branch> SaveBranch(Branch branch);
 
         Task<Branch> FindBranchById(long Id);
 

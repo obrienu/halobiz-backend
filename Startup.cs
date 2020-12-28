@@ -34,6 +34,8 @@ namespace HaloBiz
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IStatesService, StatesServiceImpl>();
+            services.AddScoped<IBranchService, BranchServiceImpl>();
+
             services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
 
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
