@@ -35,13 +35,14 @@ namespace HaloBiz
         {
             services.AddScoped<IStatesService, StatesServiceImpl>();
             services.AddScoped<IBranchService, BranchServiceImpl>();
+            services.AddScoped<IOfficeService, OfficeServiceImpl>();
 
             services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
 
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
             services.AddScoped<IDivisionRepository, DivisionRepositoryImpl>();
-            services.AddScoped<IOfficesRepository, OfficesRepositoryImpl>();
+            services.AddScoped<IOfficeRepository, OfficeRepositoryImpl>();
             services.AddScoped<IOperatingEntityRepository, OperatingEntityRepositoryImpl>();
             services.AddScoped<IServiceCategoryRepository, ServiceCategoryRepositoryImpl>();
             services.AddScoped<IServiceGroupRepository, ServiceGroupRepositoryImpl>();
