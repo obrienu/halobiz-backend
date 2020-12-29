@@ -94,7 +94,8 @@ namespace HaloBiz.MyServices.Impl
             }
 
             summary += $"Details after change, \n {updatedOffice.ToString()} \n";
-
+            
+            //TODO save modification history
 
             var officeTransferDTO = _mapper.Map<OfficeTransferDTO>(updatedOffice);
             return new ApiOkResponse(officeTransferDTO);
