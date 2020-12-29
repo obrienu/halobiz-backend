@@ -104,8 +104,8 @@ namespace HaloBiz.MyServices.Impl
             ModificationHistory history = new ModificationHistory(){
                 ModelChanged = "User Profile",
                 ChangeSummary = summary,
-                ChangedBy = updatedUser
-
+                ChangedBy = updatedUser,
+                ModifiedModelId = updatedUser.Id
             };
 
             await _historyRepo.SaveHistory(history);
