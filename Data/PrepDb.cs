@@ -16,7 +16,6 @@ namespace HaloBiz.Data
 
         public static void SeedData(DataContext context)
         {
-            context.Database.EnsureCreated();
             context.Database.Migrate();
         }
     }
