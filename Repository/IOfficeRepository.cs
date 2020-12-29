@@ -4,7 +4,7 @@ using HaloBiz.Model;
 
 namespace HaloBiz.Repository
 {
-    public interface IOfficesRepository
+    public interface IOfficeRepository
     {
         Task<Office> SaveOffice(Office office);
         Task<Office> FindOfficeById(long Id);
