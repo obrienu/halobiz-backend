@@ -76,6 +76,7 @@ namespace HaloBiz.MyServices.Impl
             serviceGroupToUpdate.Name = serviceGroupReceivingDTO.Name;
             serviceGroupToUpdate.Description = serviceGroupReceivingDTO.Description;
             serviceGroupToUpdate.OperatingEntityId = serviceGroupReceivingDTO.OperatingEntityId;
+            serviceGroupToUpdate.DivisionId = serviceGroupReceivingDTO.DivisionId;
             var updatedServiceGroup = await _serviceGroupRepo.UpdateServiceGroup(serviceGroupToUpdate);
 
             if (updatedServiceGroup == null)

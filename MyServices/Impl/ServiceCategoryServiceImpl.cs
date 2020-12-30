@@ -76,13 +76,15 @@ namespace HaloBiz.MyServices.Impl
             serviceCategoryToUpdate.Name = serviceCategoryReceivingDTO.Name;
             serviceCategoryToUpdate.Description = serviceCategoryReceivingDTO.Description;
             serviceCategoryToUpdate.ServiceGroupId = serviceCategoryReceivingDTO.ServiceGroupId;
+            serviceCategoryToUpdate.DivisionId = serviceCategoryReceivingDTO.DivisionId;
+            serviceCategoryToUpdate.OperatingEntityId = serviceCategoryReceivingDTO.OperatingEntityId;
             var updatedServiceCategory = await _serviceCategoryRepo.UpdateServiceCategory(serviceCategoryToUpdate);
 
             if (updatedServiceCategory == null)
             {
                 return new ApiResponse(500);
             }
-            var serviceCategoryTransferDTO = _mapper.Map<ServiceGroupTransferDTO>(updatedServiceCategory);
+            var serviceCategoryTransferDTO = _mapper.Map<ServiceCategoryTransferDTO>(updatedServiceCategory);
             return new ApiOkResponse(serviceCategoryTransferDTO);
 
         }
