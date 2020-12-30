@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HaloBiz.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201228213728_idx_issues2")]
-    partial class idx_issues2
+    [Migration("20201230084635_AddsNewFieldsToUserProfile")]
+    partial class AddsNewFieldsToUserProfile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -152,6 +152,9 @@ namespace HaloBiz.Migrations
                     b.Property<string>("ModelChanged")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ModifiedModelId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
@@ -484,10 +487,16 @@ namespace HaloBiz.Migrations
                     b.Property<string>("AltMobileNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CodeName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -518,6 +527,9 @@ namespace HaloBiz.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("MobileNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtherName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("ProfileStatus")

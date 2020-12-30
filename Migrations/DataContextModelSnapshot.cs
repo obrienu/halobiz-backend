@@ -485,10 +485,16 @@ namespace HaloBiz.Migrations
                     b.Property<string>("AltMobileNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CodeName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -521,6 +527,9 @@ namespace HaloBiz.Migrations
                     b.Property<string>("MobileNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OtherName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("ProfileStatus")
                         .HasColumnType("bit");
 
@@ -546,7 +555,7 @@ namespace HaloBiz.Migrations
                     b.HasOne("HaloBiz.Model.UserProfile", "Head")
                         .WithMany()
                         .HasForeignKey("HeadId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Head");
@@ -557,7 +566,7 @@ namespace HaloBiz.Migrations
                     b.HasOne("HaloBiz.Model.UserProfile", "Head")
                         .WithMany()
                         .HasForeignKey("HeadId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Head");
@@ -568,7 +577,7 @@ namespace HaloBiz.Migrations
                     b.HasOne("HaloBiz.Model.State", "State")
                         .WithMany("LGAs")
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("State");
@@ -594,19 +603,19 @@ namespace HaloBiz.Migrations
                     b.HasOne("HaloBiz.Model.UserProfile", "Head")
                         .WithMany()
                         .HasForeignKey("HeadId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("HaloBiz.Model.LGA", "LGA")
                         .WithMany()
                         .HasForeignKey("LGAId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("HaloBiz.Model.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Branch");
@@ -629,7 +638,7 @@ namespace HaloBiz.Migrations
                     b.HasOne("HaloBiz.Model.UserProfile", "Head")
                         .WithMany()
                         .HasForeignKey("HeadId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Division");

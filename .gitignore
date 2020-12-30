@@ -343,3 +343,4 @@ healthchecksdb
 obj/
 bin/
 appsettings.Development.json
+.env

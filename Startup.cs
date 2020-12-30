@@ -23,9 +23,12 @@ namespace HaloBiz
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment env;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            this.env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -33,6 +36,28 @@ namespace HaloBiz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            
+
+            if (env.IsDevelopment())
+            {
+                services.AddDbContext<DataContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            }
+            else
+            {
+                var server = Configuration["DbServer"];
+                var port = Configuration["DbPort"];
+                var user = Configuration["DbUser"];
+                var password = Configuration["DbPassword"];
+                var database = Configuration["Database"];
+                services.AddDbContext<DataContext>(options =>
+                    options.UseSqlServer($"Server={server},{port};Database={database};User Id={user};Password={password};"));
+
+            }
+
+
             //services
             services.AddScoped<IStatesService, StatesServiceImpl>();
             services.AddScoped<IBranchService, BranchServiceImpl>();
@@ -41,6 +66,8 @@ namespace HaloBiz
             services.AddScoped<IOfficeService, OfficeServiceImpl>();
             services.AddScoped<IStrategicBusinessUnitService, StrategicBusinessUnitServiceImpl>();
             services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
+            services.AddScoped<IServiceGroupService, ServiceGroupServiceImpl>();
+            services.AddScoped<IServiceCategoryService, ServiceCategoryServiceImpl>();
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
@@ -52,10 +79,9 @@ namespace HaloBiz
             services.AddScoped<IStrategicBusinessUnitRepository, StrategicBusinessUnitRepositoryImpl>();
             services.AddScoped<IUserProfileRepository, UserProfileRepositoryImpl>();
             services.AddScoped<IModificationHistoryRepository, ModificationHistoryRepositoryImpl>();
-            
+
             services.AddAutoMapper(typeof(Startup));
-            services.AddDbContext<DataContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddControllers()
                 .AddNewtonsoftJson(option => option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
@@ -70,9 +96,11 @@ namespace HaloBiz
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HaloBiz v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HaloBiz v1"));
+
 
             PrepDb.PrepDatabase(app);
 

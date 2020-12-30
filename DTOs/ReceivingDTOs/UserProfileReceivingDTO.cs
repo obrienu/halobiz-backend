@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace HaloBiz.DTOs.ReceivingDTO
@@ -7,8 +8,14 @@ namespace HaloBiz.DTOs.ReceivingDTO
     
         [Required, RegularExpression("\\w{3,20}", ErrorMessage="Firstname can only be alphabets between 3 to 20 characters long")]
         public string FirstName { get; set; }
-        [Required, RegularExpression("\\w{3,20}", ErrorMessage="Firstname can only be alphabets between 3 to 20 characters long")]
+        [Required, RegularExpression("\\w{3,20}", ErrorMessage="Lastname can only be alphabets between 3 to 20 characters long")]
         public string LastName { get; set; }
+        [RegularExpression("\\w{3,20}", ErrorMessage="Othername can only be alphabets between 3 to 20 characters long")]
+        public string OtherName { get; set; }
+        [RegularExpression("\\w{2,50}", ErrorMessage="Codename can only be alphabets between 3 to 50 characters long")]
+        public string CodeName { get; set; }
+        [Required]
+        public string DateOfBirth { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         [RegularExpression("\\d{10,15}", ErrorMessage="Mobile number can only be digits between 10 to 15 characters long")]
