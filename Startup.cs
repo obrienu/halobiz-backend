@@ -65,6 +65,7 @@ namespace HaloBiz
             services.AddScoped<IOperatingEntityService, OperatingEntityServiceImpl>();
             services.AddScoped<IOfficeService, OfficeServiceImpl>();
             services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
+            services.AddScoped<IServiceGroupService, ServiceGroupServiceImpl>();
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
