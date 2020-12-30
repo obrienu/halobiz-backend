@@ -67,6 +67,7 @@ namespace HaloBiz
             services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
             services.AddScoped<IServiceGroupService, ServiceGroupServiceImpl>();
             services.AddScoped<IServiceCategoryService, ServiceCategoryServiceImpl>();
+            services.AddScoped<IServicesService, ServicesServiceImpl>();
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
@@ -78,6 +79,7 @@ namespace HaloBiz
             services.AddScoped<IStrategicBusinessUnitRepository, StrategicBusinessUnitRepositoryImpl>();
             services.AddScoped<IUserProfileRepository, UserProfileRepositoryImpl>();
             services.AddScoped<IModificationHistoryRepository, ModificationHistoryRepositoryImpl>();
+            services.AddScoped<IServicesRepository, ServicesRepositoryImpl>();
 
             services.AddAutoMapper(typeof(Startup));
 
