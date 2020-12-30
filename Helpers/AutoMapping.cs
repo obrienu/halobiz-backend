@@ -16,6 +16,10 @@ namespace HaloBiz.Helpers
             CreateMap<UserProfile, UserProfileTransferDTO>();
             CreateMap<Branch, BranchTransferDTO>();
             CreateMap<BranchReceivingDTO, Branch>();
+            CreateMap<Division, DivisionTransferDTO>();
+            CreateMap<DivisionReceivingDTO, Division>();
+            CreateMap<OperatingEntity, OperatingEntityTransferDTO>();
+            CreateMap<OperatingEntityReceivingDTO, OperatingEntity>();
             CreateMap<State, StateWithoutLGATransferDto>();
             CreateMap<OfficeReceivingDTO, Office>();
             CreateMap<Office, OfficeTransferDTO>();

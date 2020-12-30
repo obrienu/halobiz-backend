@@ -36,6 +36,7 @@ namespace HaloBiz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             
 
             if (env.IsDevelopment())
@@ -57,13 +58,14 @@ namespace HaloBiz
             }
 
 
-
+            //services
             services.AddScoped<IStatesService, StatesServiceImpl>();
             services.AddScoped<IBranchService, BranchServiceImpl>();
+            services.AddScoped<IDivisonService, DivisionServiceImpl>();
+            services.AddScoped<IOperatingEntityService, OperatingEntityServiceImpl>();
             services.AddScoped<IOfficeService, OfficeServiceImpl>();
-
             services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
-
+            //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
             services.AddScoped<IDivisionRepository, DivisionRepositoryImpl>();
@@ -91,8 +93,6 @@ namespace HaloBiz
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HaloBiz v1"));
             }
 
             app.UseSwagger();

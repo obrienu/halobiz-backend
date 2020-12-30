@@ -10,7 +10,7 @@ namespace HaloBiz.Repository
 
         Task<OperatingEntity> FindOperatingEntityById(long Id);
 
-        Task<OperatingEntity> FindOfficeByName(string name);
+        Task<OperatingEntity> FindOperatingEntityByName(string name);
 
         Task<IEnumerable<OperatingEntity>> FindAllOperatingEntity();
 
