@@ -28,6 +28,8 @@ namespace HaloBiz.Helpers
             CreateMap<State, StateWithoutLGATransferDto>();
             CreateMap<OfficeReceivingDTO, Office>();
             CreateMap<Office, OfficeTransferDTO>();
+            CreateMap<ServiceGroup, ServiceGroupTransferDTO>();
+            CreateMap<ServiceGroupReceivingDTO, ServiceGroup>();
         }
     }
 }
