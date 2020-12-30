@@ -54,8 +54,8 @@ namespace HaloBiz.Controllers
             var response = await _serviceGroupService.AddServiceGroup(serviceGroupReceivingDTO);
             if (response.StatusCode >= 400)
                 return StatusCode(response.StatusCode, response);
-            var operatingEntity = ((ApiOkResponse)response).Result;
-            return Ok(operatingEntity);
+            var serviceGroup = ((ApiOkResponse)response).Result;
+            return Ok(serviceGroup);
         }
 
         [HttpPut("{id}")]
