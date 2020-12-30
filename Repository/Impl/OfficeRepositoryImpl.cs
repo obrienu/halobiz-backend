@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace HaloBiz.Repository.Impl
 {
-    public class OfficesRepositoryImpl : IOfficesRepository
+    public class OfficeRepositoryImpl : IOfficeRepository
     {
         private readonly DataContext _context;
-        private readonly ILogger<OfficesRepositoryImpl> _logger;
-        public OfficesRepositoryImpl(DataContext context, ILogger<OfficesRepositoryImpl> logger)
+        private readonly ILogger<OfficeRepositoryImpl> _logger;
+        public OfficeRepositoryImpl(DataContext context, ILogger<OfficeRepositoryImpl> logger)
         {
             this._logger = logger;
             this._context = context;

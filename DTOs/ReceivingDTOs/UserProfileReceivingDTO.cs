@@ -5,18 +5,18 @@ namespace HaloBiz.DTOs.ReceivingDTO
     public class UserProfileReceivingDTO
     {
     
-        [Required, MaxLength(20), MinLength(3), RegularExpression("\\w{3,20}")]
+        [Required, RegularExpression("\\w{3,20}", ErrorMessage="Firstname can only be alphabets between 3 to 20 characters long")]
         public string FirstName { get; set; }
-        [RegularExpression("\\w{3,20}")]
+        [Required, RegularExpression("\\w{3,20}", ErrorMessage="Firstname can only be alphabets between 3 to 20 characters long")]
         public string LastName { get; set; }
         [EmailAddress]
         public string Email { get; set; }
-        [RegularExpression("\\d{10,15}")]
+        [RegularExpression("\\d{10,15}", ErrorMessage="Mobile number can only be digits between 10 to 15 characters long")]
         public string MobileNumber { get; set; }
         [Required, MaxLength(255)]
         public string ImageUrl { get; set; }
         public string AltEmail { get; set; }
-        [RegularExpression("\\d{10,15}")]
+        [RegularExpression("\\d{10,15}", ErrorMessage="Mobile number can only be digits between 10 to 15 characters long")]
         public string AltMobileNumber { get; set; }
         [MaxLength(255)]
         public string Address { get; set; }
