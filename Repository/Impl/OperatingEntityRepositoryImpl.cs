@@ -40,7 +40,7 @@ namespace HaloBiz.Repository.Impl
                 .FirstOrDefaultAsync( operatingEntity => operatingEntity.Id == Id);
         }
 
-        public async Task<OperatingEntity> FindOfficeByName(string name)
+        public async Task<OperatingEntity> FindOperatingEntityByName(string name)
         {
             return await _context.OperatingEntities
                 .Include(operatingEntity => operatingEntity.Head)

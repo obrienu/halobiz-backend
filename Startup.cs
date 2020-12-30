@@ -33,11 +33,13 @@ namespace HaloBiz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services
             services.AddScoped<IStatesService, StatesServiceImpl>();
             services.AddScoped<IBranchService, BranchServiceImpl>();
-
+            services.AddScoped<IDivisonService, DivisionServiceImpl>();
+            services.AddScoped<IOperatingEntityService, OperatingEntityServiceImpl>();
             services.AddScoped<IUserProfileService, UserProfileServiceImpl>();
-
+            //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
             services.AddScoped<IDivisionRepository, DivisionRepositoryImpl>();
