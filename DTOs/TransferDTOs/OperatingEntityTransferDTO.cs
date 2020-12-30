@@ -13,6 +13,7 @@ namespace HaloBiz.DTOs.TransferDTOs
         public string Name { get; set; }
         public string Description { get; set; }
         public  UserProfileTransferDTO Head { get; set; }
+        public long DivisionId { get; set; }
         public IEnumerable<ServiceGroupTransferDTO> ServiceGroups { get; set; }
         public IEnumerable<StrategicBusinessUnit> StrategicBusinessUnits { get; set; }
     }

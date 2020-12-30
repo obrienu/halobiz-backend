@@ -20,6 +20,12 @@ namespace HaloBiz.Model
         public double BillableAmount { get; set; }
         [Required]
         public long ServiceCategoryId { get; set; }
+        [Required]
+        public long ServiceGroupId { get; set; }
+        [Required]
+        public long OperatingEntityId { get; set; }
+        [Required]
+        public long DivisionId { get; set; }
         public virtual ServiceCategory ServiceCategory { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }

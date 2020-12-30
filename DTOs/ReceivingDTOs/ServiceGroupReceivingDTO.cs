@@ -11,5 +11,7 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public string Description { get; set; }
         [Required]
         public long OperatingEntityId { get; set; }
+        [Required]
+        public long DivisionId { get; set; }
     }
 }

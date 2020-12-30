@@ -16,5 +16,11 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public double BillableAmount { get; set; }
         [Required]
         public long ServiceCategoryId { get; set; }
+        [Required]
+        public long ServiceGroupId { get; set; }
+        [Required]
+        public long OperatingEntityId { get; set; }
+        [Required]
+        public long DivisionId { get; set; }
     }
 }

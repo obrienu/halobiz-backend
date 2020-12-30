@@ -11,6 +11,10 @@ namespace HaloBiz.DTOs.TransferDTOs
         public double Discount { get; set; } = 0;
         public double VAT { get; set; }
         public double BillableAmount { get; set; }
+        public long ServiceCategoryId { get; set; }
+        public long ServiceGroupId { get; set; }
+        public long OperatingEntityId { get; set; }
+        public long DivisionId { get; set; }
        
     }
 }

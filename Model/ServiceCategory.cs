@@ -16,6 +16,10 @@ namespace HaloBiz.Model
         [Required]
         public long ServiceGroupId { get; set; }
         public virtual ServiceGroup ServiceGroup { get; set; }
+        [Required]
+        public long OperatingEntityId { get; set; }
+        [Required]
+        public long DivisionId { get; set; }
         public IEnumerable<Services> Services { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
