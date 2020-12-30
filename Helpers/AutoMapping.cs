@@ -30,6 +30,8 @@ namespace HaloBiz.Helpers
             CreateMap<Office, OfficeTransferDTO>();
             CreateMap<ServiceGroup, ServiceGroupTransferDTO>();
             CreateMap<ServiceGroupReceivingDTO, ServiceGroup>();
+            CreateMap<ServiceCategoryReceivingDTO, ServiceCategory>();
+            CreateMap<ServiceCategory, ServiceCategoryTransferDTO>();
         }
     }
 }

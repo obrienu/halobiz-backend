@@ -3,12 +3,11 @@ using HaloBiz.Model;
 
 namespace HaloBiz.DTOs.TransferDTOs
 {
-    public class ServiceGroupTransferDTO
+    public class ServiceCategoryTransferDTO
     {
         public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IEnumerable<ServiceCategoryTransferDTO> ServiceCategories { get; set; }
-
+        public IEnumerable<ServicesTransferDTO> Services { get; set; }
     }
 }
