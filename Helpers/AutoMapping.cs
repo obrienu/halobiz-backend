@@ -1,3 +1,4 @@
+using System;
 using AutoMapper;
 using HaloBiz.DTOs.ReceivingDTO;
 using HaloBiz.DTOs.ReceivingDTOs;
@@ -12,8 +13,12 @@ namespace HaloBiz.Helpers
         {
             CreateMap<State, StateTransferDTO>();    
             CreateMap<LGA, LGATransferDTO>();
-            CreateMap<UserProfileReceivingDTO, UserProfile>();
-            CreateMap<UserProfile, UserProfileTransferDTO>();
+            CreateMap<UserProfileReceivingDTO, UserProfile>()
+                .ForMember(member => member.DateOfBirth, 
+                    opt =>  opt.MapFrom(src => DateTime.Parse(src.DateOfBirth)));
+            CreateMap<UserProfile, UserProfileTransferDTO>()
+                .ForMember(member => member.DateOfBirth,
+                    opt => opt.MapFrom(src => src.DateOfBirth.ToShortDateString()));
             CreateMap<Branch, BranchTransferDTO>();
             CreateMap<BranchReceivingDTO, Branch>();
             CreateMap<Division, DivisionTransferDTO>();
