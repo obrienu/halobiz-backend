@@ -11,6 +11,7 @@ namespace HaloBiz.DTOs.TransferDTOs
         public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Address { get; set; }
         public int HeadId { get; set; }
         public UserProfileTransferDTO Head { get; set; }
         public IEnumerable<OfficeTransferDTO> Offices { get; set; }

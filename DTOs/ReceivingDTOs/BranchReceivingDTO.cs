@@ -13,7 +13,9 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public string Name { get; set; }
         [Required, MinLength(3), MaxLength(255)]
         public string Description { get; set; }
-        [Required]
+        [Required, MaxLength(500, ErrorMessage="Requires a maximum of 500 characters")]
+        public string Address { get; set; }
+        [Required(ErrorMessage="Provide a valid HeadId")]
         public int HeadId { get; set; }
     }
 }

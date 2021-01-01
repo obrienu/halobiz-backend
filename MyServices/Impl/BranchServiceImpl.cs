@@ -79,6 +79,7 @@ namespace HaloBiz.MyServices.Impl
             }
             branchToUpdate.Name = branchReceivingDTO.Name;
             branchToUpdate.Description = branchReceivingDTO.Description;
+            branchToUpdate.Address = branchReceivingDTO.Address;
             branchToUpdate.HeadId = branchReceivingDTO.HeadId;
             var updatedBranch = await _branchRepo.UpdateBranch(branchToUpdate);
 
