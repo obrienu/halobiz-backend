@@ -20,6 +20,7 @@ namespace HaloBiz.Helpers
                 .ForMember(member => member.DateOfBirth,
                     opt => opt.MapFrom(src => src.DateOfBirth.ToShortDateString()));
             CreateMap<Branch, BranchTransferDTO>();
+            CreateMap<Branch, BranchWithoutOfficeTransferDTO>();
             CreateMap<BranchReceivingDTO, Branch>();
             CreateMap<Division, DivisionTransferDTO>();
             CreateMap<DivisionReceivingDTO, Division>();
