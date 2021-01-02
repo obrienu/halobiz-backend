@@ -36,6 +36,7 @@ namespace HaloBiz.Repository.Impl
             return await _context.OperatingEntities
                 .Include(operatingEntity => operatingEntity.Head)
                 .Include(operatingEntity => operatingEntity.ServiceGroups)
+                .ThenInclude(x => x.ServiceCategories)
                 //.Include(operatingEntity => operatingEntity.StrategicBusinessUnits)        
                 .FirstOrDefaultAsync( operatingEntity => operatingEntity.Id == Id);
         }
@@ -45,6 +46,7 @@ namespace HaloBiz.Repository.Impl
             return await _context.OperatingEntities
                 .Include(operatingEntity => operatingEntity.Head)
                 .Include(operatingEntity => operatingEntity.ServiceGroups)
+                .ThenInclude(x => x.ServiceCategories)
                 //.Include(operatingEntity => operatingEntity.StrategicBusinessUnits)        
                 .FirstOrDefaultAsync( operatingEntity => operatingEntity.Name == name);
         }
@@ -54,6 +56,7 @@ namespace HaloBiz.Repository.Impl
             return await _context.OperatingEntities
                 .Include(operatingEntity => operatingEntity.Head)
                 .Include(operatingEntity => operatingEntity.ServiceGroups)
+                .ThenInclude(x => x.ServiceCategories)
                 //.Include(operatingEntity => operatingEntity.StrategicBusinessUnits)   
                 .ToListAsync();
         }
