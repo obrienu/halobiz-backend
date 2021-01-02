@@ -33,7 +33,8 @@ namespace HaloBiz.Repository.Impl
             return await _context.Offices
                 .Include(office => office.Head)
                 .Include(office => office.State)
-                .Include(office => office.LGA)                  
+                .Include(office => office.LGA)
+                .Include(office => office.Branch)                
                 .FirstOrDefaultAsync( office => office.Id == Id);
         }
 
@@ -43,6 +44,7 @@ namespace HaloBiz.Repository.Impl
                 .Include(office => office.Head)
                 .Include(office => office.State)
                 .Include(office => office.LGA)
+                .Include(office => office.Branch) 
                 .FirstOrDefaultAsync( office => office.Name == name);
         }
 
@@ -52,6 +54,7 @@ namespace HaloBiz.Repository.Impl
                 .Include(office => office.Head)
                 .Include(office => office.State)
                 .Include(office => office.LGA)
+                .Include(office => office.Branch)
                 .ToListAsync();
         }
 
