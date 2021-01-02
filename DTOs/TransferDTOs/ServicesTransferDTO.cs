@@ -5,6 +5,7 @@ namespace HaloBiz.DTOs.TransferDTOs
         public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public int Quantity { get; set; } = 1;
         public double UnitPrice { get; set; }
         public double Price { get; set; }

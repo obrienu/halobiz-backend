@@ -74,6 +74,7 @@ namespace HaloBiz.MyServices.Impl
             }
             serviceToUpdate.Name = serviceReceivingDTO.Name;
             serviceToUpdate.Description = serviceReceivingDTO.Description;
+            serviceToUpdate.ImageUrl = serviceReceivingDTO.ImageUrl;
             serviceToUpdate.BillableAmount = serviceReceivingDTO.BillableAmount;
             serviceToUpdate.Discount = serviceReceivingDTO.Discount;
             serviceToUpdate.Price = serviceReceivingDTO.Price;
@@ -92,7 +93,6 @@ namespace HaloBiz.MyServices.Impl
             }
             var serviceTransferDTO = _mapper.Map<ServicesTransferDTO>(updatedService);
             return new ApiOkResponse(serviceTransferDTO);
-
 
         }
 
