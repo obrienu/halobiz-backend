@@ -35,6 +35,8 @@ namespace HaloBiz.Repository.Impl
             return await _context.Divisions
                 .Include(division => division.Head)
                 .Include(division => division.OperatingEntities)
+                .ThenInclude(x => x.ServiceGroups)
+                .ThenInclude(x => x.ServiceCategories)
                 .FirstOrDefaultAsync( division => division.Id == Id);
         }
 
@@ -43,6 +45,8 @@ namespace HaloBiz.Repository.Impl
             return await _context.Divisions
                 .Include(division => division.Head)
                 .Include(division => division.OperatingEntities)
+                .ThenInclude(x => x.ServiceGroups)
+                .ThenInclude(x => x.ServiceCategories)
                 .FirstOrDefaultAsync( division => division.Name == name);
         }
 
@@ -51,6 +55,8 @@ namespace HaloBiz.Repository.Impl
             return await _context.Divisions
                 .Include(division => division.Head)
                 .Include(division => division.OperatingEntities)
+                .ThenInclude(x => x.ServiceGroups)
+                .ThenInclude(x => x.ServiceCategories)
                 .ToListAsync();
         }
 
