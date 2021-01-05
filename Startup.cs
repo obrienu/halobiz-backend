@@ -39,10 +39,7 @@ namespace HaloBiz
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-
-            
-
+        {       
             if (env.IsDevelopment())
             {
                 services.AddDbContext<DataContext>(options =>
@@ -61,6 +58,8 @@ namespace HaloBiz
 
             }
 
+            // singletons
+            services.AddSingleton(Configuration.GetSection("AppSettings").Get<AppSettings>());
 
             //services
             services.AddScoped<IStatesService, StatesServiceImpl>();
