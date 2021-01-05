@@ -63,21 +63,26 @@ namespace HaloBiz.Controllers
             var user = ((ApiOkResponse)response).Result;
             var userProfile = (UserProfileTransferDTO)user;
 
+
             var key = _config["JWTSecretKey"] ?? _config.GetSection("AppSettings:JWTSecretKey").Value;
+
             var buffer = Encoding.UTF8.GetBytes(key);
             var handler = new JwtSecurityTokenHandler();
 
             var token = handler.CreateJwtSecurityToken(
                 issuer: "issuer",
                 audience: "audience",
+
                 expires: DateTime.UtcNow.AddDays(1),
                 subject: new ClaimsIdentity(new[] {
                     new Claim(ClaimTypes.NameIdentifier, userProfile.Id.ToString()),
                     new Claim(ClaimTypes.Email, userProfile.Email)
+
                 }),
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(buffer), SecurityAlgorithms.HmacSha256Signature, SecurityAlgorithms.Sha512Digest));
 
             var jwtToken = handler.WriteToken(token);
+
 
             return Ok(new UserAuthTransferDTO { Token = jwtToken, UserProfile = userProfile });
         }
