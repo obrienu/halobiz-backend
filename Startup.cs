@@ -59,7 +59,7 @@ namespace HaloBiz
             }
 
             // singletons
-            services.AddSingleton(Configuration.GetSection("AppSettings").Get<AppSettings>());
+            //services.AddSingleton(Configuration.GetSection("AppSettings").Get<AppSettings>());
 
             //services
             services.AddScoped<IStatesService, StatesServiceImpl>();
