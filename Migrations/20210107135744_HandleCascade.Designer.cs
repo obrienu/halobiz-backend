@@ -4,14 +4,16 @@ using HaloBiz.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HaloBiz.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210107135744_HandleCascade")]
+    partial class HandleCascade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,7 +146,7 @@ namespace HaloBiz.Migrations
                         .HasMaxLength(20000)
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("ChangedById")
+                    b.Property<long?>("ChangedById")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedAt")
@@ -614,9 +616,7 @@ namespace HaloBiz.Migrations
                 {
                     b.HasOne("HaloBiz.Model.UserProfile", "ChangedBy")
                         .WithMany()
-                        .HasForeignKey("ChangedById")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .HasForeignKey("ChangedById");
 
                     b.Navigation("ChangedBy");
                 });
@@ -632,19 +632,19 @@ namespace HaloBiz.Migrations
                     b.HasOne("HaloBiz.Model.UserProfile", "Head")
                         .WithMany()
                         .HasForeignKey("HeadId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HaloBiz.Model.LGA", "LGA")
                         .WithMany()
                         .HasForeignKey("LGAId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HaloBiz.Model.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Branch");
@@ -667,7 +667,7 @@ namespace HaloBiz.Migrations
                     b.HasOne("HaloBiz.Model.UserProfile", "Head")
                         .WithMany()
                         .HasForeignKey("HeadId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Division");

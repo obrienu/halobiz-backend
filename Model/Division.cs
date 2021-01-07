@@ -14,7 +14,6 @@ namespace HaloBiz.Model
         [Required, MinLength(3), MaxLength(255)]
         public string Description { get; set; }
         public string MissionStatement { get; set; }
-        [Required]
         public long HeadId { get; set; }
         public virtual UserProfile Head { get; set; }
         public IEnumerable<OperatingEntity> OperatingEntities { get; set; }

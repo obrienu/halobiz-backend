@@ -11,6 +11,7 @@ namespace HaloBiz.Model
         [Required]
         public string ModelChanged { get; set; }
         public long ModifiedModelId { get; set; }
+        public long ChangedById { get; set; }
         public UserProfile ChangedBy { get; set; }
         [StringLength(20000)]
         public string ChangeSummary { get; set; }
