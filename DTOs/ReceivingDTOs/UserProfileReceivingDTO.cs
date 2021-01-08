@@ -25,7 +25,7 @@ namespace HaloBiz.DTOs.ReceivingDTO
         public string AltEmail { get; set; }
         [RegularExpression("\\d{10,15}", ErrorMessage="Mobile number can only be digits between 10 to 15 characters long")]
         public string AltMobileNumber { get; set; }
-        [Required, MaxLength(255)]
+        [MaxLength(255)]
         public string Address { get; set; }
         [MaxLength(255)]
         public string LinkedInHandle { get; set; }
