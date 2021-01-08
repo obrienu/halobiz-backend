@@ -40,7 +40,7 @@ namespace HaloBiz.Migrations
                 column: "HeadId",
                 principalTable: "UserProfiles",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Divisions_UserProfiles_HeadId",
@@ -48,7 +48,7 @@ namespace HaloBiz.Migrations
                 column: "HeadId",
                 principalTable: "UserProfiles",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_LGAs_States_StateId",
@@ -64,7 +64,7 @@ namespace HaloBiz.Migrations
                 column: "LGAId",
                 principalTable: "LGAs",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Offices_States_StateId",
@@ -80,7 +80,7 @@ namespace HaloBiz.Migrations
                 column: "HeadId",
                 principalTable: "UserProfiles",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_OperatingEntities_UserProfiles_HeadId",
@@ -88,7 +88,7 @@ namespace HaloBiz.Migrations
                 column: "HeadId",
                 principalTable: "UserProfiles",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

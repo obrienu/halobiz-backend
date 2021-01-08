@@ -120,7 +120,7 @@ namespace HaloBiz.Migrations
                         column: x => x.HeadId,
                         principalTable: "UserProfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
