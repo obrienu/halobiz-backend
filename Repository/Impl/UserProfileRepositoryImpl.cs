@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HaloBiz.Data;
 using HaloBiz.Model;
@@ -31,18 +32,18 @@ namespace HaloBiz.Repository.Impl
         public async Task<UserProfile> FindUserById(long Id)
         {
             return await _context.UserProfiles
-                .FirstOrDefaultAsync( user => user.Id == Id);
+                .FirstOrDefaultAsync( user => user.Id == Id && user.IsDeleted == false);
         }
 
         public async Task<UserProfile> FindUserByEmail(string email)
         {
             return await _context.UserProfiles
-                .FirstOrDefaultAsync( user => user.Email == email);
+                .FirstOrDefaultAsync( user => user.Email == email && user.IsDeleted == false);
         }
 
         public async Task<IEnumerable<UserProfile>> FindAllUserProfile()
         {
-            return await _context.UserProfiles.ToListAsync();
+            return await _context.UserProfiles.Where(user => user.IsDeleted == false).ToListAsync();
         }
 
         public async Task<UserProfile> UpdateUserProfile(UserProfile userProfile)
@@ -57,7 +58,8 @@ namespace HaloBiz.Repository.Impl
 
         public async Task<bool> RemoveUserProfile(UserProfile userProfile)
         {
-            _context.UserProfiles.Remove(userProfile);
+            userProfile.IsDeleted = true;
+            _context.UserProfiles.Update(userProfile);
             return await SaveChanges();
         }
 
