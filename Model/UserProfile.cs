@@ -40,6 +40,7 @@ namespace HaloBiz.Model
         public string InstagramHandle { get; set; }
         public long StaffId { get; set; }
         public bool ProfileStatus { get; set; }
+        public bool IsDeleted { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
