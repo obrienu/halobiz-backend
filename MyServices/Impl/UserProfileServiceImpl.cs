@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -91,6 +92,9 @@ namespace HaloBiz.MyServices.Impl
             userToUpdate.MobileNumber = userProfileReceivingDTO.MobileNumber;
             userToUpdate.TwitterHandle = userProfileReceivingDTO.TwitterHandle;
             userToUpdate.StaffId = userProfileReceivingDTO.StaffId;
+            userToUpdate.DateOfBirth = Convert.ToDateTime(userProfileReceivingDTO.DateOfBirth);
+            userToUpdate.CodeName = userProfileReceivingDTO.CodeName;
+            userToUpdate.OtherName = userProfileReceivingDTO.OtherName;
 
             summary += $"Details after change, \n {userToUpdate.ToString()} \n";
 
