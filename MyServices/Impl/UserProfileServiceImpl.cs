@@ -33,11 +33,6 @@ namespace HaloBiz.MyServices.Impl
                 return new ApiResponse(400, "Invalid email address");
             }
 
-            if(await FindUserByEmail(userProfileReceivingDTO.Email) != null)
-            {
-                return new ApiResponse(400, "User already exists");
-            }
-
             var userProfile = _mapper.Map<UserProfile>(userProfileReceivingDTO);
             var savedUserProfile = await _userRepo.SaveUserProfile(userProfile);
             if(savedUserProfile == null)
