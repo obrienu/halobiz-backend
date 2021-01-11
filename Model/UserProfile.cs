@@ -39,8 +39,10 @@ namespace HaloBiz.Model
         [MaxLength(255)]
         public string InstagramHandle { get; set; }
         public long StaffId { get; set; }
-        public bool ProfileStatus { get; set; }
-        public bool IsDeleted { get; set; }
+        public long? SBUId { get; set; }
+        public virtual StrategicBusinessUnit SBU { get; set; }
+        public bool ProfileStatus { get; set; } = true;
+        public bool IsDeleted { get; set; } = false;
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
