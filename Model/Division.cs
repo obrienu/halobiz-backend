@@ -16,6 +16,7 @@ namespace HaloBiz.Model
         public string MissionStatement { get; set; }
         public long HeadId { get; set; }
         public virtual UserProfile Head { get; set; }
+        public bool IsDeleted { get; set; }
         public IEnumerable<OperatingEntity> OperatingEntities { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }

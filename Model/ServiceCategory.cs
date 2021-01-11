@@ -20,6 +20,7 @@ namespace HaloBiz.Model
         public long OperatingEntityId { get; set; }
         [Required]
         public long DivisionId { get; set; }
+        public bool IsDeleted { get; set; }
         public IEnumerable<Services> Services { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
