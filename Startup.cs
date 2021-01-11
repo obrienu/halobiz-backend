@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using HaloBiz.Data;
@@ -10,6 +11,8 @@ using HaloBiz.MyServices;
 using HaloBiz.MyServices.Impl;
 using HaloBiz.Repository;
 using HaloBiz.Repository.Impl;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +24,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace HaloBiz
@@ -40,6 +44,7 @@ namespace HaloBiz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {       
+
             if (env.IsDevelopment())
             {
                 services.AddDbContext<DataContext>(options =>
@@ -57,6 +62,21 @@ namespace HaloBiz
                     options.UseSqlServer($"Server={server},{port};Database={database};User Id={user};Password={password};"));
 
             }
+
+            //Authentication with JWT Setup
+            services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                   options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JWTSecretKey"] ?? Configuration.GetSection("AppSettings:JWTSecretKey").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
 
             // singletons
             //services.AddSingleton(Configuration.GetSection("AppSettings").Get<AppSettings>());
@@ -130,6 +150,8 @@ namespace HaloBiz
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
