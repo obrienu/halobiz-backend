@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HaloBiz.Model
+namespace HaloBiz.Model.AccountsModel
 {
-    public class ServiceCategory
+    public class Account
     {
         [Key]
         public long Id { get; set; }
-        [Required, MinLength(3), MaxLength(50)]
+        [Required]
         public string Name { get; set; }
-        [Required, MinLength(3), MaxLength(255)]
+        [StringLength(1000)]
         public string Description { get; set; }
         [Required]
-        public long ServiceGroupId { get; set; }
-        public virtual ServiceGroup ServiceGroup { get; set; }
+        public long Alias { get; set; }
+        public IEnumerable<AccountMaster> MyProperty { get; set; }
         [Required]
-        public long OperatingEntityId { get; set; }
+        public bool IsDebitBalance { get; set; }
         [Required]
-        public long DivisionId { get; set; }
-        public IEnumerable<Services> Services { get; set; }
-        public IEnumerable<ServiceCategoryTask> ServiceCategoryTasks { get; set; }
-        public bool IsDeleted { get; set; }
+        public long AccountClassId { get; set; }
+        public virtual AccountClass AccountClass { get; set; }
+        public long CreatedById { get; set; }
+        public virtual UserProfile CreatedBy { get; set; }
+        public bool IsDeleted { get; set; } = false;
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
