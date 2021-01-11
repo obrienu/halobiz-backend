@@ -15,6 +15,7 @@ namespace HaloBiz.Model
         [Required]
         public long OperatingEntityId { get; set; }
         public virtual OperatingEntity OperatingEntity { get; set; }
+        public bool IsDeleted { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]

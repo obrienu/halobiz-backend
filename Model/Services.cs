@@ -29,6 +29,7 @@ namespace HaloBiz.Model
         [Required]
         public long DivisionId { get; set; }
         public virtual ServiceCategory ServiceCategory { get; set; }
+        public bool IsDeleted { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
