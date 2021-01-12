@@ -15,7 +15,7 @@ namespace HaloBiz.Model.AccountsModel
         public string Description { get; set; }
         [Required]
         public long Alias { get; set; }
-        public IEnumerable<AccountMaster> MyProperty { get; set; }
+        public IEnumerable<AccountMaster> AccountMasters { get; set; }
         [Required]
         public bool IsDebitBalance { get; set; }
         [Required]
