@@ -9,8 +9,12 @@ using HaloBiz.Data;
 using HaloBiz.Helpers;
 using HaloBiz.MyServices;
 using HaloBiz.MyServices.Impl;
+using HaloBiz.MyServices.Impl.LAMS;
+using HaloBiz.MyServices.LAMS;
 using HaloBiz.Repository;
 using HaloBiz.Repository.Impl;
+using HaloBiz.Repository.Impl.LAMS;
+using HaloBiz.Repository.LAMS;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -93,6 +97,8 @@ namespace HaloBiz
             services.AddScoped<IServiceCategoryService, ServiceCategoryServiceImpl>();
             services.AddScoped<IServicesService, ServicesServiceImpl>();
             services.AddScoped<IAccountClassService, AccountClassServiceImpl>();
+            services.AddScoped<ILeadTypeService, LeadTypeServiceImpl>();
+            services.AddScoped<ILeadOriginService, LeadOriginServiceImpl>();
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
@@ -106,6 +112,8 @@ namespace HaloBiz
             services.AddScoped<IModificationHistoryRepository, ModificationHistoryRepositoryImpl>();
             services.AddScoped<IServicesRepository, ServicesRepositoryImpl>();
             services.AddScoped<IAccountClassRepository, AccountClassRepositoryImpl>();
+            services.AddScoped<ILeadTypeRepository, LeadTypeRepositoryImpl>();
+            services.AddScoped<ILeadOriginRepository, LeadOriginRepositoryImpl>();
 
             services.AddAutoMapper(typeof(Startup));
 

@@ -3,8 +3,10 @@ using AutoMapper;
 using HaloBiz.DTOs.ReceivingDTO;
 using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs;
+using HaloBiz.DTOs.TransferDTOs.LAMS;
 using HaloBiz.Model;
 using HaloBiz.Model.AccountsModel;
+using HaloBiz.Model.LAMS;
 
 namespace HaloBiz.Helpers
 {
@@ -40,6 +42,10 @@ namespace HaloBiz.Helpers
             CreateMap<ServicesReceivingDTO, Services>();
             CreateMap<AccountClass, AccountClassTransferDTO>();
             CreateMap<AccountClassReceivingDTO, AccountClass>();
+            CreateMap<LeadTypeReceivingDTO, LeadType>();
+            CreateMap<LeadType, LeadTypeTransferDTO>();
+            CreateMap<LeadOriginReceivingDTO, LeadOrigin>();
+            CreateMap<LeadOrigin, LeadOriginTransferDTO>();
         }
     }
 }
