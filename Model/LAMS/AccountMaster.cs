@@ -29,7 +29,6 @@ namespace HaloBiz.Model.AccountsModel
         [Required]
         public long OfficeId { get; set; }
         public virtual Office Office { get; set; }
-        [Required]
         public IEnumerable<SBUAccountMaster> SBUAccountMaster { get; set; }
         [Required]
         public long CreatedById { get; set; }
