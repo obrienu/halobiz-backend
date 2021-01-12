@@ -8,11 +8,11 @@ namespace HaloBiz.Model
     {
         [Key]
         public long Id { get; set; }
-        [Required, MaxLength(20), MinLength(3), RegularExpression("\\w{3,20}")]
+        [Required, MaxLength(20), MinLength(2), RegularExpression("\\w{3,20}")]
         public string FirstName { get; set; }
-        [RegularExpression("\\w{3,20}")]
+        [RegularExpression("\\w{2,20}")]
         public string LastName { get; set; }
-        [RegularExpression("\\w{3,20}")]
+        [RegularExpression("\\w{2,20}")]
         public string OtherName { get; set; }
         [RegularExpression("\\w{2,50}")]
         public string CodeName { get; set; }

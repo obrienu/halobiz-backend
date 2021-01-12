@@ -93,6 +93,7 @@ namespace HaloBiz.Controllers
         {
 
             GoogleJsonWebSignature.Payload payload;
+            
 
             try
             {
@@ -102,7 +103,7 @@ namespace HaloBiz.Controllers
             {
                 return StatusCode(404, invalidJwtException.Message);
             }
-
+                
             if (!payload.EmailVerified)
             {
                 return StatusCode(404, "Email verification failed.");
