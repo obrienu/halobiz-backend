@@ -4,6 +4,7 @@ using HaloBiz.DTOs.ReceivingDTO;
 using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs;
 using HaloBiz.Model;
+using HaloBiz.Model.AccountsModel;
 
 namespace HaloBiz.Helpers
 {
@@ -37,6 +38,8 @@ namespace HaloBiz.Helpers
             CreateMap<ServiceCategory, ServiceCategoryTransferDTO>();
             CreateMap<Services, ServicesTransferDTO>();
             CreateMap<ServicesReceivingDTO, Services>();
+            CreateMap<AccountClass, AccountClassTransferDTO>();
+            CreateMap<AccountClassReceivingDTO, AccountClass>();
         }
     }
 }
