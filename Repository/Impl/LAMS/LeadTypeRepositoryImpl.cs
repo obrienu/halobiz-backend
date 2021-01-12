@@ -33,21 +33,24 @@ namespace HaloBiz.Repository.Impl.LAMS
         public async Task<LeadType> FindLeadTypeById(long Id)
         {
             return await _context.LeadTypes
-                .Include(leadType => leadType.LeadOrigins)
+                .Include(leadType => leadType.LeadOrigins
+                    .Where(leadOrigin => leadOrigin.IsDeleted == false))
                 .FirstOrDefaultAsync( leadType => leadType.Id == Id && leadType.IsDeleted == false);
         }
 
         public async Task<LeadType> FindLeadTypeByName(string name)
         {
             return await _context.LeadTypes
-                .Include(leadType => leadType.LeadOrigins)
+                .Include(leadType => leadType.LeadOrigins
+                    .Where(leadOrigin => leadOrigin.IsDeleted == false))
                 .FirstOrDefaultAsync( leadType => leadType.Caption == name && leadType.IsDeleted == false);
         }
 
         public async Task<IEnumerable<LeadType>> FindAllLeadType()
         {
             return await _context.LeadTypes   
-                .Include(leadType => leadType.LeadOrigins)
+                .Include(leadType => leadType.LeadOrigins
+                    .Where(leadOrigin => leadOrigin.IsDeleted == false))
                 .Where(leadType => leadType.IsDeleted == false)
                 .OrderBy(leadType => leadType.CreatedAt)
                 .ToListAsync();
