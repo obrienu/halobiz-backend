@@ -29,6 +29,7 @@ namespace HaloBiz.Helpers
             CreateMap<DivisionReceivingDTO, Division>();
             CreateMap<OperatingEntity, OperatingEntityTransferDTO>();
             CreateMap<OperatingEntityReceivingDTO, OperatingEntity>();
+            CreateMap<Division,DivisionWithoutOperatingEntityDTO>();
             CreateMap<State, StateWithoutLGATransferDto>();
             CreateMap<OfficeReceivingDTO, Office>();
             CreateMap<Office, OfficeTransferDTO>();
