@@ -12,9 +12,9 @@ namespace HaloBiz.Model
         public string FirstName { get; set; }
         [RegularExpression("[\\w\\s\\W]{2,20}")]
         public string LastName { get; set; }
-        [RegularExpression("\\w{2,20}")]
+        [RegularExpression("[\\w\\s\\W]{2,20}")]
         public string OtherName { get; set; }
-        [RegularExpression("\\w{2,50}")]
+        [RegularExpression("[\\w\\s\\W]{2,20}")]
         public string CodeName { get; set; }
         [Required]
         public DateTime DateOfBirth { get; set; }
