@@ -101,6 +101,8 @@ namespace HaloBiz
             services.AddScoped<ILeadOriginService, LeadOriginServiceImpl>();
             services.AddScoped<IFinancialVoucherTypeService, FinancialVoucherTypeServiceImpl>();
             services.AddScoped<IAccountService, AccountServiceImpl>();
+            services.AddScoped<IGroupTypeService, GroupTypeServiceImpl>();
+
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
@@ -118,6 +120,7 @@ namespace HaloBiz
             services.AddScoped<ILeadOriginRepository, LeadOriginRepositoryImpl>();
             services.AddScoped<IFinancialVoucherTypeRepository, FinancialVoucherTypeRepositoryImpl>();
             services.AddScoped<IAccountRepository, AccountRepositoryImpl>();
+            services.AddScoped<IGroupTypeRepository, GroupTypeRepositoryImpl>();
 
             services.AddAutoMapper(typeof(Startup));
 
