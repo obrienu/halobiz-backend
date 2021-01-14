@@ -71,7 +71,7 @@ namespace HaloBiz.Controllers.AccountsModel
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteById(int id)
+        public async Task<ActionResult> DeleteById(long id)
         {
             var response = await _accountClassService.DeleteAccountClass(id);
             return StatusCode(response.StatusCode);
