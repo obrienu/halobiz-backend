@@ -55,6 +55,8 @@ namespace HaloBiz.Helpers
             CreateMap<Account, AccountTransferDTO>();
             CreateMap<GroupTypeReceivingDTO, GroupType>();
             CreateMap<GroupType, GroupTypeTransferDTO>();
+            CreateMap<RelationshipReceivingDTO, Relationship>();
+            CreateMap<Relationship, RelationshipTransferDTO>();
         }
     }
 }
