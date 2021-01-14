@@ -30,7 +30,7 @@ namespace HaloBiz.Controllers.AccountsModel
             var Account = ((ApiOkResponse)response).Result;
             return Ok((IEnumerable<AccountTransferDTO>)Account);
         }
-        [HttpGet("caption/{caption}")]
+        [HttpGet("alias/{alias}")]
         public async Task<ActionResult> GetByAlias(long alias)
         {
             var response = await _accountService.GetAccountByAlias(alias);
