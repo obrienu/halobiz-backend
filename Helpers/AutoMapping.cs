@@ -51,6 +51,8 @@ namespace HaloBiz.Helpers
             CreateMap<LeadOrigin, LeadOriginTransferDTO>();
             CreateMap<FinancialVoucherTypeReceivingDTO, FinanceVoucherType>();
             CreateMap<FinanceVoucherType, FinancialVoucherTypeTransferDTO>();
+            CreateMap<AccountReceivingDTO, Account>();
+            CreateMap<Account, AccountTransferDTO>();
         }
     }
 }
