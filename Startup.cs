@@ -104,6 +104,7 @@ namespace HaloBiz
             services.AddScoped<IGroupTypeService, GroupTypeServiceImpl>();
             services.AddScoped<IRelationshipService, RelationshipServiceImpl>();
             services.AddScoped<IBankService, BankServiceImpl>();
+            services.AddScoped<ITargetService, TargetServiceImpl>();
             services.AddScoped<IStandardSLAForOperatingEntitiesService, StandardSLAForOperatingEntitiesServiceImpl>();
 
             //repositories
@@ -126,6 +127,7 @@ namespace HaloBiz
             services.AddScoped<IGroupTypeRepository, GroupTypeRepositoryImpl>();
             services.AddScoped<IRelationshipRepository, RelationshipRepositoryImpl>();
             services.AddScoped<IBankRepository, BankRepositoryImpl>();
+            services.AddScoped<ITargetRepository, TargetRepositoryImpl>();
             services.AddScoped<IStandardSLAForOperatingEntitiesRepository, StandardSLAForOperatingEntitiesRepositoryImpl>();
 
             services.AddAutoMapper(typeof(Startup));
