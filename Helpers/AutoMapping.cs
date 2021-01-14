@@ -1,5 +1,6 @@
 using System;
 using AutoMapper;
+using HaloBiz.DTOs;
 using HaloBiz.DTOs.ReceivingDTO;
 using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs;
@@ -57,6 +58,8 @@ namespace HaloBiz.Helpers
             CreateMap<GroupType, GroupTypeTransferDTO>();
             CreateMap<RelationshipReceivingDTO, Relationship>();
             CreateMap<Relationship, RelationshipTransferDTO>();
+            CreateMap<BankReceivingDTO, Bank>();
+            CreateMap<Bank, BankTransferDTO>();
         }
     }
 }
