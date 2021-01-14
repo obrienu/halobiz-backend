@@ -60,6 +60,8 @@ namespace HaloBiz.Helpers
             CreateMap<Relationship, RelationshipTransferDTO>();
             CreateMap<BankReceivingDTO, Bank>();
             CreateMap<Bank, BankTransferDTO>();
+            CreateMap<StandardSLAForOperatingEntitiesReceivingDTO, StandardSLAForOperatingEntities>();
+            CreateMap<StandardSLAForOperatingEntities, StandardSLAForOperatingEntitiesTransferDTO>();
         }
     }
 }
