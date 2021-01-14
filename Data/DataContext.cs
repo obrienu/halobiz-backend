@@ -39,6 +39,10 @@ namespace HaloBiz.Data
     public DbSet<StandardSLAForOperatingEntities> StandardSLAForOperatingEntities { get; set; }
     public DbSet<MeansOfIdentification> MeansOfIdentification { get; set; }
     public DbSet<GroupType> GroupType { get; set; }
+    public DbSet<Relationship> Relationships { get; set; }
+    public DbSet<Target> Targets { get; set; }
+    public DbSet<Bank> Banks { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
         {
             //Defines many to many relationship between SBU and AccountMaster
