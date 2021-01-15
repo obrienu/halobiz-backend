@@ -13,6 +13,5 @@ namespace HaloBiz.DTOs.ReceivingDTOs
     [StringLength(1000)]
     public string Description { get; set; }
     public long AccountClassAlias { get; set; }
-    public long CreatedById { get; set; }
-}
+    }
 }
