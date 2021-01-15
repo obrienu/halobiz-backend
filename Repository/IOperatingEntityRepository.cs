@@ -17,6 +17,6 @@ namespace HaloBiz.Repository
         Task<OperatingEntity> UpdateOperatingEntity(OperatingEntity operatingEntity);
 
         Task<bool> DeleteOperatingEntity(OperatingEntity operatingEntity);
-
+        Task<bool> DeleteOperatingEntityRange(IEnumerable<OperatingEntity> operatingEntities);
     }
 }

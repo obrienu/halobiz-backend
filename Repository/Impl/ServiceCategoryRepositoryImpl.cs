@@ -80,5 +80,15 @@ namespace HaloBiz.Repository.Impl
                return false;
            }
         }
+
+        public async Task<bool> DeleteServiceCategoryRange(IEnumerable<ServiceCategory> serviceCategories)
+        {
+            foreach (var sc in serviceCategories)
+            {
+                sc.IsDeleted = true;
+            }
+            _context.ServiceCategories.UpdateRange(serviceCategories);
+            return await SaveChanges();
+        }
     }
 }
