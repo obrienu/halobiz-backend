@@ -18,6 +18,5 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public bool IsDebitBalance { get; set; }
         [Required]
         public long AccountClassId { get; set; }
-        public long CreatedById { get; set; }
     }
 }

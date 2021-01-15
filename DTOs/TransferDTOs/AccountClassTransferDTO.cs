@@ -12,7 +12,5 @@ namespace HaloBiz.DTOs.TransferDTOs
         public string Caption { get; set; }
         public string Description { get; set; }
         public long AccountClassAlias { get; set; }
-        public long CreatedById { get; set; }
-        public virtual UserProfile CreatedBy { get; set; }
     }
 }
