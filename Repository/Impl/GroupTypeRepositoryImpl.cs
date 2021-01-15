@@ -32,14 +32,12 @@ namespace HaloBiz.Repository.Impl
         public async Task<GroupType> FindGroupTypeById(long Id)
         {
             return await _context.GroupType
-                .Where(groupType => groupType.IsDeleted == false)
                 .FirstOrDefaultAsync( groupType => groupType.Id == Id && groupType.IsDeleted == false);
         }
 
         public async Task<GroupType> FindGroupTypeByName(string name)
         {
             return await _context.GroupType
-                .Where(groupType => groupType.IsDeleted == false)
                 .FirstOrDefaultAsync( groupType => groupType.Caption == name && groupType.IsDeleted == false);
         }
 

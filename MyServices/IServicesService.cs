@@ -11,6 +11,6 @@ namespace HaloBiz.MyServices
         Task<ApiResponse> GetServiceById(long id);
         Task<ApiResponse> GetServiceByName(string name);
         Task<ApiResponse> UpdateServices(long id, ServicesReceivingDTO serviceReceivingDTO);
-        Task<ApiResponse> DeleteServiceGroup(long id);
+        Task<ApiResponse> DeleteService(long id);
     }
 }

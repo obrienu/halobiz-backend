@@ -39,7 +39,6 @@ namespace HaloBiz.Repository.Impl
         public async Task<Bank> FindBankByName(string name)
         {
             return await _context.Banks
-                .Where(bank => bank.IsDeleted == false)
                 .FirstOrDefaultAsync( bank => bank.Name == name && bank.IsDeleted == false);
         }
 

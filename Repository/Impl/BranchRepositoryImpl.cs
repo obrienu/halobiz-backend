@@ -34,7 +34,8 @@ namespace HaloBiz.Repository.Impl
         {
             return await _context.Branches
                 .Include(branch => branch.Head)
-                .Include(branch => branch.Offices)
+                .Include(branch => branch.Offices
+                .Where(office => office.IsDeleted == false))
                 .FirstOrDefaultAsync( branch => branch.Id == Id && branch.IsDeleted == false);
         }
 
@@ -42,7 +43,8 @@ namespace HaloBiz.Repository.Impl
         {
             return await _context.Branches
                 .Include(branch => branch.Head)
-                .Include(branch => branch.Offices)
+                .Include(branch => branch.Offices
+                .Where(office => office.IsDeleted == false))
                 .FirstOrDefaultAsync( branch => branch.Name == name && branch.IsDeleted == false);
         }
 
@@ -50,7 +52,8 @@ namespace HaloBiz.Repository.Impl
         {
             return await _context.Branches.Where(branch => branch.IsDeleted == false)
                 .Include(branch => branch.Head)
-                .Include(branch => branch.Offices)
+                .Include(branch => branch.Offices
+                .Where(office => office.IsDeleted == false))
                 .ToListAsync();
         }
 
@@ -73,9 +76,11 @@ namespace HaloBiz.Repository.Impl
 
         private async Task<bool> SaveChanges()
         {
-           try{
+           try
+           {
                return  await _context.SaveChangesAsync() > 0;
-           }catch(Exception ex)
+           }
+           catch(Exception ex)
            {
                _logger.LogError(ex.Message);
                return false;

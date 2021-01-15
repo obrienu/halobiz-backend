@@ -16,6 +16,6 @@ namespace HaloBiz.DTOs.TransferDTOs
         public long DivisionId { get; set; }
         public DivisionWithoutOperatingEntityDTO Division { get; set; }
         public IEnumerable<ServiceGroupTransferDTO> ServiceGroups { get; set; }
-        public IEnumerable<StrategicBusinessUnit> StrategicBusinessUnits { get; set; }
+        public IEnumerable<SBUWithoutOperatingEntityTransferDTO> StrategicBusinessUnits { get; set; }
     }
 }

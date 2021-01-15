@@ -70,7 +70,7 @@ namespace HaloBiz.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteById(int id)
         {
-            var response = await _servicesService.DeleteServiceGroup(id);
+            var response = await _servicesService.DeleteService(id);
             return StatusCode(response.StatusCode);
         }
         

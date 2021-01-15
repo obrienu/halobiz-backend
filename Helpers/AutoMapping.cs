@@ -36,6 +36,7 @@ namespace HaloBiz.Helpers
             CreateMap<OfficeReceivingDTO, Office>();
             CreateMap<Office, OfficeTransferDTO>();
             CreateMap<StrategicBusinessUnit, StrategicBusinessUnitTransferDTO>();
+            CreateMap<StrategicBusinessUnit, SBUWithoutOperatingEntityTransferDTO>();
             CreateMap<StrategicBusinessUnitReceivingDTO, StrategicBusinessUnit>();
             CreateMap<ServiceGroup, ServiceGroupTransferDTO>();
             CreateMap<ServiceGroup, ServiceGroupWithoutServiceCategoryDTO>();

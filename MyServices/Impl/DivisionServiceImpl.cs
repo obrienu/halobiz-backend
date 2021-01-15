@@ -15,12 +15,14 @@ namespace HaloBiz.MyServices.Impl
     public class DivisionServiceImpl : IDivisonService
     {
         private readonly ILogger<DivisionServiceImpl> _logger;
+        private readonly IOperatingEntityService _operatingEntityService;
         private readonly IDivisionRepository _divisionRepo;
         private readonly IMapper _mapper;
 
-        public DivisionServiceImpl(IDivisionRepository divisionRepo, ILogger<DivisionServiceImpl> logger, IMapper mapper)
+        public DivisionServiceImpl(IOperatingEntityService operatingEntityService ,IDivisionRepository divisionRepo, ILogger<DivisionServiceImpl> logger, IMapper mapper)
         {
             this._mapper = mapper;
+            this._operatingEntityService = operatingEntityService;
             this._divisionRepo = divisionRepo;
             this._logger = logger;
         }
@@ -43,6 +45,11 @@ namespace HaloBiz.MyServices.Impl
             if (divisionToDelete == null)
             {
                 return new ApiResponse(404);
+            }
+
+            foreach (OperatingEntity operatingEntity in divisionToDelete.OperatingEntities)
+            {
+                await _operatingEntityService.DeleteOperatingEntity(operatingEntity.Id);
             }
 
             if (!await _divisionRepo.RemoveDivision(divisionToDelete))

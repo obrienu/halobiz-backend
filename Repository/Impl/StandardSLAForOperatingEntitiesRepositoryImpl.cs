@@ -32,7 +32,6 @@ namespace HaloBiz.Repository.Impl
         public async Task<StandardSLAForOperatingEntities> FindStandardSLAForOperatingEntitiesById(long Id)
         {
             return await _context.StandardSLAForOperatingEntities
-                .Where(standardSLAForOperatingEntities => standardSLAForOperatingEntities.IsDeleted == false)
                 .Include(standardSLAForOperatingEntities => standardSLAForOperatingEntities.OperatingEntity)
                 .FirstOrDefaultAsync( standardSLAForOperatingEntities => standardSLAForOperatingEntities.Id == Id && standardSLAForOperatingEntities.IsDeleted == false);
         }
@@ -40,7 +39,6 @@ namespace HaloBiz.Repository.Impl
         public async Task<StandardSLAForOperatingEntities> FindStandardSLAForOperatingEntitiesByName(string name)
         {
             return await _context.StandardSLAForOperatingEntities
-                .Where(standardSLAForOperatingEntities => standardSLAForOperatingEntities.IsDeleted == false)
                 .Include(standardSLAForOperatingEntities => standardSLAForOperatingEntities.OperatingEntity)
                 .FirstOrDefaultAsync( standardSLAForOperatingEntities => standardSLAForOperatingEntities.Caption == name && standardSLAForOperatingEntities.IsDeleted == false);
         }
