@@ -13,11 +13,12 @@ namespace HaloBiz.Repository.Impl
     {
         private readonly DataContext _context;
         private readonly ILogger<BranchRepositoryImpl> _logger;
-        public BranchRepositoryImpl(DataContext context, ILogger<BranchRepositoryImpl> logger)
+        private readonly IOfficeRepository _officeRepository;
+        public BranchRepositoryImpl(DataContext context, ILogger<BranchRepositoryImpl> logger, IOfficeRepository officeRepository)
         {
             this._logger = logger;
             this._context = context;
-
+            this._officeRepository = officeRepository;
         }
 
         public async Task<Branch> SaveBranch(Branch branch)
@@ -68,7 +69,9 @@ namespace HaloBiz.Repository.Impl
         }
 
         public async Task<bool> DeleteBranch(Branch branch)
-        {
+        {           
+            await _officeRepository.DeleteOfficeRange(branch.Offices);
+
             branch.IsDeleted = true;
             _context.Branches.Update(branch);
             return await SaveChanges();

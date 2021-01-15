@@ -14,11 +14,12 @@ namespace HaloBiz.Repository.Impl
     {
         private readonly DataContext _context;
         private readonly ILogger<DivisionRepositoryImpl> _logger;
-        public DivisionRepositoryImpl(DataContext context, ILogger<DivisionRepositoryImpl> logger)
+        private readonly IOperatingEntityRepository _operatingEntityRepository;
+        public DivisionRepositoryImpl(DataContext context, ILogger<DivisionRepositoryImpl> logger, IOperatingEntityRepository operatingEntityRepository)
         {
             this._logger = logger;
             this._context = context;
-
+            this._operatingEntityRepository = operatingEntityRepository;
         }
 
         public async Task<Division> SaveDivision(Division division)
@@ -83,6 +84,8 @@ namespace HaloBiz.Repository.Impl
 
         public async Task<bool> RemoveDivision(Division division)
         {
+            await _operatingEntityRepository.DeleteOperatingEntityRange(division.OperatingEntities);
+
             division.IsDeleted = true;
             _context.Divisions.Update(division);
             return await SaveChanges();
