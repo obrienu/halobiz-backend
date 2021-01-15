@@ -32,14 +32,12 @@ namespace HaloBiz.Repository.Impl
         public async Task<Relationship> FindRelationshipById(long Id)
         {
             return await _context.Relationships
-                .Where(relationship => relationship.IsDeleted == false)
                 .FirstOrDefaultAsync( relationship => relationship.Id == Id && relationship.IsDeleted == false);
         }
 
         public async Task<Relationship> FindRelationshipByName(string name)
         {
             return await _context.Relationships
-                .Where(relationship => relationship.IsDeleted == false)
                 .FirstOrDefaultAsync( relationship => relationship.Caption == name && relationship.IsDeleted == false);
         }
 

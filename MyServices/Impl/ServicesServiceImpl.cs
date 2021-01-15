@@ -96,7 +96,7 @@ namespace HaloBiz.MyServices.Impl
 
         }
 
-        public async Task<ApiResponse> DeleteServiceGroup(long id)
+        public async Task<ApiResponse> DeleteService(long id)
         {
             var serviceToDelete = await _servicesRepository.FindServicesById(id);
             if (serviceToDelete == null)

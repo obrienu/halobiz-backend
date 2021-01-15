@@ -32,14 +32,12 @@ namespace HaloBiz.Repository.Impl
         public async Task<MeansOfIdentification> FindMeansOfIdentificationById(long Id)
         {
             return await _context.MeansOfIdentification
-                .Where(meansOfIdentification => meansOfIdentification.IsDeleted == false)
                 .FirstOrDefaultAsync( meansOfIdentification => meansOfIdentification.Id == Id && meansOfIdentification.IsDeleted == false);
         }
 
         public async Task<MeansOfIdentification> FindMeansOfIdentificationByName(string name)
         {
             return await _context.MeansOfIdentification
-                .Where(meansOfIdentification => meansOfIdentification.IsDeleted == false)
                 .FirstOrDefaultAsync( meansOfIdentification => meansOfIdentification.Caption == name && meansOfIdentification.IsDeleted == false);
         }
 

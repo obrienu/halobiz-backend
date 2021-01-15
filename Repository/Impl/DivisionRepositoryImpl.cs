@@ -35,9 +35,12 @@ namespace HaloBiz.Repository.Impl
         {
             return await _context.Divisions
                 .Include(division => division.Head)
-                .Include(division => division.OperatingEntities)
-                .ThenInclude(x => x.ServiceGroups)
-                .ThenInclude(x => x.ServiceCategories)
+                .Include(division => division.OperatingEntities
+                .Where(operatingEntity => operatingEntity.IsDeleted == false))
+                .ThenInclude(x => x.ServiceGroups
+                .Where(serviceGroup => serviceGroup.IsDeleted == false))
+                .ThenInclude(x => x.ServiceCategories
+                .Where(serviceCategories => serviceCategories.IsDeleted == false))
                 .FirstOrDefaultAsync( division => division.Id == Id && division.IsDeleted == false);
         }
 
@@ -45,19 +48,26 @@ namespace HaloBiz.Repository.Impl
         {
             return await _context.Divisions
                 .Include(division => division.Head)
-                .Include(division => division.OperatingEntities)
-                .ThenInclude(x => x.ServiceGroups)
-                .ThenInclude(x => x.ServiceCategories)
+                .Include(division => division.OperatingEntities
+                .Where(operatingEntity => operatingEntity.IsDeleted == false))
+                .ThenInclude(x => x.ServiceGroups
+                .Where(serviceGroup => serviceGroup.IsDeleted == false))
+                .ThenInclude(x => x.ServiceCategories
+                .Where(serviceCategories => serviceCategories.IsDeleted == false))
                 .FirstOrDefaultAsync( division => division.Name == name && division.IsDeleted == false);
         }
 
         public async Task<IEnumerable<Division>> FindAllDivisions()
         {
-            return await _context.Divisions.Where(division => division.IsDeleted == false)
+            return await _context.Divisions
                 .Include(division => division.Head)
-                .Include(division => division.OperatingEntities)
-                .ThenInclude(x => x.ServiceGroups)
-                .ThenInclude(x => x.ServiceCategories)
+                .Include(division => division.OperatingEntities
+                .Where(operatingEntity => operatingEntity.IsDeleted == false))
+                .ThenInclude(x => x.ServiceGroups
+                .Where(serviceGroup => serviceGroup.IsDeleted == false))
+                .ThenInclude(x => x.ServiceCategories
+                .Where(serviceCategories => serviceCategories.IsDeleted == false))
+                .Where(division => division.IsDeleted == false)
                 .ToListAsync();
         }
 

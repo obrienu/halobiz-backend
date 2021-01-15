@@ -43,7 +43,9 @@ namespace HaloBiz.Repository.Impl
 
         public async Task<IEnumerable<UserProfile>> FindAllUserProfile()
         {
-            return await _context.UserProfiles.Where(user => user.IsDeleted == false).ToListAsync();
+            return await _context.UserProfiles.Where(user => user.IsDeleted == false)
+                .OrderBy(user => user.Email)
+                .ToListAsync();
         }
 
         public async Task<UserProfile> UpdateUserProfile(UserProfile userProfile)
