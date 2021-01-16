@@ -95,7 +95,6 @@ namespace HaloBiz.MyServices.Impl
             }
             accountClassToUpdate.Caption = accountClassReceivingDTO.Caption;
             accountClassToUpdate.Description = accountClassReceivingDTO.Description;
-            accountClassToUpdate.CreatedById = accountClassReceivingDTO.CreatedById;
             var updatedaccountClass = await _accountClassRepo.UpdateAccountClass(accountClassToUpdate);
 
             if (updatedaccountClass == null)
