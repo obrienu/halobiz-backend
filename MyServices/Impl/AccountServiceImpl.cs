@@ -95,7 +95,6 @@ namespace HaloBiz.MyServices.Impl
             }
             AccountToUpdate.Alias = AccountReceivingDTO.Alias;
             AccountToUpdate.Description = AccountReceivingDTO.Description;
-            AccountToUpdate.CreatedById = AccountReceivingDTO.CreatedById;
             var updatedAccount = await _AccountRepo.UpdateAccount(AccountToUpdate);
 
             if (updatedAccount == null)
