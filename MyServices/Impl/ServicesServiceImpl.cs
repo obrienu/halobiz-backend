@@ -75,12 +75,8 @@ namespace HaloBiz.MyServices.Impl
             serviceToUpdate.Name = serviceReceivingDTO.Name;
             serviceToUpdate.Description = serviceReceivingDTO.Description;
             serviceToUpdate.ImageUrl = serviceReceivingDTO.ImageUrl;
-            serviceToUpdate.BillableAmount = serviceReceivingDTO.BillableAmount;
-            serviceToUpdate.Discount = serviceReceivingDTO.Discount;
-            serviceToUpdate.Price = serviceReceivingDTO.Price;
-            serviceToUpdate.Quantity = serviceReceivingDTO.Quantity;
+            serviceToUpdate.TargetId = serviceReceivingDTO.TargetId;
             serviceToUpdate.UnitPrice = serviceReceivingDTO.UnitPrice;
-            serviceToUpdate.VAT = serviceReceivingDTO.VAT;
             serviceToUpdate.DivisionId = serviceReceivingDTO.DivisionId;
             serviceToUpdate.OperatingEntityId = serviceReceivingDTO.OperatingEntityId;
             serviceToUpdate.ServiceCategoryId = serviceReceivingDTO.ServiceCategoryId;

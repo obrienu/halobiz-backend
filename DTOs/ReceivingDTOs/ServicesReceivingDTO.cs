@@ -10,12 +10,12 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public string Description { get; set; }
         [MaxLength(500)]
         public string ImageUrl { get; set; }
-        public int Quantity { get; set; } = 1;
+        [Required]
         public double UnitPrice { get; set; }
-        public double Price { get; set; }
-        public double Discount { get; set; } = 0;
-        public double VAT { get; set; }
-        public double BillableAmount { get; set; }
+        [Required]
+        public bool PublishedStatus { get; set; }
+        [Required]
+        public long TargetId { get; set; }
         [Required]
         public long ServiceCategoryId { get; set; }
         [Required]
