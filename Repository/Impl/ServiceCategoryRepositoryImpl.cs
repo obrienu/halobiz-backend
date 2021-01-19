@@ -13,7 +13,7 @@ namespace HaloBiz.Repository.Impl
     {
         private readonly DataContext _context;
         private readonly ILogger<ServiceCategoryRepositoryImpl> _logger;
-        public ServiceCategoryRepositoryImpl(DataContext context, ILogger<ServiceCategoryRepositoryImpl> logger)
+        public ServiceCategoryRepositoryImpl( DataContext context, ILogger<ServiceCategoryRepositoryImpl> logger)
         {
             this._logger = logger;
             this._context = context;
@@ -34,7 +34,9 @@ namespace HaloBiz.Repository.Impl
             return await _context.ServiceCategories
                 .Include(serviceCategory => serviceCategory.ServiceGroup)
                 .Include(serviceCategory => serviceCategory.Services
-                    .Where(service => service.IsDeleted == false))                 
+                    .Where(service => service.IsDeleted == false))
+                .Include(serviceCategory => serviceCategory.ServiceCategoryTasks
+                    .Where(serviceCategoryTask => serviceCategoryTask.IsDeleted == false))                
                 .FirstOrDefaultAsync( category => category.Id == Id && category.IsDeleted == false);
         }
 
@@ -43,7 +45,9 @@ namespace HaloBiz.Repository.Impl
             return await _context.ServiceCategories
                 .Include(serviceCategory => serviceCategory.ServiceGroup)
                 .Include(category => category.Services
-                    .Where(service => service.IsDeleted == false)) 
+                    .Where(service => service.IsDeleted == false))
+                .Include(serviceCategory => serviceCategory.ServiceCategoryTasks
+                    .Where(serviceCategoryTask => serviceCategoryTask.IsDeleted == false))   
                 .FirstOrDefaultAsync(category => category.Name == name && category.IsDeleted == false);
         }
 
@@ -52,7 +56,10 @@ namespace HaloBiz.Repository.Impl
             return await _context.ServiceCategories.Where(category => category.IsDeleted == false)
                 .Include(serviceCategory => serviceCategory.ServiceGroup)
                 .Include(category => category.Services
-                    .Where(service => service.IsDeleted == false)) 
+                    .Where(service => service.IsDeleted == false))
+                .Include(serviceCategory => serviceCategory.ServiceCategoryTasks
+                    .Where(serviceCategoryTask => serviceCategoryTask.IsDeleted == false))
+                    .ThenInclude(serviceCategoryTask => serviceCategoryTask.ServiceTaskDeliverable)
                 .ToListAsync();
         }
 
