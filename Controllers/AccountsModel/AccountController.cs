@@ -53,7 +53,7 @@ namespace HaloBiz.Controllers.AccountsModel
         [HttpPost("")]
         public async Task<ActionResult> AddNewAccount(AccountReceivingDTO accountReceiving)
         {
-            var response = await _accountService.AddAccount(accountReceiving);
+            var response = await _accountService.AddAccount(HttpContext, accountReceiving);
             if (response.StatusCode >= 400)
                 return StatusCode(response.StatusCode, response);
             var Account = ((ApiOkResponse)response).Result;

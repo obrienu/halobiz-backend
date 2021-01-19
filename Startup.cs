@@ -107,9 +107,11 @@ namespace HaloBiz
             services.AddScoped<ITargetService, TargetServiceImpl>();
             services.AddScoped<IStandardSLAForOperatingEntitiesService, StandardSLAForOperatingEntitiesServiceImpl>();
             services.AddScoped<IMeansOfIdentificationService, MeansOfIdentificationServiceImpl>();
+            services.AddScoped<IAccountMasterService, AccountMasterServiceImpl>();
+            services.AddScoped<IAccountDetailService, AccountDetailServiceImpl>();
             services.AddScoped<IServiceCategoryTaskService, ServiceCategoryTaskServiceImpl>();
             services.AddScoped<IServiceTaskDeliverableService, ServiceTaskDeliverableServiceImpl>();
-
+          
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
@@ -133,6 +135,8 @@ namespace HaloBiz
             services.AddScoped<ITargetRepository, TargetRepositoryImpl>();
             services.AddScoped<IStandardSLAForOperatingEntitiesRepository, StandardSLAForOperatingEntitiesRepositoryImpl>();
             services.AddScoped<IMeansOfIdentificationRepository, MeansOfIdentificationRepositoryImpl>();
+            services.AddScoped<IAccountDetailsRepository, AccountDetailRepositoryImpl>();
+            services.AddScoped<IAccountMasterRepository, AccountMasterRepositoryImpl>();
             services.AddScoped<IServiceCategoryTaskRepository, ServiceCategoryTaskRepositoryImpl>();
             services.AddScoped<IServiceTaskDeliverableRepository, ServiceTaskDeliverableRepositoryImpl>();
 
