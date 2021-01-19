@@ -11,13 +11,15 @@ namespace HaloBiz.MyServices.Impl
 {
     public class ServiceCategoryServiceImpl : IServiceCategoryService
     {
+        private readonly IServiceCategoryTaskService _serviceCategoryTaskService;
         private readonly IServicesService _serviceService;
         private readonly IServiceCategoryRepository _serviceCategoryRepo;
         private readonly IMapper _mapper;
 
-        public ServiceCategoryServiceImpl( IServicesService serviceService ,IServiceCategoryRepository serviceCategoryRepo, IMapper mapper)
+        public ServiceCategoryServiceImpl(IServiceCategoryTaskService serviceCategoryTaskService, IServicesService serviceService ,IServiceCategoryRepository serviceCategoryRepo, IMapper mapper)
         {
             this._mapper = mapper;
+            this._serviceCategoryTaskService = serviceCategoryTaskService;
             this._serviceService = serviceService;
             this._serviceCategoryRepo = serviceCategoryRepo;
  
@@ -103,6 +105,10 @@ namespace HaloBiz.MyServices.Impl
             foreach(Services service in serviceCategoryToDelete.Services)
             {
                 await _serviceService.DeleteService(service.Id);
+            }
+            foreach(ServiceCategoryTask serviceCategoryTask in serviceCategoryToDelete.ServiceCategoryTasks)
+            {
+                await _serviceCategoryTaskService.DeleteServiceCategoryTask(serviceCategoryTask.Id);
             }
 
             if (!await _serviceCategoryRepo.DeleteServiceCategory(serviceCategoryToDelete))
