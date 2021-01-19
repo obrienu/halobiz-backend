@@ -10,15 +10,20 @@ namespace HaloBiz.Model
     {
         [Key]
         public long Id { get; set; }
+        [MaxLength(20)]
+        public string ServiceCode { get; set; }
         [Required, MinLength(3), MaxLength(50)]
         public string Name { get; set; }
         [Required, MinLength(3), MaxLength(255)]
         public string Description { get; set; }
         [MaxLength(500)]
         public string ImageUrl { get; set; }
-        public double UnitPrice { get; set; }
         [Required]
-        public long TargetId { get; set; }
+        public double UnitPrice { get; set; }
+        public bool IsPublished { get; set; }
+        public bool IsRequestedForPublish { get; set; }
+        public bool PublishedApprovedStatus { get; set; }
+        public long? TargetId { get; set; }
         public virtual Target Target { get; set; }
         [Required]
         public long ServiceCategoryId { get; set; }
