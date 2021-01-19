@@ -67,6 +67,10 @@ namespace HaloBiz.Helpers
             CreateMap<Target, TargetTransferDTO>();
             CreateMap<MeansOfIdentificationReceivingDTO, MeansOfIdentification>();
             CreateMap<MeansOfIdentification, MeansOfIdentificationTransferDTO>();
+            CreateMap<AccountDetailReceivingDTO, AccountDetail>();
+            CreateMap<AccountDetail, AccountDetailTransferDTO>();
+            CreateMap<AccountMasterReceivingDTO, AccountMaster>();
+            CreateMap<AccountMaster, AccountMasterTransferDTO>();
         }
     }
 }
