@@ -43,6 +43,7 @@ namespace HaloBiz.Helpers
             CreateMap<ServiceGroupReceivingDTO, ServiceGroup>();
             CreateMap<ServiceCategoryReceivingDTO, ServiceCategory>();
             CreateMap<ServiceCategory, ServiceCategoryTransferDTO>();
+            CreateMap<ServiceCategory, ServiceCategoryWithoutServicesTransferDTO>();
             CreateMap<Services, ServicesTransferDTO>();
             CreateMap<ServicesReceivingDTO, Services>();
             CreateMap<AccountClass, AccountClassTransferDTO>();
@@ -67,6 +68,12 @@ namespace HaloBiz.Helpers
             CreateMap<Target, TargetTransferDTO>();
             CreateMap<MeansOfIdentificationReceivingDTO, MeansOfIdentification>();
             CreateMap<MeansOfIdentification, MeansOfIdentificationTransferDTO>();
+            CreateMap<ServiceCategoryTaskReceivingDTO, ServiceCategoryTask>();
+            CreateMap<ServiceCategoryTask, ServiceCategoryTaskTransferDTO>();
+            CreateMap<ServiceCategoryTask, BaseSetupTransferDTO>();
+            CreateMap<ServiceTaskDeliverableReceivingDTO, ServiceTaskDeliverable>();
+            CreateMap<ServiceTaskDeliverable, ServiceTaskDeliverableTransferDTO>();
+            CreateMap<ServiceTaskDeliverable, BaseSetupTransferDTO>();
         }
     }
 }

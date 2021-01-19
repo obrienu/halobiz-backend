@@ -42,6 +42,8 @@ namespace HaloBiz.Data
     public DbSet<Relationship> Relationships { get; set; }
     public DbSet<Target> Targets { get; set; }
     public DbSet<Bank> Banks { get; set; }
+    public DbSet<ServiceTaskDeliverable> ServiceTaskDeliverables { get; set; }
+    public DbSet<ServiceType> ServiceTypes {get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -265,6 +267,22 @@ namespace HaloBiz.Data
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Entity<StandardSLAForOperatingEntities>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceTaskDeliverable>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceTaskDeliverable>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceType>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceType>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
