@@ -66,6 +66,7 @@ namespace HaloBiz.Helpers
             CreateMap<StandardSLAForOperatingEntities, StandardSLAForOperatingEntitiesTransferDTO>();
             CreateMap<TargetReceivingDTO, Target>();
             CreateMap<Target, TargetTransferDTO>();
+            CreateMap<Target, BaseSetupTransferDTO>();
             CreateMap<MeansOfIdentificationReceivingDTO, MeansOfIdentification>();
             CreateMap<MeansOfIdentification, MeansOfIdentificationTransferDTO>();
             CreateMap<AccountDetailReceivingDTO, AccountDetail>();
@@ -80,6 +81,9 @@ namespace HaloBiz.Helpers
             CreateMap<ServiceTaskDeliverable, BaseSetupTransferDTO>();
             CreateMap<RequiredServiceDocumentReceivingDTO, RequiredServiceDocument>();
             CreateMap<RequiredServiceDocument, RequiredServiceDocumentTransferDTO>();
+            CreateMap<ServiceType, ServiceTypeTransferDTO>();
+            CreateMap<ServiceTypeReceivingDTO, ServiceType>();
+            CreateMap<ServiceType, BaseSetupTransferDTO>();
         }
     }
 }
