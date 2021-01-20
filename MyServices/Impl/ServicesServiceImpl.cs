@@ -77,10 +77,7 @@ namespace HaloBiz.MyServices.Impl
             serviceToUpdate.ImageUrl = serviceReceivingDTO.ImageUrl;
             serviceToUpdate.TargetId = serviceReceivingDTO.TargetId;
             serviceToUpdate.UnitPrice = serviceReceivingDTO.UnitPrice;
-            serviceToUpdate.DivisionId = serviceReceivingDTO.DivisionId;
-            serviceToUpdate.OperatingEntityId = serviceReceivingDTO.OperatingEntityId;
-            serviceToUpdate.ServiceCategoryId = serviceReceivingDTO.ServiceCategoryId;
-            serviceToUpdate.ServiceGroupId = serviceReceivingDTO.ServiceGroupId;
+           
             var updatedService = await _servicesRepository.UpdateServices(serviceToUpdate);
 
             if (updatedService == null)

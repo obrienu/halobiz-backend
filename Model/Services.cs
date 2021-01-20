@@ -34,7 +34,6 @@ namespace HaloBiz.Model
         [Required]
         public long DivisionId { get; set; }
         public virtual ServiceCategory ServiceCategory { get; set; }
-        public IList<ServiceRequiredServiceField> RequiredFields { get; set; }
         public IList<ServiceRequiredServiceDocument> RequiredServiceDocument { get; set; }
         public bool IsDeleted { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
