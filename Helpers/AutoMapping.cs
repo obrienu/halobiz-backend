@@ -84,6 +84,9 @@ namespace HaloBiz.Helpers
             CreateMap<ServiceType, ServiceTypeTransferDTO>();
             CreateMap<ServiceTypeReceivingDTO, ServiceType>();
             CreateMap<ServiceType, BaseSetupTransferDTO>();
+            CreateMap<RequredServiceQualificationElementReceivingDTO, RequredServiceQualificationElement>();
+            CreateMap<RequredServiceQualificationElement, RequredServiceQualificationElementTransferDTO>();
+            CreateMap<RequredServiceQualificationElement, BaseSetupTransferDTO>();
         }
     }
 }
