@@ -32,8 +32,7 @@ namespace HaloBiz.Data
     public DbSet<LeadOrigin> LeadOrigins { get; set; }
     public DbSet<LeadType> LeadTypes { get; set; }
     public DbSet<FinanceVoucherType> FinanceVoucherTypes { get; set; }
-    public DbSet<RequiredServiceField> RequiredServiceFields{get; set;}
-    public DbSet<ServiceRequiredServiceField> ServiceRequiredServiceField { get; set; }
+    public DbSet<RequredServiceQualificationElement> RequredServiceQualificationElements{get; set;}
     public DbSet<RequiredServiceDocument> RequiredServiceDocuments { get; set; }
     public DbSet<ServiceRequiredServiceDocument> ServiceRequiredServiceDocument { get; set; }
     public DbSet<StandardSLAForOperatingEntities> StandardSLAForOperatingEntities { get; set; }
@@ -50,9 +49,6 @@ namespace HaloBiz.Data
             //Defines many to many relationship between SBU and AccountMaster
             builder.Entity<SBUAccountMaster>()
                 .HasKey(sc => new { sc.AccountMasterId, sc.StrategicBusinessUnitId });
-
-            builder.Entity<ServiceRequiredServiceField>()
-                .HasKey(sc => new {sc.RequiredServiceFieldId, sc.ServicesId});
 
             builder.Entity<ServiceRequiredServiceDocument>()
                 .HasKey(sc => new {sc.RequiredServiceDocumentId, sc.ServicesId});
@@ -214,11 +210,11 @@ namespace HaloBiz.Data
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            builder.Entity<RequiredServiceField>()
+            builder.Entity<RequredServiceQualificationElement>()
                .Property(p => p.UpdatedAt)
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            builder.Entity<RequiredServiceField>()
+            builder.Entity<RequredServiceQualificationElement>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
@@ -283,6 +279,14 @@ namespace HaloBiz.Data
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Entity<ServiceType>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceRequiredServiceDocument>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceRequiredServiceDocument>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
