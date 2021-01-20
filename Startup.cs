@@ -105,6 +105,7 @@ namespace HaloBiz
             services.AddScoped<IRelationshipService, RelationshipServiceImpl>();
             services.AddScoped<IBankService, BankServiceImpl>();
             services.AddScoped<ITargetService, TargetServiceImpl>();
+            services.AddScoped<IServiceTypeService, ServiceTypeServiceImpl>();
             services.AddScoped<IStandardSLAForOperatingEntitiesService, StandardSLAForOperatingEntitiesServiceImpl>();
             services.AddScoped<IMeansOfIdentificationService, MeansOfIdentificationServiceImpl>();
             services.AddScoped<IAccountMasterService, AccountMasterServiceImpl>();
@@ -134,6 +135,7 @@ namespace HaloBiz
             services.AddScoped<IRelationshipRepository, RelationshipRepositoryImpl>();
             services.AddScoped<IBankRepository, BankRepositoryImpl>();
             services.AddScoped<ITargetRepository, TargetRepositoryImpl>();
+            services.AddScoped<IServiceTypeRepository, ServiceTypeRepositoryImpl>();
             services.AddScoped<IStandardSLAForOperatingEntitiesRepository, StandardSLAForOperatingEntitiesRepositoryImpl>();
             services.AddScoped<IMeansOfIdentificationRepository, MeansOfIdentificationRepositoryImpl>();
             services.AddScoped<IAccountDetailsRepository, AccountDetailRepositoryImpl>();
