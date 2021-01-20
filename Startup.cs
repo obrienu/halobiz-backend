@@ -135,6 +135,7 @@ namespace HaloBiz
             services.AddScoped<IMeansOfIdentificationRepository, MeansOfIdentificationRepositoryImpl>();
             services.AddScoped<IServiceCategoryTaskRepository, ServiceCategoryTaskRepositoryImpl>();
             services.AddScoped<IServiceTaskDeliverableRepository, ServiceTaskDeliverableRepositoryImpl>();
+            services.AddScoped<IRequiredServiceDocumentRepository, RequiredServiceDocumentRepositoryImpl>();
 
             services.AddAutoMapper(typeof(Startup));
 
