@@ -78,6 +78,8 @@ namespace HaloBiz.Helpers
             CreateMap<ServiceTaskDeliverableReceivingDTO, ServiceTaskDeliverable>();
             CreateMap<ServiceTaskDeliverable, ServiceTaskDeliverableTransferDTO>();
             CreateMap<ServiceTaskDeliverable, BaseSetupTransferDTO>();
+            CreateMap<RequiredServiceDocumentReceivingDTO, RequiredServiceDocument>();
+            CreateMap<RequiredServiceDocument, RequiredServiceDocumentTransferDTO>();
         }
     }
 }
