@@ -111,6 +111,7 @@ namespace HaloBiz
             services.AddScoped<IAccountDetailService, AccountDetailServiceImpl>();
             services.AddScoped<IServiceCategoryTaskService, ServiceCategoryTaskServiceImpl>();
             services.AddScoped<IServiceTaskDeliverableService, ServiceTaskDeliverableServiceImpl>();
+            services.AddScoped<IRequiredServiceDocumentService, RequiredServiceDocumentServiceImpl>();
           
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
