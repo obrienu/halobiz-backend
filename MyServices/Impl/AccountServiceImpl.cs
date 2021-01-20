@@ -2,8 +2,10 @@
 using HaloBiz.DTOs.ApiDTOs;
 using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs;
+using HaloBiz.Helpers;
 using HaloBiz.Model.AccountsModel;
 using HaloBiz.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -25,9 +27,10 @@ namespace HaloBiz.MyServices.Impl
             this._logger = logger;
         }
 
-        public async Task<ApiResponse> AddAccount(AccountReceivingDTO AccountReceivingDTO)
+        public async Task<ApiResponse> AddAccount(HttpContext context, AccountReceivingDTO AccountReceivingDTO)
         {
             var acctClass = _mapper.Map<Account>(AccountReceivingDTO);
+            acctClass.CreatedById = context.GetLoggedInUserId();
             var savedAccount = await _AccountRepo.SaveAccount(acctClass);
             if (savedAccount == null)
             {
