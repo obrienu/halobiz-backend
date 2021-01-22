@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace HaloBiz.Model
 {
+    public enum ContactType
+    {
+        Primary, Secondary
+    }
     public class Contact
     {
         [Key]
@@ -21,6 +25,8 @@ namespace HaloBiz.Model
         public string Designation { get; set; }
         [Required]
         public DateTime DateOfBirth { get; set; }
+        [Required]
+        public ContactType Type { get; set; }
         [Required]
         public long CreatedById { get; set; }
         public virtual UserProfile CreatedBy { get; set; }
