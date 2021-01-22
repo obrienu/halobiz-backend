@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
+using HaloBiz.DTOs.TransferDTOs;
+using HaloBiz.Model;
+using HaloBiz.Model.ManyToManyRelationship;
 using Microsoft.AspNetCore.Http;
 
 namespace HaloBiz.Helpers
@@ -18,6 +22,22 @@ namespace HaloBiz.Helpers
         {
             return long.TryParse(context.User.FindFirstValue(ClaimTypes.NameIdentifier), out long userIdClaim) ?
                 userIdClaim : 31;
+
+        }
+
+        public static IEnumerable<RequiredServiceDocumentTransferDTO> GetListOfRequiredDocuments(this IEnumerable<ServiceRequiredServiceDocument> docs)
+        {
+            var reqDocs = new List<RequiredServiceDocumentTransferDTO>();
+            foreach (var item in docs)
+            {
+                reqDocs.Add(new RequiredServiceDocumentTransferDTO(){
+                    Caption = item.RequiredServiceDocument.Caption,
+                    Description = item.RequiredServiceDocument.Description,
+                    Id = item.RequiredServiceDocument.Id
+                });
+            }
+
+            return reqDocs;
 
         }
     }

@@ -5,6 +5,7 @@ using HaloBiz.DTOs.ApiDTOs;
 using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs;
 using HaloBiz.Model;
+using HaloBiz.Model.ManyToManyRelationship;
 using HaloBiz.Repository;
 
 namespace HaloBiz.MyServices.Impl
@@ -13,21 +14,41 @@ namespace HaloBiz.MyServices.Impl
     {
         private readonly IServicesRepository _servicesRepository;
         private readonly IMapper _mapper;
+        private readonly IServiceRequiredServiceDocumentRepository _requiredServiceDocRepo;
 
-        public ServicesServiceImpl(IServicesRepository servicesRepository, IMapper mapper)
+        public ServicesServiceImpl(IServicesRepository servicesRepository, IMapper mapper, IServiceRequiredServiceDocumentRepository requiredServiceDocRepo)
         {
             this._mapper = mapper;
+            this._requiredServiceDocRepo = requiredServiceDocRepo;
             this._servicesRepository = servicesRepository;
         }
 
         public async Task<ApiResponse> AddService(ServicesReceivingDTO servicesReceivingDTO)
         {
+            IList<ServiceRequiredServiceDocument> serviceRequiredServiceDocument = new List<ServiceRequiredServiceDocument>();
+
             var service = _mapper.Map<Services>(servicesReceivingDTO);
             var savedService = await _servicesRepository.SaveService(service);
             if (savedService == null)
             {
                 return new ApiResponse(500);
             }
+
+            foreach (long id in servicesReceivingDTO.RequiredDocumentsId)
+            {
+                serviceRequiredServiceDocument.Add(new ServiceRequiredServiceDocument(){
+                    ServicesId = savedService.Id,
+                    RequiredServiceDocumentId = id
+                });
+            }
+
+            var isSaved = await _requiredServiceDocRepo.SaveRangeServiceRequiredServiceDocument(serviceRequiredServiceDocument);
+            
+            if(! isSaved) {
+                await DeleteService(savedService.Id);
+                return new ApiResponse(500);
+            }
+
             var servicesTransferDTO = _mapper.Map<ServicesTransferDTO>(savedService);
             return new ApiOkResponse(servicesTransferDTO);
         }
