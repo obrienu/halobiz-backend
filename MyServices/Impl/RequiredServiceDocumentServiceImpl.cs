@@ -6,6 +6,7 @@ using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs;
 using HaloBiz.Helpers;
 using HaloBiz.Model;
+using HaloBiz.Model.ManyToManyRelationship;
 using HaloBiz.Repository;
 using Microsoft.AspNetCore.Http;
 
@@ -16,10 +17,12 @@ namespace HaloBiz.MyServices.Impl
         private readonly IModificationHistoryRepository _historyRepo;
         private readonly IRequiredServiceDocumentRepository _requiredServiceDocumentRepo;
         private readonly IMapper _mapper;
+        private readonly IServiceRequiredServiceDocumentRepository _servicerequiredServiceDocRepo;
 
-        public RequiredServiceDocumentServiceImpl(IModificationHistoryRepository historyRepo, IRequiredServiceDocumentRepository requiredServiceDocumentRepo, IMapper mapper)
+        public RequiredServiceDocumentServiceImpl(IModificationHistoryRepository historyRepo, IRequiredServiceDocumentRepository requiredServiceDocumentRepo, IMapper mapper,  IServiceRequiredServiceDocumentRepository servicerequiredServiceDocRepo)
         {
             this._mapper = mapper;
+            this._servicerequiredServiceDocRepo = servicerequiredServiceDocRepo;
             this._historyRepo = historyRepo;
             this._requiredServiceDocumentRepo = requiredServiceDocumentRepo;
         }
@@ -106,11 +109,16 @@ namespace HaloBiz.MyServices.Impl
 
         public async Task<ApiResponse> DeleteRequiredServiceDocument(long id)
         {
+            IList<ServiceRequiredServiceDocument> serviceRequiredServiceDocument = new List<ServiceRequiredServiceDocument>();
+
             var requiredServiceDocumentToDelete = await _requiredServiceDocumentRepo.FindRequiredServiceDocumentById(id);
             if (requiredServiceDocumentToDelete == null)
             {
                 return new ApiResponse(404);
             }
+            
+
+            await _servicerequiredServiceDocRepo.DeleteRangeServiceRequiredServiceDocument(requiredServiceDocumentToDelete.Services);
 
             if (!await _requiredServiceDocumentRepo.DeleteRequiredServiceDocument(requiredServiceDocumentToDelete))
             {

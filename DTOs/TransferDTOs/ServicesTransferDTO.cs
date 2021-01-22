@@ -1,9 +1,13 @@
+using System.Collections.Generic;
+using HaloBiz.Model.ManyToManyRelationship;
+
 namespace HaloBiz.DTOs.TransferDTOs
 {
     public class ServicesTransferDTO
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public string ServiceCode { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public int Quantity { get; set; } = 1;
@@ -16,6 +20,8 @@ namespace HaloBiz.DTOs.TransferDTOs
         public long ServiceGroupId { get; set; }
         public long OperatingEntityId { get; set; }
         public long DivisionId { get; set; }
+        public TargetTransferDTO Target { get; set; }
+        public IList<RequiredServiceDocumentTransferDTO> RequiredServiceDocument { get; set; }
        
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HaloBiz.DTOs.ReceivingDTOs
@@ -24,5 +26,7 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public long OperatingEntityId { get; set; }
         [Required]
         public long DivisionId { get; set; }
+        [Required]
+        public IList<Int64> RequiredDocumentsId { get; set; }
     }
 }

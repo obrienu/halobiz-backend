@@ -23,29 +23,43 @@ namespace HaloBiz.Repository.Impl
          public async Task<Services> SaveService(Services service)
         {
             var savedEntity = await _context.Services.AddAsync(service);
-            if(await SaveChanges())
+            if(! await SaveChanges())
             {
-                return savedEntity.Entity;
+                return null;
             }
-            return null;
+            var savedService = savedEntity.Entity;
+            var serviceCode = $"{savedService.DivisionId}/{savedService.OperatingEntityId}/{savedService.ServiceGroupId}/{savedService.ServiceCategoryId}/{savedService.Id}";
+            savedService.ServiceCode = serviceCode;
+            
+            return await UpdateServices(savedService);
         }
 
         public async Task<Services> FindServicesById(long Id)
         {
             return await _context.Services
+                .Include(service => service.Target)
+                .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
+                .ThenInclude(row => row.RequiredServiceDocument)
                 .FirstOrDefaultAsync( service => service.Id == Id && service.IsDeleted == false);
         }
 
         public async Task<Services> FindServiceByName(string name)
         {
             return await _context.Services
+                .Include(service => service.Target)
+                .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
+                .ThenInclude(row => row.RequiredServiceDocument)
                 .FirstOrDefaultAsync( service => service.Name == name && service.IsDeleted == false);
         }
 
         public async Task<IEnumerable<Services>> FindAllServices()
         {
-            return await _context.Services.Where(service => service.IsDeleted == false)
-                .ToListAsync();
+            return await _context.Services
+                .Include(service => service.Target)
+                .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
+                .ThenInclude(row => row.RequiredServiceDocument)
+                .Where(service => service.IsDeleted == false)
+                    .ToListAsync();
         }
 
         public async Task<Services> UpdateServices(Services service)
