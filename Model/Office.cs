@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HaloBiz.Model.LAMS;
 
 namespace HaloBiz.Model
 {
@@ -23,6 +25,9 @@ namespace HaloBiz.Model
         public UserProfile Head { get; set; }
         public long BranchId { get; set; }
         public virtual Branch Branch { get; set; }
+        public IEnumerable<LeadDivision> LeadDivisions { get; set; }
+        public IEnumerable<QuoteService> QuoteServices { get; set; }
+        public IEnumerable<ContractService> ContractServices { get; set; }
         public bool IsDeleted { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }

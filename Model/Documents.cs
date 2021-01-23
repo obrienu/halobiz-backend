@@ -1,24 +1,21 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HaloBiz.Model.LAMS
+namespace HaloBiz.Model
 {
-    public class LeadType
+    public class Documents
     {
         [Key]
         public long Id { get; set; }
-        [Required]
-        public string Caption { get; set; }
         [StringLength(1000)]
         public string Description { get; set; }
-        public IEnumerable<Lead> Leads { get; set; }
-        [Required]
-        public long CreatedById { get; set; }
-        [Required]
+        [StringLength(100)]
+        public string Caption { get; set; }
+        [StringLength(500)]
+        public string DocumentUrl { get; set; }
+         public long CreatedById { get; set; }
         public virtual UserProfile CreatedBy { get; set; }
-        [Required]
         public bool IsDeleted { get; set; } = false;
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
