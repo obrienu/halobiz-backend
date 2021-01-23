@@ -38,13 +38,13 @@ namespace HaloBiz.Model.LAMS
         public long ServiceId { get; set; }
         public Services Service { get; set; }
         public long QuoteId { get; set; }
-        public Quote Quote { get; set; }
+        public virtual Quote Quote { get; set; }
         public long OfficeId { get; set; }
         public virtual Office Office { get; set; }
         public long BranchId { get; set; }
-        public Branch Branch { get; set; }
+        public virtual Branch Branch { get; set; }
         public long QuoteServiceId { get; set; }
-        public QuoteService QuoteService { get; set; }
+        public virtual QuoteService QuoteService { get; set; }
         public IEnumerable<ClosureDocument> ClosureDocuments { get; set; }
         public IEnumerable<SBUToContractServiceProportion> SBUToContractServiceProportions { get; set; }
         public VersionType Version { get; set; } = VersionType.Latest;

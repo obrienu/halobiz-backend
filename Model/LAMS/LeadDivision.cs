@@ -25,16 +25,16 @@ namespace HaloBiz.Model.LAMS
         [StringLength(1000)]
         public string LogoUrl { get; set; }
         public long PrimaryContactId { get; set; }
-        public virtual LeadContact PrimaryContact { get; set; }
+        public virtual LeadDivisionContact PrimaryContact { get; set; }
         public long? SecondaryContactId { get; set; }
-        public LeadContact SecondaryContact { get; set; }
+        public LeadDivisionContact SecondaryContact { get; set; }
         public long BranchId { get; set; }
         public virtual Branch Branch { get; set; }
         public long OfficeId { get; set; }
         public virtual Office Office { get; set; }
         public long LeadId { get; set; }
         public virtual Lead Lead { get; set; }
-        public Quote Quote { get; set; }
+        public  IEnumerable<Quote> Quotes { get; set; }
         public IEnumerable<LeadDivisionKeyPerson> LeadDivisionKeyPersons { get; set; }
         public long CreatedById { get; set; }
         public virtual UserProfile CreatedBy { get; set; }
