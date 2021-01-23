@@ -43,6 +43,7 @@ namespace HaloBiz.Data
     public DbSet<Bank> Banks { get; set; }
     public DbSet<ServiceTaskDeliverable> ServiceTaskDeliverables { get; set; }
     public DbSet<ServiceType> ServiceTypes {get; set; }
+    public DbSet<DropReason> DropReasons {get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -290,6 +291,13 @@ namespace HaloBiz.Data
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
+            builder.Entity<DropReason>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<DropReason>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
         }
     }
 }
