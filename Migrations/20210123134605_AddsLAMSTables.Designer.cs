@@ -4,14 +4,16 @@ using HaloBiz.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HaloBiz.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210123134605_AddsLAMSTables")]
+    partial class AddsLAMSTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -750,7 +752,7 @@ namespace HaloBiz.Migrations
 
                     b.ToTable("CustomerDivisions");
                 });
-                
+
             modelBuilder.Entity("HaloBiz.Model.LAMS.DropReason", b =>
                 {
                     b.Property<long>("Id")
@@ -3126,18 +3128,6 @@ namespace HaloBiz.Migrations
                     b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("HaloBiz.Model.LAMS.DropReason", b =>
-                {
-                    b.HasOne("HaloBiz.Model.UserProfile", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("HaloBiz.Model.LAMS.FinanceVoucherType", b =>
             modelBuilder.Entity("HaloBiz.Model.LAMS.QuoteServiceDocument", b =>
                 {
                     b.HasOne("HaloBiz.Model.UserProfile", "CreatedBy")

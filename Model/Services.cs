@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HaloBiz.Model.LAMS;
 using HaloBiz.Model.ManyToManyRelationship;
 
 namespace HaloBiz.Model
@@ -35,6 +36,8 @@ namespace HaloBiz.Model
         public long DivisionId { get; set; }
         public virtual ServiceCategory ServiceCategory { get; set; }
         public IList<ServiceRequiredServiceDocument> RequiredServiceDocument { get; set; }
+        public IEnumerable<QuoteService> QuoteServices { get; set; }
+        public IEnumerable<ContractService> ContractServices { get; set; }
         public bool IsDeleted { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
