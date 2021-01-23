@@ -43,6 +43,7 @@ namespace HaloBiz.Data
     public DbSet<Bank> Banks { get; set; }
     public DbSet<ServiceTaskDeliverable> ServiceTaskDeliverables { get; set; }
     public DbSet<ServiceType> ServiceTypes {get; set; }
+    public DbSet<DropReason> DropReasons {get; set; }
     public DbSet<Customer> Customers {get; set; }
     public DbSet<LeadContact> LeadContacts {get; set; }
     public DbSet<LeadDivisionContact> LeadDivisionContacts {get; set; }
@@ -58,7 +59,6 @@ namespace HaloBiz.Data
     public DbSet<SBUToContractServiceProportion> SBUToContractServiceProportions {get; set; }
     public DbSet<SBUToQuoteServiceProportion> SBUToQuoteServiceProportions {get; set; }
     public DbSet<ClosureDocument> ClosureDocuments {get; set; }
-
 
     protected override void OnModelCreating(ModelBuilder builder)
         {

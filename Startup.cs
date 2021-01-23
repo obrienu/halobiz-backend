@@ -114,6 +114,7 @@ namespace HaloBiz
             services.AddScoped<IServiceTaskDeliverableService, ServiceTaskDeliverableServiceImpl>();
             services.AddScoped<IRequiredServiceDocumentService, RequiredServiceDocumentServiceImpl>();
             services.AddScoped<IRequredServiceQualificationElementService, RequredServiceQualificationElementServiceImpl>();
+            services.AddScoped<IDropReasonService, DropReasonServiceImpl>();
           
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
@@ -146,6 +147,7 @@ namespace HaloBiz
             services.AddScoped<IRequiredServiceDocumentRepository, RequiredServiceDocumentRepositoryImpl>();
             services.AddScoped<IServiceRequiredServiceDocumentRepository, ServiceRequiredServiceDocumentRepositoryImpl>();
             services.AddScoped<IRequredServiceQualificationElementRepository, RequredServiceQualificationElementRepositoryImpl>();
+            services.AddScoped<IDropReasonRepository, DropReasonRepositoryImpl>();
 
             services.AddAutoMapper(typeof(Startup));
 
