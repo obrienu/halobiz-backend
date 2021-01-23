@@ -47,7 +47,6 @@ namespace HaloBiz.Data
     public DbSet<Customer> Customers {get; set; }
     public DbSet<LeadContact> LeadContacts {get; set; }
     public DbSet<LeadDivisionContact> LeadDivisionContacts {get; set; }
-    public DbSet<DropReason> DropReasons {get; set; }
     public DbSet<Lead> Leads {get; set; }
     public DbSet<LeadDivision> LeadDivisions {get; set; }
     public DbSet<LeadDivisionKeyPerson> LeadDivisionKeyPeople {get; set; }

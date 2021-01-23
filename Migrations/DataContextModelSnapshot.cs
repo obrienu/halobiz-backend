@@ -750,7 +750,7 @@ namespace HaloBiz.Migrations
 
                     b.ToTable("CustomerDivisions");
                 });
-                
+
             modelBuilder.Entity("HaloBiz.Model.LAMS.DropReason", b =>
                 {
                     b.Property<long>("Id")
@@ -3126,18 +3126,6 @@ namespace HaloBiz.Migrations
                     b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("HaloBiz.Model.LAMS.DropReason", b =>
-                {
-                    b.HasOne("HaloBiz.Model.UserProfile", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("HaloBiz.Model.LAMS.FinanceVoucherType", b =>
             modelBuilder.Entity("HaloBiz.Model.LAMS.QuoteServiceDocument", b =>
                 {
                     b.HasOne("HaloBiz.Model.UserProfile", "CreatedBy")
