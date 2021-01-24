@@ -3,6 +3,7 @@ using AutoMapper;
 using HaloBiz.DTOs;
 using HaloBiz.DTOs.ReceivingDTO;
 using HaloBiz.DTOs.ReceivingDTOs;
+using HaloBiz.DTOs.ReceivingDTOs.LAMS;
 using HaloBiz.DTOs.TransferDTOs;
 using HaloBiz.DTOs.TransferDTOs.LAMS;
 using HaloBiz.Model;
@@ -91,6 +92,8 @@ namespace HaloBiz.Helpers
             CreateMap<RequredServiceQualificationElementReceivingDTO, RequredServiceQualificationElement>();
             CreateMap<RequredServiceQualificationElement, RequredServiceQualificationElementTransferDTO>();
             CreateMap<RequredServiceQualificationElement, BaseSetupTransferDTO>();
+            CreateMap<LeadContactReceivingDTO, LeadContact>();
+            CreateMap<LeadContact, LeadContactTransferDTO>();
         }
     }
 }
