@@ -15,7 +15,7 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         [Required]
         public double UnitPrice { get; set; }
         [Required]
-        public bool PublishedStatus { get; set; }
+        public bool IsRequestedForPublish { get; set; }
         [Required]
         public long TargetId { get; set; }
         [Required]

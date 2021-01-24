@@ -115,6 +115,7 @@ namespace HaloBiz
             services.AddScoped<IRequiredServiceDocumentService, RequiredServiceDocumentServiceImpl>();
             services.AddScoped<IRequredServiceQualificationElementService, RequredServiceQualificationElementServiceImpl>();
             services.AddScoped<IDropReasonService, DropReasonServiceImpl>();
+            services.AddScoped<IDeleteLogRepository, DeleteLogRepositoryImpl>();
           
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();

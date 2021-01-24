@@ -57,15 +57,47 @@ namespace HaloBiz.Controllers
             return Ok(service);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateById(long id, ServicesReceivingDTO servicesReceivingDTO)
+        [HttpPut("{id}/approve-service")]
+        public async Task<IActionResult> ApproveServiceById(long id)
         {
-            var response = await _servicesService.UpdateServices(id, servicesReceivingDTO);
+            var response = await _servicesService.ApproveService(HttpContext, id);
             if (response.StatusCode >= 400)
                 return StatusCode(response.StatusCode, response);
             var serviceGroup = ((ApiOkResponse)response).Result;
             return Ok(serviceGroup);
         }
+
+        [HttpPut("{id}/disapprove-service")]
+        public async Task<IActionResult> DisapproveServiceById(long id)
+        {
+            var response = await _servicesService.DisapproveService(HttpContext, id);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var serviceGroup = ((ApiOkResponse)response).Result;
+            return Ok(serviceGroup);
+        }
+
+        [HttpPut("{id}/request-service-publish")]
+        public async Task<IActionResult> RequestPublishServiceById(long id)
+        {
+            var response = await _servicesService.RequestPublishService(HttpContext, id);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var serviceGroup = ((ApiOkResponse)response).Result;
+            return Ok(serviceGroup);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateById(long id, ServicesReceivingDTO servicesReceivingDTO)
+        {
+            var response = await _servicesService.UpdateServices(HttpContext, id, servicesReceivingDTO);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var serviceGroup = ((ApiOkResponse)response).Result;
+            return Ok(serviceGroup);
+        }
+
+
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteById(int id)
