@@ -58,6 +58,7 @@ namespace HaloBiz.Data
     public DbSet<SBUToContractServiceProportion> SBUToContractServiceProportions {get; set; }
     public DbSet<SBUToQuoteServiceProportion> SBUToQuoteServiceProportions {get; set; }
     public DbSet<ClosureDocument> ClosureDocuments {get; set; }
+    public DbSet<DeleteLog> DeleteLogs {get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -422,6 +423,14 @@ namespace HaloBiz.Data
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Entity<ClosureDocument>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<DeleteLog>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<DeleteLog>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
