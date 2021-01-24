@@ -18,13 +18,17 @@ namespace HaloBiz.Repository.Impl.LAMS
         {
             this._logger = logger;
             this._context = context;
-
         }
 
         public async Task<Customer> SaveCustomer(Customer entity)
         {
             var CustomerEntity = await _context.Customers.AddAsync(entity);
-            return CustomerEntity.Entity;
+
+            if (await SaveChanges())
+            {
+                return CustomerEntity.Entity;
+            }
+            return null;            
         }
 
         public async Task<Customer> FindCustomerById(long Id)
