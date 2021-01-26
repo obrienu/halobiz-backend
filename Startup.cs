@@ -153,6 +153,7 @@ namespace HaloBiz
             services.AddScoped<IDeleteLogRepository, DeleteLogRepositoryImpl>();
             services.AddScoped<ILeadContactRepository, LeadContactRepositoryImpl>();
             services.AddScoped<ILeadKeyPersonRepository, LeadKeyPersonRepositoryImpl>();
+            services.AddScoped<IServiceRequredServiceQualificationElementRepository, ServiceRequredServiceQualificationElementRepositoryImpl>();
 
 
             services.AddAutoMapper(typeof(Startup));

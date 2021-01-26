@@ -21,7 +21,9 @@ namespace HaloBiz.DTOs.TransferDTOs
         public long OperatingEntityId { get; set; }
         public long DivisionId { get; set; }
         public TargetTransferDTO Target { get; set; }
+        public ServiceTypeTransferDTO ServiceType { get; set; }
         public IList<RequiredServiceDocumentTransferDTO> RequiredServiceDocument { get; set; }
+        public IList<RequredServiceQualificationElementTransferDTO> RequiredServiceFields { get; set; }
        
     }
 }

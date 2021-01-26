@@ -21,6 +21,8 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         [Required]
         public long ServiceCategoryId { get; set; }
         [Required]
+        public long ServiceTypeId { get; set; }
+        [Required]
         public long ServiceGroupId { get; set; }
         [Required]
         public long OperatingEntityId { get; set; }
@@ -28,5 +30,6 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public long DivisionId { get; set; }
         [Required]
         public IList<Int64> RequiredDocumentsId { get; set; }
+        public IList<Int64> RequiredServiceFieldsId { get; set; }
     }
 }

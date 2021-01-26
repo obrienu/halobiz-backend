@@ -34,21 +34,18 @@ namespace HaloBiz.Repository.Impl
         public async Task<RequredServiceQualificationElement> FindRequredServiceQualificationElementById(long Id)
         {
             return await _context.RequredServiceQualificationElements
-                .Include(RequredServiceQualificationElement => RequredServiceQualificationElement.ServiceCategory)
                 .FirstOrDefaultAsync(RequredServiceQualificationElement => RequredServiceQualificationElement.Id == Id && RequredServiceQualificationElement.IsDeleted == false);
         }
 
         public async Task<RequredServiceQualificationElement> FindRequredServiceQualificationElementByName(string caption)
         {
             return await _context.RequredServiceQualificationElements
-                .Include(RequredServiceQualificationElement => RequredServiceQualificationElement.ServiceCategory)
                 .FirstOrDefaultAsync(RequredServiceQualificationElement => RequredServiceQualificationElement.Caption == caption && RequredServiceQualificationElement.IsDeleted == false);
         }
 
         public async Task<IEnumerable<RequredServiceQualificationElement>> FindAllRequredServiceQualificationElements()
         {
             return await _context.RequredServiceQualificationElements.Where(RequredServiceQualificationElement => RequredServiceQualificationElement.IsDeleted == false)
-                .Include(RequredServiceQualificationElement => RequredServiceQualificationElement.ServiceCategory)
                 .ToListAsync();
         }
 

@@ -26,6 +26,8 @@ namespace HaloBiz.Model
         public bool PublishedApprovedStatus { get; set; }
         public long? TargetId { get; set; }
         public virtual Target Target { get; set; }
+        public long? ServiceTypeId { get; set; }
+        public ServiceType ServiceType { get; set; }
         [Required]
         public long ServiceCategoryId { get; set; }
         [Required]
@@ -36,8 +38,7 @@ namespace HaloBiz.Model
         public long DivisionId { get; set; }
         public virtual ServiceCategory ServiceCategory { get; set; }
         public IList<ServiceRequiredServiceDocument> RequiredServiceDocument { get; set; }
-        public IEnumerable<QuoteService> QuoteServices { get; set; }
-        public IEnumerable<ContractService> ContractServices { get; set; }
+        public IList<ServiceRequredServiceQualificationElement> RequredServiceQualificationElement { get; set; }
         public bool IsDeleted { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }

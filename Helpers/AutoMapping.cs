@@ -47,7 +47,9 @@ namespace HaloBiz.Helpers
             CreateMap<ServiceCategory, ServiceCategoryWithoutServicesTransferDTO>();
             CreateMap<Services, ServicesTransferDTO>()
                 .ForMember(dest => dest.RequiredServiceDocument, opt => 
-                opt.MapFrom(src => src.RequiredServiceDocument.GetListOfRequiredDocuments()));
+                opt.MapFrom(src => src.RequiredServiceDocument.GetListOfRequiredDocuments()))
+                .ForMember(dest => dest.RequiredServiceFields, opt => 
+                opt.MapFrom(src => src.RequredServiceQualificationElement.GetListOfRequiredQualificationElements()));
             CreateMap<ServicesReceivingDTO, Services>();
             CreateMap<AccountClass, AccountClassTransferDTO>();
             CreateMap<AccountClassReceivingDTO, AccountClass>();

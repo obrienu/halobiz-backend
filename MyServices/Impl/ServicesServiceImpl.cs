@@ -19,25 +19,36 @@ namespace HaloBiz.MyServices.Impl
         private readonly IServiceRequiredServiceDocumentRepository _requiredServiceDocRepo;
         private readonly IDeleteLogRepository _deleteLogRepo;
         private readonly IModificationHistoryRepository _modificationRepo;
+        private readonly IServiceRequredServiceQualificationElementRepository _reqServiceElementRepo;
 
-        public ServicesServiceImpl(IServicesRepository servicesRepository, IMapper mapper, IServiceRequiredServiceDocumentRepository requiredServiceDocRepo, IDeleteLogRepository deleteLogRepo, IModificationHistoryRepository modificationRepo)
+        public ServicesServiceImpl(IServicesRepository servicesRepository, IMapper mapper, IServiceRequiredServiceDocumentRepository requiredServiceDocRepo, IDeleteLogRepository deleteLogRepo, IModificationHistoryRepository modificationRepo, IServiceRequredServiceQualificationElementRepository reqServiceElementRepo)
         {
             this._mapper = mapper;
             this._requiredServiceDocRepo = requiredServiceDocRepo;
             this._deleteLogRepo = deleteLogRepo;
             this._modificationRepo = modificationRepo;
+            this._reqServiceElementRepo = reqServiceElementRepo;
             this._servicesRepository = servicesRepository;
         }
 
         public async Task<ApiResponse> AddService(ServicesReceivingDTO servicesReceivingDTO)
         {
             IList<ServiceRequiredServiceDocument> serviceRequiredServiceDocument = new List<ServiceRequiredServiceDocument>();
+            IList<ServiceRequredServiceQualificationElement> serviceQualificationElements = new List<ServiceRequredServiceQualificationElement>();
 
             var service = _mapper.Map<Services>(servicesReceivingDTO);
             var savedService = await _servicesRepository.SaveService(service);
             if (savedService == null)
             {
                 return new ApiResponse(500);
+            }
+
+            foreach (long id in servicesReceivingDTO.RequiredServiceFieldsId)
+            {
+                serviceQualificationElements.Add(new ServiceRequredServiceQualificationElement(){
+                    ServicesId = savedService.Id,
+                    RequredServiceQualificationElementId = id
+                });
             }
 
             foreach (long id in servicesReceivingDTO.RequiredDocumentsId)
@@ -48,10 +59,18 @@ namespace HaloBiz.MyServices.Impl
                 });
             }
 
-            var isSaved = await _requiredServiceDocRepo.SaveRangeServiceRequiredServiceDocument(serviceRequiredServiceDocument);
+            var isFieldsSaved = await _reqServiceElementRepo.SaveRangeServiceRequredServiceQualificationElement(serviceQualificationElements);
+
+            var isDocSaved = await _requiredServiceDocRepo.SaveRangeServiceRequiredServiceDocument(serviceRequiredServiceDocument);
             
-            if(! isSaved) {
+            if(!isDocSaved) {
                 await DeleteService(savedService.Id);
+                return new ApiResponse(500);
+            }
+
+            if(!isFieldsSaved) {
+                await DeleteService(savedService.Id);
+                await _requiredServiceDocRepo.DeleteRangeServiceRequiredServiceDocument(serviceRequiredServiceDocument);
                 return new ApiResponse(500);
             }
 
@@ -107,6 +126,7 @@ namespace HaloBiz.MyServices.Impl
             serviceToUpdate.ImageUrl = serviceReceivingDTO.ImageUrl;
             serviceToUpdate.TargetId = serviceReceivingDTO.TargetId;
             serviceToUpdate.UnitPrice = serviceReceivingDTO.UnitPrice;
+            serviceToUpdate.ServiceTypeId = serviceReceivingDTO.ServiceTypeId;
            
             var updatedService = await _servicesRepository.UpdateServices(serviceToUpdate);
 
