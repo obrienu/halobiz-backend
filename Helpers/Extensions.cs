@@ -40,5 +40,18 @@ namespace HaloBiz.Helpers
             return reqDocs;
 
         }
+        public static IEnumerable<RequredServiceQualificationElementTransferDTO> GetListOfRequiredQualificationElements(this IEnumerable<ServiceRequredServiceQualificationElement> elements)
+        {
+            var reqElements = new List<RequredServiceQualificationElementTransferDTO>();
+            foreach (var item in elements)
+            {
+                reqElements.Add(new RequredServiceQualificationElementTransferDTO(){
+                    Caption = item.RequredServiceQualificationElement.Caption,
+                    Description = item.RequredServiceQualificationElement.Description,
+                    Id = item.RequredServiceQualificationElement.Id
+                });
+            }
+            return reqElements;
+        }
     }
 }

@@ -59,6 +59,7 @@ namespace HaloBiz.Data
     public DbSet<SBUToQuoteServiceProportion> SBUToQuoteServiceProportions {get; set; }
     public DbSet<ClosureDocument> ClosureDocuments {get; set; }
     public DbSet<DeleteLog> DeleteLogs {get; set; }
+    public DbSet<ServiceRequredServiceQualificationElement> ServiceRequredServiceQualificationElement {get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -69,6 +70,9 @@ namespace HaloBiz.Data
             builder.Entity<ServiceRequiredServiceDocument>()
                 .HasKey(sc => new {sc.RequiredServiceDocumentId, sc.ServicesId});
 
+            builder.Entity<ServiceRequredServiceQualificationElement>()
+                .HasKey(sc => new {sc.RequredServiceQualificationElementId, sc.ServicesId});
+
             builder.Entity<State>()
                .Property(p => p.UpdatedAt)
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -431,6 +435,14 @@ namespace HaloBiz.Data
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Entity<DeleteLog>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceRequredServiceQualificationElement>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ServiceRequredServiceQualificationElement>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
