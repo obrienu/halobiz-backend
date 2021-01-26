@@ -94,6 +94,8 @@ namespace HaloBiz.Helpers
             CreateMap<RequredServiceQualificationElement, BaseSetupTransferDTO>();
             CreateMap<LeadContactReceivingDTO, LeadContact>();
             CreateMap<LeadContact, LeadContactTransferDTO>();
+            CreateMap<LeadKeyPersonReceivingDTO, LeadKeyPerson>();
+            CreateMap<LeadKeyPerson, LeadKeyPersonTransferDTO>();
         }
     }
 }

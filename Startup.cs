@@ -116,6 +116,7 @@ namespace HaloBiz
             services.AddScoped<IRequredServiceQualificationElementService, RequredServiceQualificationElementServiceImpl>();
             services.AddScoped<IDropReasonService, DropReasonServiceImpl>();
             services.AddScoped<ILeadContactService, LeadContactServiceImpl>();
+            services.AddScoped<ILeadKeyPersonService, LeadKeyPersonServiceImpl>();
           
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
@@ -151,6 +152,7 @@ namespace HaloBiz
             services.AddScoped<IDropReasonRepository, DropReasonRepositoryImpl>();
             services.AddScoped<IDeleteLogRepository, DeleteLogRepositoryImpl>();
             services.AddScoped<ILeadContactRepository, LeadContactRepositoryImpl>();
+            services.AddScoped<ILeadKeyPersonRepository, LeadKeyPersonRepositoryImpl>();
 
 
             services.AddAutoMapper(typeof(Startup));
