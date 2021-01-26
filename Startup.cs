@@ -160,6 +160,7 @@ namespace HaloBiz
             services.AddScoped<ILeadDivisionContactRepository, LeadDivisionContactRepositoryImpl>();
             services.AddScoped<ICustomerRepository, CustomerRepositoryImpl>();
             services.AddScoped<ICustomerDivisionRepository, CustomerDivisionRepositoryImpl>();
+            services.AddScoped<ILeadRepository, LeadRepositoryImpl>();
 
 
             services.AddAutoMapper(typeof(Startup));
