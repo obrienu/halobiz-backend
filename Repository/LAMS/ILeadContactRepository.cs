@@ -12,7 +12,8 @@ namespace HaloBiz.Repository.LAMS
 
         Task<IEnumerable<LeadContact>> FindAllLeadContact(); 
 
-        Task<LeadContact> UpdateLeadContact(LeadContact entity);
+        LeadContact UpdateLeadContact(LeadContact entity);
         Task<bool> DeleteLeadContact(LeadContact entity);
+        Task<bool> SaveChanges();
     }
 }
