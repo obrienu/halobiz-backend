@@ -10,7 +10,7 @@ namespace HaloBiz.Repository.LAMS
         Task<Lead> FindLeadById(long Id);
         Task<Lead> FindLeadByReferenceNo(string refNo);
         Task<IEnumerable<Lead>> FindAllLead();
-        Lead UpdateLead(Lead lead);
+        Task<Lead> UpdateLead(Lead lead);
         void DeleteLead(Lead lead);
         Task<bool> SaveChanges();
     }
