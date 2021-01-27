@@ -31,7 +31,7 @@ namespace HaloBiz.Model.LAMS
         public DateTime? TimeMovedToLeadQualification { get; set; }
         public bool LeadOpportunityStatus { get; set; } = false;
         public DateTime? TimeMovedToLeadOpportunity { get; set; }
-        public DateTime? TimeMovedToLeadCloseure { get; set; }
+        public DateTime? TimeMovedToLeadClosure { get; set; }
         public bool LeadConversionStatus { get; set; } = false;
         public DateTime? TimeConvertedToClient { get; set; }
         public bool IsLeadDropped { get; set; }

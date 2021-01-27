@@ -120,6 +120,7 @@ namespace HaloBiz
             services.AddScoped<ILeadDivisionContactService, LeadDivisionContactServiceImpl>();
             services.AddScoped<ICustomerService, CustomerServiceImpl>();
             services.AddScoped<ICustomerDivisionService, CustomerDivisionServiceImpl>();
+            services.AddScoped<ILeadService, LeadServiceImpl>();
           
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
