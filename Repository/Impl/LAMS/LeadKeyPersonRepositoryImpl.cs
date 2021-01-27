@@ -22,6 +22,10 @@ namespace HaloBiz.Repository.Impl.LAMS
         public async Task<LeadKeyPerson> SaveLeadKeyPerson(LeadKeyPerson entity)
         {
             var leadKeyPersonEntity = await _context.LeadKeyPeople.AddAsync(entity);
+            if(! await SaveChanges())
+            {
+                return null;
+            }
             return leadKeyPersonEntity.Entity;
         }
 
@@ -39,14 +43,15 @@ namespace HaloBiz.Repository.Impl.LAMS
                 .ToListAsync();
         }
 
-        public async Task<LeadKeyPerson> UpdateLeadKeyPerson(LeadKeyPerson entity)
+        public async  Task<LeadKeyPerson> UpdateLeadKeyPerson(LeadKeyPerson entity)
         {
             var leadKeyPersonEntity =  _context.LeadKeyPeople.Update(entity);
-            if(await SaveChanges())
+            if(! await SaveChanges())
             {
-                return leadKeyPersonEntity.Entity;
+                return null;
             }
-            return null;
+            return leadKeyPersonEntity.Entity;
+            
         }
 
         public async Task<bool> DeleteLeadKeyPerson(LeadKeyPerson entity)

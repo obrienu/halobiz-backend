@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using HaloBiz.Data;
 using HaloBiz.DTOs.ApiDTOs;
 using HaloBiz.DTOs.ReceivingDTOs.LAMS;
 using HaloBiz.DTOs.TransferDTOs.LAMS;
@@ -10,6 +11,7 @@ using HaloBiz.Model.LAMS;
 using HaloBiz.MyServices.LAMS;
 using HaloBiz.Repository;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace HaloBiz.MyServices.Impl.LAMS
 {
@@ -19,7 +21,11 @@ namespace HaloBiz.MyServices.Impl.LAMS
         private readonly ILeadKeyPersonRepository _leadKeyPersonRepo;
         private readonly IMapper _mapper;
 
-        public LeadKeyPersonServiceImpl(IModificationHistoryRepository historyRepo,  IMapper mapper, ILeadKeyPersonRepository leadKeyPersonRepo)
+        public LeadKeyPersonServiceImpl(
+                                        IModificationHistoryRepository historyRepo,  
+                                        IMapper mapper, 
+                                        ILeadKeyPersonRepository leadKeyPersonRepo
+                                        )
         {
             this._mapper = mapper;
             this._historyRepo = historyRepo;
@@ -30,13 +36,13 @@ namespace HaloBiz.MyServices.Impl.LAMS
         {
             var leadKeyPerson = _mapper.Map<LeadKeyPerson>(leadKeyPersonReceivingDTO);
             leadKeyPerson.CreatedById = context.GetLoggedInUserId();
-            var savedLeadKeyPerson = await _leadKeyPersonRepo.SaveLeadKeyPerson(leadKeyPerson);
-            if (savedLeadKeyPerson == null)
+            var savedKeyPerson = await _leadKeyPersonRepo.SaveLeadKeyPerson(leadKeyPerson);
+            if(savedKeyPerson == null)
             {
                 return new ApiResponse(500);
             }
-            var leadKeyPersonTransferDTO = _mapper.Map<LeadKeyPersonTransferDTO>(leadKeyPerson);
-            return new ApiOkResponse(leadKeyPersonTransferDTO);
+    
+            return new ApiOkResponse(_mapper.Map<LeadKeyPersonTransferDTO>(savedKeyPerson));
         }
 
         public async Task<ApiResponse> GetAllLeadKeyPerson()
@@ -68,7 +74,7 @@ namespace HaloBiz.MyServices.Impl.LAMS
             var leadKeyPersonToUpdate = await _leadKeyPersonRepo.FindLeadKeyPersonById(id);
             if (leadKeyPersonToUpdate == null)
             {
-                return new ApiResponse(404);
+                return null;
             }
             
             var summary = $"Initial details before change, \n {leadKeyPersonToUpdate.ToString()} \n" ;
@@ -97,9 +103,24 @@ namespace HaloBiz.MyServices.Impl.LAMS
 
             await _historyRepo.SaveHistory(history);
 
-            var leadKeyPersonTransferDTOs = _mapper.Map<LeadKeyPersonTransferDTO>(updatedLeadKeyPerson);
-            return new ApiOkResponse(leadKeyPersonTransferDTOs);
+            return new ApiOkResponse(_mapper.Map<LeadKeyPersonTransferDTO>(updatedLeadKeyPerson));
 
+        }
+
+        public async Task<ApiResponse> DeleteKeyPerson(long Id)
+        {
+            var leadKeyPersonToDelete = await _leadKeyPersonRepo.FindLeadKeyPersonById(Id);
+            if (leadKeyPersonToDelete == null)
+            {
+                return new ApiResponse(404);
+            }
+
+            if (!await _leadKeyPersonRepo.DeleteLeadKeyPerson(leadKeyPersonToDelete))
+            {
+                return new ApiResponse(500);
+            }
+
+            return new ApiOkResponse(true);
         }
 
     }

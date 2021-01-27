@@ -38,15 +38,32 @@ namespace HaloBiz.Controllers.LAMS
             return Ok(leadKeyPerson);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateById(long id, LeadKeyPersonReceivingDTO leadKeyPersonReceiving)
+        [HttpPost("")]
+        public async Task<ActionResult> AddNewLeadKeyPerson(LeadKeyPersonReceivingDTO leadKeyPersonReceiving)
         {
-            var response = await _leadKeyPersonService.UpdateLeadKeyPerson(HttpContext, id, leadKeyPersonReceiving);
+            var response = await _leadKeyPersonService.AddLeadKeyPerson(HttpContext, leadKeyPersonReceiving);
             if (response.StatusCode >= 400)
                 return StatusCode(response.StatusCode, response);
             var leadKeyPerson = ((ApiOkResponse)response).Result;
             return Ok(leadKeyPerson);
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateById(long id, LeadKeyPersonReceivingDTO leadKeyPersonReceivingDTO)
+        {
+            var response = await _leadKeyPersonService.UpdateLeadKeyPerson(HttpContext, id, leadKeyPersonReceivingDTO);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var leadKeyPerson = ((ApiOkResponse)response).Result;
+            return Ok(leadKeyPerson);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteById(int id)
+        {
+            var response = await _leadKeyPersonService.DeleteKeyPerson(id);
+            return StatusCode(response.StatusCode);
+        }
+
     }
 }
 
