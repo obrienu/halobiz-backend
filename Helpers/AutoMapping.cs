@@ -108,6 +108,12 @@ namespace HaloBiz.Helpers
             CreateMap<Lead, LeadTransferDTO>();
             CreateMap<LeadDivisionKeyPersonReceivingDTO, LeadDivisionKeyPerson>();
             CreateMap<LeadDivisionKeyPerson, LeadDivisionKeyPersonTransferDTO>();
+            CreateMap<QuoteReceivingDTO, Quote>();
+            CreateMap<Quote, QuoteTransferDTO>();
+            CreateMap<QuoteServiceReceivingDTO, QuoteService>();
+            CreateMap<QuoteService, QuoteServiceTransferDTO>();
+            CreateMap<LeadDivisionReceivingDTO, LeadDivision>();
+            CreateMap<LeadDivision, LeadDivisionTransferDTO>();
         }
     }
 }
