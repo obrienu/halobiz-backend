@@ -19,8 +19,8 @@ namespace HaloBiz.Model.AccountsModel
         [Required]
         public bool IsDebitBalance { get; set; }
         [Required]
-        public long AccountClassId { get; set; }
-        public virtual AccountClass AccountClass { get; set; }
+        public long? ControlAccountId { get; set; }
+        public virtual ControlAccount ControlAccount { get; set; }
         public long CreatedById { get; set; }
         public virtual UserProfile CreatedBy { get; set; }
         public bool IsDeleted { get; set; } = false;
