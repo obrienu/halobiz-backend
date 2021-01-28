@@ -4,14 +4,16 @@ using HaloBiz.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HaloBiz.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210126164313_AddsFieldToLeadModel")]
+    partial class AddsFieldToLeadModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -941,7 +943,7 @@ namespace HaloBiz.Migrations
                     b.Property<DateTime?>("TimeConvertedToClient")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("TimeMovedToLeadClosure")
+                    b.Property<DateTime?>("TimeMovedToLeadCloseure")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("TimeMovedToLeadOpportunity")
@@ -1578,21 +1580,6 @@ namespace HaloBiz.Migrations
                     b.HasIndex("QuoteServiceId");
 
                     b.ToTable("QuoteServiceDocuments");
-                });
-
-            modelBuilder.Entity("HaloBiz.Model.LAMS.ReferenceNumber", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<long>("ReferenceNo")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ReferenceNumbers");
                 });
 
             modelBuilder.Entity("HaloBiz.Model.LAMS.SBUToContractServiceProportion", b =>

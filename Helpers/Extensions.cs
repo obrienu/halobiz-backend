@@ -53,5 +53,10 @@ namespace HaloBiz.Helpers
             }
             return reqElements;
         }
+
+        public static string GenerateReferenceNumber(this long refNumber)
+        {
+            return "HALO" + refNumber.ToString().PadLeft(10, '0');
+        }
     }
 }

@@ -120,6 +120,8 @@ namespace HaloBiz
             services.AddScoped<ILeadDivisionContactService, LeadDivisionContactServiceImpl>();
             services.AddScoped<ICustomerService, CustomerServiceImpl>();
             services.AddScoped<ICustomerDivisionService, CustomerDivisionServiceImpl>();
+            services.AddScoped<ILeadService, LeadServiceImpl>();
+          
             services.AddScoped<ILeadDivisionKeyPersonService, LeadDivisionKeyPersonServiceImpl>();
 
             //repositories
@@ -161,6 +163,8 @@ namespace HaloBiz
             services.AddScoped<ILeadDivisionContactRepository, LeadDivisionContactRepositoryImpl>();
             services.AddScoped<ICustomerRepository, CustomerRepositoryImpl>();
             services.AddScoped<ICustomerDivisionRepository, CustomerDivisionRepositoryImpl>();
+            services.AddScoped<ILeadRepository, LeadRepositoryImpl>();
+            services.AddScoped<IReferenceNumberRepository, ReferenceNumberRepositoryImpl>();
             services.AddScoped<ILeadDivisionKeyPersonRepository, LeadDivisionKeyPersonRepositoryImpl>();
 
 

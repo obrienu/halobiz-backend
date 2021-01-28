@@ -41,14 +41,10 @@ namespace HaloBiz.Repository.Impl.LAMS
                 .ToListAsync();
         }
 
-        public async Task<LeadContact> UpdateLeadContact(LeadContact entity)
+        public LeadContact UpdateLeadContact(LeadContact entity)
         {
             var leadContactEntity =  _context.LeadContacts.Update(entity);
-            if(await SaveChanges())
-            {
-                return leadContactEntity.Entity;
-            }
-            return null;
+            return leadContactEntity.Entity;
         }
 
         public async Task<bool> DeleteLeadContact(LeadContact entity)
@@ -57,7 +53,7 @@ namespace HaloBiz.Repository.Impl.LAMS
             _context.LeadContacts.Update(entity);
             return await SaveChanges();
         }
-        private async Task<bool> SaveChanges()
+        public async Task<bool> SaveChanges()
         {
            try
            {

@@ -28,13 +28,17 @@ namespace HaloBiz.Model.LAMS
         public string LogoUrl { get; set; }
         public bool LeadCaptureStatus { get; set; } = false;
         public bool LeadQualificationStatus { get; set; } = false;
+        public DateTime? TimeMovedToLeadQualification { get; set; }
         public bool LeadOpportunityStatus { get; set; } = false;
+        public DateTime? TimeMovedToLeadOpportunity { get; set; }
+        public DateTime? TimeMovedToLeadClosure { get; set; }
         public bool LeadConversionStatus { get; set; } = false;
+        public DateTime? TimeConvertedToClient { get; set; }
         public bool IsLeadDropped { get; set; }
         public string DropLearning { get; set; }
         public long? DropReasonId { get; set; }
         public virtual DropReason DropReason { get; set; }
-        public long PrimaryContactId { get; set; }
+        public long? PrimaryContactId { get; set; }
         public virtual LeadContact PrimaryContact { get; set; }
         public long? SecondaryContactId { get; set; }
         public LeadContact SecondaryContact { get; set; }

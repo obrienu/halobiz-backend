@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using HaloBiz.DTOs.ApiDTOs;
 using HaloBiz.DTOs.ReceivingDTOs.LAMS;
+using HaloBiz.Model.LAMS;
 using Microsoft.AspNetCore.Http;
 
 namespace HaloBiz.MyServices.LAMS
@@ -11,6 +12,6 @@ namespace HaloBiz.MyServices.LAMS
         Task<ApiResponse> GetAllLeadKeyPerson();
         Task<ApiResponse> GetLeadKeyPersonById(long id);
         Task<ApiResponse> UpdateLeadKeyPerson(HttpContext context, long id, LeadKeyPersonReceivingDTO leadKeyPersonReceivingDTO);
-
+        Task<ApiResponse> DeleteKeyPerson(long Id);
     }
 }
