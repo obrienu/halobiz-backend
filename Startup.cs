@@ -122,6 +122,8 @@ namespace HaloBiz
             services.AddScoped<ICustomerDivisionService, CustomerDivisionServiceImpl>();
             services.AddScoped<ILeadService, LeadServiceImpl>();
           
+            services.AddScoped<ILeadDivisionKeyPersonService, LeadDivisionKeyPersonServiceImpl>();
+
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
             services.AddScoped<IBranchRepository, BranchRepositoryImpl>();
@@ -163,6 +165,9 @@ namespace HaloBiz
             services.AddScoped<ICustomerDivisionRepository, CustomerDivisionRepositoryImpl>();
             services.AddScoped<ILeadRepository, LeadRepositoryImpl>();
             services.AddScoped<IReferenceNumberRepository, ReferenceNumberRepositoryImpl>();
+            services.AddScoped<ILeadDivisionKeyPersonRepository, LeadDivisionKeyPersonRepositoryImpl>();
+
+
 
 
             services.AddAutoMapper(typeof(Startup));
