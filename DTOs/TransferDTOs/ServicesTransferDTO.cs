@@ -21,6 +21,9 @@ namespace HaloBiz.DTOs.TransferDTOs
         public long ServiceGroupId { get; set; }
         public long OperatingEntityId { get; set; }
         public long DivisionId { get; set; }
+         public bool IsPublished { get; set; }
+        public bool IsRequestedForPublish { get; set; }
+        public bool PublishedApprovedStatus { get; set; }
         public TargetTransferDTO Target { get; set; }
         public AccountTransferDTO Account { get; set; }
         public ServiceTypeTransferDTO ServiceType { get; set; }
