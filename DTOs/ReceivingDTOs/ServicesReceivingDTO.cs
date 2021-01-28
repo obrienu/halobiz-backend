@@ -25,6 +25,8 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         [Required]
         public long ServiceGroupId { get; set; }
         [Required]
+        public long AccountId { get; set; }
+        [Required]
         public long OperatingEntityId { get; set; }
         [Required]
         public long DivisionId { get; set; }

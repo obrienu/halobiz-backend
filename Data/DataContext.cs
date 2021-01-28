@@ -61,6 +61,9 @@ namespace HaloBiz.Data
     public DbSet<DeleteLog> DeleteLogs {get; set; }
     public DbSet<ServiceRequredServiceQualificationElement> ServiceRequredServiceQualificationElement {get; set; }
     public DbSet<ReferenceNumber> ReferenceNumbers {get; set; }
+    public DbSet<Region> Regions {get; set; }
+    public DbSet<ControlAccount> ControlAccounts {get; set; }
+    public DbSet<Zone> Zones {get; set; }   
 
     protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -444,6 +447,30 @@ namespace HaloBiz.Data
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Entity<ServiceRequredServiceQualificationElement>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<Zone>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<Zone>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<Region>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<Region>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ControlAccount>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ControlAccount>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 

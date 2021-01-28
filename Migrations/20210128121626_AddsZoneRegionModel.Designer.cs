@@ -4,14 +4,16 @@ using HaloBiz.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HaloBiz.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210128121626_AddsZoneRegionModel")]
+    partial class AddsZoneRegionModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,9 +261,9 @@ namespace HaloBiz.Migrations
                     b.Property<long>("AccountClassId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("Alias")
+                    b.Property<string>("Alias")
                         .HasMaxLength(100)
-                        .HasColumnType("bigint");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Caption")
                         .HasMaxLength(100)
@@ -269,8 +271,7 @@ namespace HaloBiz.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime2");
 
                     b.Property<long>("CreatedById")
                         .HasColumnType("bigint");
@@ -284,8 +285,7 @@ namespace HaloBiz.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -293,7 +293,7 @@ namespace HaloBiz.Migrations
 
                     b.HasIndex("CreatedById");
 
-                    b.ToTable("ControlAccounts");
+                    b.ToTable("ControlAccount");
                 });
 
             modelBuilder.Entity("HaloBiz.Model.Bank", b =>
@@ -2101,8 +2101,7 @@ namespace HaloBiz.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime2");
 
                     b.Property<long>("CreatedById")
                         .HasColumnType("bigint");
@@ -2125,8 +2124,7 @@ namespace HaloBiz.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -2136,7 +2134,7 @@ namespace HaloBiz.Migrations
 
                     b.HasIndex("HeadId");
 
-                    b.ToTable("Regions");
+                    b.ToTable("Region");
                 });
 
             modelBuilder.Entity("HaloBiz.Model.Relationship", b =>
@@ -2241,6 +2239,9 @@ namespace HaloBiz.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<long?>("ServiceCategoryTaskId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2")
@@ -2249,6 +2250,8 @@ namespace HaloBiz.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedById");
+
+                    b.HasIndex("ServiceCategoryTaskId");
 
                     b.ToTable("RequredServiceQualificationElements");
                 });
@@ -2810,8 +2813,7 @@ namespace HaloBiz.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime2");
 
                     b.Property<long>("CreatedById")
                         .HasColumnType("bigint");
@@ -2843,8 +2845,7 @@ namespace HaloBiz.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -2858,7 +2859,7 @@ namespace HaloBiz.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Zones");
+                    b.ToTable("Zone");
                 });
 
             modelBuilder.Entity("HaloBiz.Model.AccountsModel.Account", b =>
@@ -3742,6 +3743,10 @@ namespace HaloBiz.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("HaloBiz.Model.ServiceCategoryTask", null)
+                        .WithMany("RequredServiceQualificationElements")
+                        .HasForeignKey("ServiceCategoryTaskId");
+
                     b.Navigation("CreatedBy");
                 });
 
@@ -4064,6 +4069,8 @@ namespace HaloBiz.Migrations
 
             modelBuilder.Entity("HaloBiz.Model.ServiceCategoryTask", b =>
                 {
+                    b.Navigation("RequredServiceQualificationElements");
+
                     b.Navigation("ServiceTaskDeliverable");
                 });
 

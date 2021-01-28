@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HaloBiz.Model.AccountsModel;
 using HaloBiz.Model.LAMS;
 using HaloBiz.Model.ManyToManyRelationship;
 
@@ -37,6 +38,8 @@ namespace HaloBiz.Model
         [Required]
         public long DivisionId { get; set; }
         public virtual ServiceCategory ServiceCategory { get; set; }
+        public long? AccountId { get; set; }
+        public Account Account { get; set; }
         public IList<ServiceRequiredServiceDocument> RequiredServiceDocument { get; set; }
         public IList<ServiceRequredServiceQualificationElement> RequredServiceQualificationElement { get; set; }
         public bool IsDeleted { get; set; }

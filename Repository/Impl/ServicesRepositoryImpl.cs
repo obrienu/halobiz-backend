@@ -38,6 +38,7 @@ namespace HaloBiz.Repository.Impl
         {
             return await _context.Services
                 .Include(service => service.Target)
+                .Include(service => service.Account)
                 .Include(service => service.ServiceType)
                 .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
                     .ThenInclude(row => row.RequiredServiceDocument)
@@ -51,6 +52,7 @@ namespace HaloBiz.Repository.Impl
             return await _context.Services
                 .Include(service => service.Target)
                 .Include(service => service.ServiceType)
+                .Include(service => service.Account)
                 .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
                     .ThenInclude(row => row.RequiredServiceDocument)
                 .Include(service => service.RequredServiceQualificationElement.Where(row => row.IsDeleted == false))
@@ -63,6 +65,7 @@ namespace HaloBiz.Repository.Impl
             return await _context.Services
                 .Include(service => service.Target)
                 .Include(service => service.ServiceType)
+                .Include(service => service.Account)
                 .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
                     .ThenInclude(row => row.RequiredServiceDocument)
                     .Include(service => service.RequredServiceQualificationElement.Where(row => row.IsDeleted == false))

@@ -15,7 +15,6 @@ namespace HaloBiz.Model
         public long ServiceCategoryId { get; set; }
         public virtual ServiceCategory ServiceCategory { get; set; }
         public IEnumerable<ServiceTaskDeliverable> ServiceTaskDeliverable { get; set; }
-        public IEnumerable<RequredServiceQualificationElement> RequredServiceQualificationElements { get; set; }
         public long CreatedById { get; set; }
         public virtual UserProfile CreatedBy { get; set; }
         public bool IsDeleted { get; set; } = false;
