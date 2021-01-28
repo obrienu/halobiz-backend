@@ -162,6 +162,7 @@ namespace HaloBiz
             services.AddScoped<ICustomerRepository, CustomerRepositoryImpl>();
             services.AddScoped<ICustomerDivisionRepository, CustomerDivisionRepositoryImpl>();
             services.AddScoped<ILeadRepository, LeadRepositoryImpl>();
+            services.AddScoped<IReferenceNumberRepository, ReferenceNumberRepositoryImpl>();
 
 
             services.AddAutoMapper(typeof(Startup));

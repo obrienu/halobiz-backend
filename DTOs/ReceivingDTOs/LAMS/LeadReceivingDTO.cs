@@ -5,7 +5,7 @@ namespace HaloBiz.DTOs.ReceivingDTOs.LAMS
 {
     public class LeadReceivingDTO
     {
-        [StringLength(50)]
+        [Required]
         public long LeadTypeId { get; set; }
         [Required]
         public long LeadOriginId { get; set; }

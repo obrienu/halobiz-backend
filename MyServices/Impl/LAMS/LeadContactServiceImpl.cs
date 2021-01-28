@@ -54,8 +54,10 @@ namespace HaloBiz.MyServices.Impl.LAMS
                     {
                         return new ApiResponse(404);
                     }
+
                     //Map Dto to LeadContact, add the logged in user info and save the LeadContact
                     var leadContact = _mapper.Map<LeadContact>(leadContactReceivingDTO);
+
                     leadContact.CreatedById = context.GetLoggedInUserId();
                     var contactEntity = await _context.LeadContacts.AddAsync(leadContact);
                     await _context.SaveChangesAsync();
@@ -71,6 +73,7 @@ namespace HaloBiz.MyServices.Impl.LAMS
                     _context.Leads.Update(lead);
                     await _context.SaveChangesAsync();
                     //Map savedContact to a dto and return it
+                    await transaction.CommitAsync();
                     var leadContactTransferDTO = _mapper.Map<LeadContactTransferDTO>(savedLeadContact);
                     return new ApiOkResponse(leadContactTransferDTO);                    
                 }
@@ -142,7 +145,7 @@ namespace HaloBiz.MyServices.Impl.LAMS
 
                     await _context.ModificationHistories.AddAsync(history);
                     await _context.SaveChangesAsync();
-
+                    await transaction.CommitAsync();
                     var leadContactTransferDTOs = _mapper.Map<LeadContactTransferDTO>(updatedLeadContact);
                     return new ApiOkResponse(leadContactTransferDTOs);
                     

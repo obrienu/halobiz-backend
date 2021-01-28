@@ -60,6 +60,7 @@ namespace HaloBiz.Data
     public DbSet<ClosureDocument> ClosureDocuments {get; set; }
     public DbSet<DeleteLog> DeleteLogs {get; set; }
     public DbSet<ServiceRequredServiceQualificationElement> ServiceRequredServiceQualificationElement {get; set; }
+    public DbSet<ReferenceNumber> ReferenceNumbers {get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
         {

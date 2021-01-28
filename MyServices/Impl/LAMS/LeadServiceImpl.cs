@@ -11,6 +11,7 @@ using HaloBiz.Model;
 using HaloBiz.Model.LAMS;
 using HaloBiz.MyServices.LAMS;
 using HaloBiz.Repository;
+using HaloBiz.Repository.Impl;
 using HaloBiz.Repository.LAMS;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -21,11 +22,13 @@ namespace HaloBiz.MyServices.Impl.LAMS
     public class LeadServiceImpl : ILeadService
     {
         private readonly ILogger<LeadServiceImpl> _logger;
+        private readonly IReferenceNumberRepository _refNumberRepo;
         private readonly IModificationHistoryRepository _historyRepo;
         private readonly ILeadRepository _leadRepo;
         private readonly IMapper _mapper;
 
         public LeadServiceImpl(
+                                IReferenceNumberRepository refNumberRepo,
                                 IModificationHistoryRepository historyRepo,
                                 ILeadRepository leadRepo,
                                 ILogger<LeadServiceImpl> logger,
@@ -33,6 +36,7 @@ namespace HaloBiz.MyServices.Impl.LAMS
                                 )
         {
             this._mapper = mapper;
+            this._refNumberRepo = refNumberRepo;
             this._historyRepo = historyRepo;
             this._leadRepo = leadRepo;
             this._logger = logger;
@@ -42,6 +46,21 @@ namespace HaloBiz.MyServices.Impl.LAMS
         {
             var lead = _mapper.Map<Lead>(leadReceivingDTO);
             lead.CreatedById = context.GetLoggedInUserId();
+            var referenceNumber = await _refNumberRepo.GetReferenceNumber();
+            if(referenceNumber == null)
+            {
+                return new ApiResponse(500);
+            }
+
+            lead.ReferenceNo = referenceNumber.ReferenceNo.GenerateReferenceNumber();
+            referenceNumber.ReferenceNo = referenceNumber.ReferenceNo + 1;
+            var isUpdatedRefNumber = await _refNumberRepo.UpdateReferenceNumber(referenceNumber);
+
+            if(!isUpdatedRefNumber)
+            {
+                return new ApiResponse(500);
+            }
+
             var savedLead = await _leadRepo.SaveLead(lead);
             if (savedLead == null)
             {
