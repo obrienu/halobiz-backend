@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using HaloBiz.DTOs.ApiDTOs;
@@ -8,6 +9,7 @@ using HaloBiz.Helpers;
 using HaloBiz.Model.AccountsModel;
 using HaloBiz.Repository;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace HaloBiz.MyServices.Impl
@@ -27,6 +29,17 @@ namespace HaloBiz.MyServices.Impl
         {
             var controlAcc = _mapper.Map<ControlAccount>(controlAccountReceivingDTO);
             controlAcc.CreatedById = context.GetLoggedInUserId();
+            // long accountClassId = controlAccountReceivingDTO.AccountClassId;
+            // var controlQuerable = _controlAccountRepo.GetControlAccountQueryable();
+
+            // var  lastSavedControl = await controlQuerable.Where(control => control.AccountClassId == accountClassId)
+            //     .OrderBy(control => control.Id).LastOrDefaultAsync();
+            // if(lastSavedControl == null)
+            // {
+            //     controlAcc.Id = accountClassId + 10000;
+            // }else{
+            //     controlAcc.Id = lastSavedControl.Id + 10000;
+            // }
             var savedControlAccount = await _controlAccountRepo.SaveControlAccount(controlAcc);
             if (savedControlAccount == null)
             {

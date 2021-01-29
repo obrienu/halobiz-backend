@@ -78,7 +78,7 @@ namespace HaloBiz.Data
                 .HasKey(sc => new {sc.RequredServiceQualificationElementId, sc.ServicesId});
 
             builder.Entity<State>()
-               .Property(p => p.UpdatedAt)
+               .Property(p => p.UpdatedAt   )
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Entity<State>()

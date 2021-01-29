@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HaloBiz.Model.AccountsModel;
 
@@ -11,6 +12,7 @@ namespace HaloBiz.Repository
         Task<ControlAccount> FindControlAccountByAlias(long alias);
         Task<ControlAccount> FindControlAccountByName(string name);
         Task<IEnumerable<ControlAccount>> FindAllControlAccount();
+        IQueryable<ControlAccount> GetControlAccountQueryable();
         Task<ControlAccount> UpdateControlAccount(ControlAccount controlAccount);
         Task<bool> DeleteControlAccount(ControlAccount controlAccount);
     }

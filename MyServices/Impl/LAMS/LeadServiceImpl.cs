@@ -147,6 +147,46 @@ namespace HaloBiz.MyServices.Impl.LAMS
 
         }
 
+        public async Task<ApiResponse> UpdateLeadStagesStatus(long leadId, LeadStages stage)
+        {
+            var leadToUpdate = await _leadRepo.FindLeadById(leadId);
+            if (leadToUpdate == null)
+            {
+                return new ApiResponse(404);
+            }
+            switch (stage)
+            {
+                case LeadStages.Capture:
+                    leadToUpdate.LeadCaptureStatus = true;
+                    break;
+                case LeadStages.Qualification:
+                    leadToUpdate.LeadQualificationStatus = true;
+                    leadToUpdate.TimeMovedToLeadQualification = DateTime.Now;
+                    break;
+                case LeadStages.Opportunity:
+                    leadToUpdate.LeadOpportunityStatus = true;
+                    leadToUpdate.TimeMovedToLeadOpportunity = DateTime.Now;
+                    break;
+                case LeadStages.Closure:
+                    leadToUpdate.TimeMovedToLeadClosure = DateTime.Now;
+                    leadToUpdate.LeadClosureStatus = true;
+                    break;
+                case LeadStages.Conversion:
+                    leadToUpdate.TimeConvertedToClient = DateTime.Now;
+                    leadToUpdate.LeadConversionStatus = true;
+                    break;
+            }
+
+            var updatedLead = await _leadRepo.UpdateLead(leadToUpdate);
+
+            if(updatedLead == null)
+            {
+                return new ApiResponse(500);
+            }
+
+            var leadTransferDTOs = _mapper.Map<LeadTransferDTO>(updatedLead);
+            return new ApiOkResponse(leadTransferDTOs);
+        }
     }
 }
 
