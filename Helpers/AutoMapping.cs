@@ -119,6 +119,9 @@ namespace HaloBiz.Helpers
             CreateMap<ClosureDocument, ClosureDocumentTransferDTO>();
             CreateMap<ClosureDocumentReceivingDTO, ClosureDocument>();
             CreateMap<ClosureDocument, DocumentSetupTransferDTO>();
+            CreateMap<QuoteServiceDocument, QuoteServiceDocumentTransferDTO>();
+            CreateMap<QuoteServiceDocumentReceivingDTO, QuoteServiceDocument>();
+            CreateMap<QuoteServiceDocument, DocumentSetupTransferDTO>();
         }
     }
 }
