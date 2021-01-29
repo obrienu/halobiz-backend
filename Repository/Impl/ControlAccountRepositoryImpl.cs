@@ -74,6 +74,10 @@ namespace HaloBiz.Repository.Impl
             _context.ControlAccounts.Update(controlAccount);
             return await SaveChanges();
         }
+        public IQueryable<ControlAccount> GetControlAccountQueryable()
+        {
+            return _context.ControlAccounts.AsQueryable();
+        }
         private async Task<bool> SaveChanges()
         {
            try{

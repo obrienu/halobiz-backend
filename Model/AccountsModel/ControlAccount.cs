@@ -29,12 +29,3 @@ namespace HaloBiz.Model.AccountsModel
     }
 }
 
-/*
-Caption
-Description
-Account Class Alias
-Account Class Id
-Id
-CreatedBy
-Category
-*/

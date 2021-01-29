@@ -6,6 +6,7 @@ using HaloBiz.DTOs.ApiDTOs;
 using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.ReceivingDTOs.LAMS;
 using HaloBiz.DTOs.TransferDTOs.LAMS;
+using HaloBiz.Helpers;
 using HaloBiz.MyServices.LAMS;
 using Microsoft.AspNetCore.Mvc;
 
@@ -62,6 +63,57 @@ namespace HaloBiz.Controllers.LAMS
             return Ok(lead);
         }
 
+        [HttpPut("{id}/UpdateLeadCaptured")]
+        public async Task<IActionResult> UpdateCaptureStatus(long id)
+        {
+            var response = await _leadService.UpdateLeadStagesStatus(id, LeadStages.Capture);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var lead = ((ApiOkResponse)response).Result;
+            return Ok(lead);
+        }
+
+        [HttpPut("{id}/UpdateLeadOpportunity")]
+        public async Task<IActionResult> UpdateOpportunityStatus(long id)
+        {
+            var response = await _leadService.UpdateLeadStagesStatus(id, LeadStages.Opportunity);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var lead = ((ApiOkResponse)response).Result;
+            return Ok(lead);
+        }
+
+        [HttpPut("{id}/UpdateLeadClosure")]
+        public async Task<IActionResult> UpdateClosureStatus(long id)
+        {
+            var response = await _leadService.UpdateLeadStagesStatus(id, LeadStages.Closure);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var lead = ((ApiOkResponse)response).Result;
+            return Ok(lead);
+        }
+
+        [HttpPut("{id}/UpdateLeadConversion")]
+        public async Task<IActionResult> UpdateConversionStatus(long id)
+        {
+            var response = await _leadService.UpdateLeadStagesStatus(id, LeadStages.Conversion);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var lead = ((ApiOkResponse)response).Result;
+            return Ok(lead);
+        }
+
+        [HttpPut("{id}/UpdateLeadQualification")]
+        public async Task<IActionResult> UpdateQualificationStatus(long id)
+        {
+            var response = await _leadService.UpdateLeadStagesStatus(id, LeadStages.Qualification);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var lead = ((ApiOkResponse)response).Result;
+            return Ok(lead);
+        }
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateById(long id, LeadReceivingDTO leadReceivingDTO)
         {
@@ -71,5 +123,6 @@ namespace HaloBiz.Controllers.LAMS
             var lead = ((ApiOkResponse)response).Result;
             return Ok(lead);
         }
+
     }
 }

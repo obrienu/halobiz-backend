@@ -17,10 +17,11 @@ namespace HaloBiz.DTOs.TransferDTOs.LAMS
         public string GroupName { get; set; }
         public GroupType GroupType { get; set; }
         public string LogoUrl { get; set; }
-        public bool LeadCaptureStatus { get; set; } = false;
-        public bool LeadQualificationStatus { get; set; } = false;
-        public bool LeadOpportunityStatus { get; set; } = false;
-        public bool LeadConversionStatus { get; set; } = false;
+        public bool LeadCaptureStatus { get; set; }
+        public bool LeadQualificationStatus { get; set; } 
+        public bool LeadOpportunityStatus { get; set; } 
+        public bool LeadClosureStatus { get; set; }
+        public bool LeadConversionStatus { get; set; } 
         public bool IsLeadDropped { get; set; }
         public string DropLearning { get; set; }
         public  DropReason DropReason { get; set; }

@@ -46,17 +46,3 @@ namespace HaloBiz.Model.LAMS
     }
 }
 
-/*
-Type *
-Origin *
-Industry *
-RC Number *
-Division Name *
-LogoUrl *
-PrimaryContactId *
-SecondaryContactId * 
-BranchId
-OfficeId
-Id
-LeadId
-*/
