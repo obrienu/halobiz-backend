@@ -10,10 +10,12 @@ namespace HaloBiz.Controllers.LAMS
     public class ContractController : ControllerBase
     {
         private readonly IContractService _contractService;
+        private readonly IContractServiceService _contractServiceService;
 
-        public ContractController(IContractService contractService)
+        public ContractController(IContractService contractService, IContractServiceService contractServiceService)
         {
             this._contractService = contractService;
+            this._contractServiceService = contractServiceService;
         }
 
         [HttpGet("")]
@@ -30,6 +32,16 @@ namespace HaloBiz.Controllers.LAMS
         public async Task<ActionResult> GetByCaption(string refNo)
         {
             var response = await _contractService.GetContractByReferenceNumber(refNo);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var contract = ((ApiOkResponse)response).Result;
+            return Ok(contract);
+        }
+
+        [HttpGet("{id}/ContractService")]
+        public async Task<ActionResult> GetByAllContractServiceForAContract(long id)
+        {
+            var response = await _contractServiceService.GetAllContractsServcieForAContract(id);
             if (response.StatusCode >= 400)
                 return StatusCode(response.StatusCode, response);
             var contract = ((ApiOkResponse)response).Result;

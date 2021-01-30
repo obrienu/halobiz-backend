@@ -44,7 +44,7 @@ namespace HaloBiz.Repository.Impl.LAMS
                 .FirstOrDefaultAsync(x => x.Id == Id && x.IsDeleted == false);
         }
 
-        public async Task<IEnumerable<ContractService>> FindAllContractServiceForAContract(long contractId)
+        public async Task<IEnumerable<ContractService>> FindAllContractServicesForAContract(long contractId)
         {
             return await _context.ContractServices
                 .Include(x => x.Branch)
@@ -57,7 +57,7 @@ namespace HaloBiz.Repository.Impl.LAMS
                 .Where( x => x.ContractId == contractId && x.IsDeleted == false)
                 .ToListAsync();
         }
-        public async Task<ContractService> FindContractServiceByReferenceNumber(string refNo)
+        public async Task<IEnumerable<ContractService>> FindContractServicesByReferenceNumber(string refNo)
         {
             return await _context.ContractServices
                 .Include(x => x.Branch)
@@ -67,7 +67,8 @@ namespace HaloBiz.Repository.Impl.LAMS
                 .Include(x => x.Service)
                 .Include(x => x.SBUToContractServiceProportions)
                 .Include(x => x.ClosureDocuments)
-                .FirstOrDefaultAsync(x => x.ReferenceNo == refNo && x.IsDeleted == false);
+                .Where(x => x.ReferenceNo == refNo && x.IsDeleted == false)
+                .ToListAsync();
         }
 
         public async Task<ContractService> UpdateContractService(ContractService entity)

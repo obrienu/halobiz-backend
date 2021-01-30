@@ -8,8 +8,8 @@ namespace HaloBiz.Repository.LAMS
     {
         Task<ContractService> SaveContractService(ContractService entity);
         Task<ContractService> FindContractServiceById(long Id);
-        Task<IEnumerable<ContractService>> FindAllContractServiceForAContract(long contractId);
-        Task<ContractService> FindContractServiceByReferenceNumber(string refNo);
+        Task<IEnumerable<ContractService>> FindAllContractServicesForAContract(long contractId);
+        Task<IEnumerable<ContractService>> FindContractServicesByReferenceNumber(string refNo);
 
         Task<ContractService> UpdateContractService(ContractService entity);
 

@@ -129,6 +129,7 @@ namespace HaloBiz
             services.AddScoped<IClosureDocumentService, ClosureDocumentServiceImpl>();
             services.AddScoped<IQuoteServiceDocumentService, QuoteServiceDocumentServiceImpl>();
             services.AddScoped<IContractService, ContractServiceImpl>();
+            services.AddScoped<IContractServiceService, ContractServiceServiceImpl>();
 
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
