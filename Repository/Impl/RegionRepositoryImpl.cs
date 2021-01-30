@@ -13,7 +13,6 @@ namespace HaloBiz.Repository.Impl
     {
         private readonly DataContext _context;
         private readonly ILogger<RegionRepositoryImpl> _logger;
-        private readonly IServiceTaskDeliverableRepository _serviceTaskDeliverableRepository;
         public RegionRepositoryImpl(DataContext context, ILogger<RegionRepositoryImpl> logger)
         {
             this._logger = logger;
@@ -33,24 +32,18 @@ namespace HaloBiz.Repository.Impl
         public async Task<Region> FindRegionById(long Id)
         {
             return await _context.Regions
-                .Include(region => region.Branch)
-                .Include(region => region.Head)
                 .FirstOrDefaultAsync( region => region.Id == Id && region.IsDeleted == false);
         }
 
         public async Task<Region> FindRegionByName(string name)
         {
             return await _context.Regions
-                .Include(region => region.Branch)
-                .Include(region => region.Head)
                 .FirstOrDefaultAsync( region => region.Name == name && region.IsDeleted == false);
         }
 
         public async Task<IEnumerable<Region>> FindAllRegions()
         {
             return await _context.Regions.Where(region => region.IsDeleted == false)
-                .Include(region => region.Branch)
-                .Include(region => region.Head)
                 .ToListAsync();
         }
 
