@@ -279,7 +279,7 @@ namespace HaloBiz.MyServices.Impl
                     return new ApiOkResponse(serviceTransferDTO);
 
                 }
-                catch (System.Exception e)
+                catch (System.Exception)
                 {
                     transaction.Rollback();
                     return new ApiResponse(500);
