@@ -125,6 +125,8 @@ namespace HaloBiz.Helpers
             CreateMap<QuoteServiceDocument, DocumentSetupTransferDTO>();
             CreateMap<ContractService, ContractServiceTransferDTO>();
             CreateMap<Contract, ContractTransferDTO>();
+            CreateMap<RegionReceivingDTO, Region>();
+            CreateMap<Region, RegionTransferDTO>();
         }
     }
 }
