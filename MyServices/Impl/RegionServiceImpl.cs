@@ -15,7 +15,6 @@ namespace HaloBiz.MyServices.Impl
     {
         private readonly IModificationHistoryRepository _historyRepo;
         private readonly IRegionRepository _regionRepo;
-        private readonly IServiceTaskDeliverableRepository _serviceTaskDeliverableRepo;
         private readonly IMapper _mapper;
 
         public RegionServiceImpl(IModificationHistoryRepository historyRepo, IMapper mapper, IRegionRepository _regionRepo)
