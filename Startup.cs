@@ -173,6 +173,7 @@ namespace HaloBiz
             services.AddScoped<IQuoteRepository, QuoteRepositoryImpl>();
             services.AddScoped<IQuoteServiceRepository, QuoteServiceRepositoryImpl>();
             services.AddScoped<ILeadDivisionRepository, LeadDivisionRepositoryImpl>();
+            services.AddScoped<IContractRepository, ContractRepositoryImpl>();
 
 
 

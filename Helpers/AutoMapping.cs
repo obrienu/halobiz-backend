@@ -116,6 +116,7 @@ namespace HaloBiz.Helpers
             CreateMap<QuoteService, QuoteServiceTransferDTO>();
             CreateMap<LeadDivisionReceivingDTO, LeadDivision>();
             CreateMap<LeadDivision, LeadDivisionTransferDTO>();
+            CreateMap<Contact, ContactTransferDTO>();
         }
     }
 }
