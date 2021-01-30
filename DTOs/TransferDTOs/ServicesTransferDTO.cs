@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using HaloBiz.Model.AccountsModel;
 using HaloBiz.Model.ManyToManyRelationship;
@@ -22,6 +23,7 @@ namespace HaloBiz.DTOs.TransferDTOs
         public TargetTransferDTO Target { get; set; }
         public AccountTransferDTO Account { get; set; }
         public ServiceTypeTransferDTO ServiceType { get; set; }
+        public DateTime CreatedAt { get; set; }
         public IList<RequiredServiceDocumentTransferDTO> RequiredServiceDocument { get; set; }
         public IList<RequredServiceQualificationElementTransferDTO> RequiredServiceFields { get; set; }
        
