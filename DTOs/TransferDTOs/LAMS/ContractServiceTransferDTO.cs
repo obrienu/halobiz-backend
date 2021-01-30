@@ -4,7 +4,7 @@ using HaloBiz.Helpers;
 using HaloBiz.Model;
 using HaloBiz.Model.LAMS;
 
-namespace HaloBiz.DTOs.TransferDTOs
+namespace HaloBiz.DTOs.TransferDTOs.LAMS
 {
     public class ContractServiceTransferDTO
     {
