@@ -9,6 +9,7 @@ namespace HaloBiz.DTOs.TransferDTOs.LAMS
     public class ContractServiceTransferDTO
     {
         public long Id { get; set; }
+        public string ReferenceNo { get; set; }
         public double UnitPrice {get ; set; }
         public long Quantity {get ; set; }
         public double Discount {get ; set; }
@@ -43,8 +44,8 @@ namespace HaloBiz.DTOs.TransferDTOs.LAMS
         public DateTime? TentativeDateOfSiteVisit {get ; set; }
         public long ServiceId { get; set; }
         public Services Service { get; set; }
-        public long QuoteId { get; set; }
-        public virtual Quote Quote { get; set; }
+        public long ContractId { get; set; }
+        public virtual Contract Contract { get; set; }
         public long OfficeId { get; set; }
         public virtual Office Office { get; set; }
         public long BranchId { get; set; }
