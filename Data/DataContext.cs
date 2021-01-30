@@ -64,6 +64,8 @@ namespace HaloBiz.Data
     public DbSet<Region> Regions {get; set; }
     public DbSet<ControlAccount> ControlAccounts {get; set; }
     public DbSet<Zone> Zones {get; set; }   
+    public DbSet<Contract> Contracts {get; set; }   
+    public DbSet<ContractService> ContractServices {get; set; }   
 
     protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -471,6 +473,22 @@ namespace HaloBiz.Data
                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Entity<ControlAccount>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<Contract>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<Contract>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ContractService>()
+               .Property(p => p.UpdatedAt)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Entity<ContractService>()
                 .Property(p => p.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 

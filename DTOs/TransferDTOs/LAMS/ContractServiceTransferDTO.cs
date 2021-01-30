@@ -1,30 +1,27 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using HaloBiz.Helpers;
+using HaloBiz.Model;
+using HaloBiz.Model.LAMS;
 
-namespace HaloBiz.Model.LAMS
+namespace HaloBiz.DTOs.TransferDTOs.LAMS
 {
-    public class QuoteService
+    public class ContractServiceTransferDTO
     {
-        [Key]
         public long Id { get; set; }
-        [Required]
-        public string ReferenceNumber { get; set; }
-        public double? UnitPrice {get ; set; }
+        public string ReferenceNo { get; set; }
+        public double UnitPrice {get ; set; }
         public long Quantity {get ; set; }
         public double Discount {get ; set; }
-        public double? VAT {get ; set; }
-        public double? BillableAmount {get ; set; }
-        public double? Budget {get ; set; }
-        public DateTime? ContractStartDate {get ; set; }
-        public DateTime? ContractEndDate {get ; set; }
-        public TimeCycle? PaymentCycle {get ; set; }
+        public double VAT {get ; set; }
+        public double BillableAmount {get ; set; }
+        public double Budget {get ; set; }
+        public DateTime ContractStartDate {get ; set; }
+        public DateTime ContractEndDate {get ; set; }
+        public TimeCycle PaymentCycle {get ; set; }
         public long? PaymentCycleInDays {get ; set; }
         public DateTime? FirstInvoiceSendDate {get ; set; }
         public TimeCycle? InvoicingInterval  {get ; set; }
-        [StringLength(2000)]
         public string ProblemStatement {get ; set; }
         public DateTime? ActivationDate {get ; set; }
         public DateTime? FulfillmentStartDate {get ; set; }
@@ -32,15 +29,10 @@ namespace HaloBiz.Model.LAMS
         public DateTime? TentativeDateForSiteSurvey {get ; set; }
         public DateTime? PickupDateTime {get ; set; }
         public DateTime? DropoffDateTime {get ; set; }
-        [StringLength(1000)]
         public string PickupLocation {get ; set; }
-        [StringLength(1000)]
         public string Dropofflocation {get ; set; }
-        [StringLength(200)]
         public string BeneficiaryName {get ; set; }
-        [StringLength(200)]
         public string BeneficiaryIdentificationType {get ; set; }
-        [StringLength(200)]
         public string BenificiaryIdentificationNumber {get ; set; }
 
         public DateTime? TentativeProofOfConceptStartDate {get ; set; }
@@ -50,25 +42,20 @@ namespace HaloBiz.Model.LAMS
         public long? ProgramDuration {get ; set; }
         public DateTime? ProgramEndDate {get ; set; }
         public DateTime? TentativeDateOfSiteVisit {get ; set; }
-        public bool IsConvertedToContractService { get; set; } =false;
         public long ServiceId { get; set; }
         public Services Service { get; set; }
-        public long QuoteId { get; set; }
-        public Quote Quote { get; set; }
+        public long ContractId { get; set; }
+        public virtual Contract Contract { get; set; }
         public long OfficeId { get; set; }
         public virtual Office Office { get; set; }
         public long BranchId { get; set; }
-        public Branch Branch { get; set; }
-        public IEnumerable<ContractService> ContractServices { get; set; }
-        public IEnumerable<QuoteServiceDocument> QuoteServiceDocuments { get; set; }
-        public IEnumerable<SBUToQuoteServiceProportion> SBUToQuoteServiceProportions { get; set; }
+        public virtual Branch Branch { get; set; }
+        public long QuoteServiceId { get; set; }
+        public virtual QuoteService QuoteService { get; set; }
+        public IEnumerable<ClosureDocument> ClosureDocuments { get; set; }
+        public IEnumerable<SBUToContractServiceProportion> SBUToContractServiceProportions { get; set; }
         public VersionType Version { get; set; } = VersionType.Latest;
         public long CreatedById { get; set; }
         public virtual UserProfile CreatedBy { get; set; }
-        public bool IsDeleted { get; set; } = false;
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime CreatedAt { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime UpdatedAt { get; set; }
     }
 }
