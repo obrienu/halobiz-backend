@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using HaloBiz.DTOs.ApiDTOs;
-using HaloBiz.DTOs.TransferDTOs;
+using HaloBiz.DTOs.TransferDTOs.LAMS;
 using HaloBiz.MyServices.LAMS;
 using HaloBiz.Repository;
 using Microsoft.AspNetCore.Http;

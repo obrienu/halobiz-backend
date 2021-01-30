@@ -13,8 +13,7 @@ namespace HaloBiz.Model.LAMS
         [StringLength(50)]
         public string ReferenceNo { get; set; }
         public long CustomerDivisionId { get; set; }
-        public CustomerDivision CustomerDivisions { get; set; }
-        public IEnumerable<QuoteService> QuoteServices { get; set; }
+        public CustomerDivision CustomerDivision { get; set; }
         public long QuoteId { get; set; }
         public virtual Quote Quote { get; set; }
         public IEnumerable<ContractService> ContractServices { get; set; }

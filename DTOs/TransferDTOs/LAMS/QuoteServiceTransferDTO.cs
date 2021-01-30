@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using HaloBiz.Helpers;
 using HaloBiz.Model;
 using HaloBiz.Model.LAMS;
@@ -9,6 +10,8 @@ namespace HaloBiz.DTOs.TransferDTOs.LAMS
     public class QuoteServiceTransferDTO
     {
         public long Id { get; set; }
+        [Required]
+        public string ReferenceNumber { get; set; }
         public double? UnitPrice { get; set; }
         public long Quantity { get; set; }
         public double Discount { get; set; }

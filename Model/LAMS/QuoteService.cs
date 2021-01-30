@@ -10,6 +10,8 @@ namespace HaloBiz.Model.LAMS
     {
         [Key]
         public long Id { get; set; }
+        [Required]
+        public string ReferenceNumber { get; set; }
         public double? UnitPrice {get ; set; }
         public long Quantity {get ; set; }
         public double Discount {get ; set; }

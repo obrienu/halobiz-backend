@@ -21,11 +21,11 @@ namespace HaloBiz.Repository.Impl.LAMS
 
         public async Task<Contract> SaveContract(Contract entity)
         {
-            var ContractEntity = await _context.Contracts.AddAsync(entity);
+            var contractEntity = await _context.Contracts.AddAsync(entity);
 
             if (await SaveChanges())
             {
-                return ContractEntity.Entity;
+                return contractEntity.Entity;
             }
             return null;            
         }
@@ -34,7 +34,7 @@ namespace HaloBiz.Repository.Impl.LAMS
         {
             return await _context.Contracts
                 .Include(x => x.ContractServices)
-                .Include(x => x.CustomerDivisions)
+                .Include(x => x.CustomerDivision)
                 .FirstOrDefaultAsync(x => x.Id == Id && x.IsDeleted == false);
         }
 
@@ -42,7 +42,7 @@ namespace HaloBiz.Repository.Impl.LAMS
         {
             return await _context.Contracts
                  .Include(x => x.ContractServices)
-                .Include(x => x.CustomerDivisions)
+                .Include(x => x.CustomerDivision)
                 .Where(entity => entity.IsDeleted == false)
                 .OrderByDescending(entity => entity.ReferenceNo)
                 .ToListAsync();
@@ -51,7 +51,7 @@ namespace HaloBiz.Repository.Impl.LAMS
         {
             return await _context.Contracts
                 .Include(x => x.ContractServices)
-                .Include(x => x.CustomerDivisions)
+                .Include(x => x.CustomerDivision)
                 .FirstOrDefaultAsync(x => x.ReferenceNo == refNo && x.IsDeleted == false);
         }
 
