@@ -31,25 +31,50 @@ namespace HaloBiz.Repository.Impl
 
         public async Task<ServiceCategory> FindServiceCategoryById(long Id)
         {
-            return await _context.ServiceCategories
+            var serviceCategory = await _context.ServiceCategories
                 .Include(serviceCategory => serviceCategory.ServiceGroup)
-                .Include(serviceCategory => serviceCategory.Services
-                    .Where(service => service.IsDeleted == false))
                 .Include(serviceCategory => serviceCategory.ServiceCategoryTasks
                     .Where(serviceCategoryTask => serviceCategoryTask.IsDeleted == false))                
                 .FirstOrDefaultAsync( category => category.Id == Id && category.IsDeleted == false);
+
+            if(serviceCategory != null){
+                serviceCategory.Services = await _context.Services
+                .Include(service => service.Target)
+                .Include(service => service.Account)
+                .Include(service => service.ServiceType)
+                .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
+                    .ThenInclude(row => row.RequiredServiceDocument)
+                .Include(service => service.RequredServiceQualificationElement.Where(row => row.IsDeleted == false))
+                .ThenInclude(row => row.RequredServiceQualificationElement)
+                .Where( service => service.ServiceCategoryId == Id && service.IsDeleted == false)
+                .ToListAsync();
+            }
+
+            return serviceCategory;
         }
 
         public async Task<ServiceCategory> FindServiceCategoryByName(string name)
         {
-            return await _context.ServiceCategories
+            var serviceCategory = await _context.ServiceCategories
                 .Include(serviceCategory => serviceCategory.ServiceGroup)
-                .Include(category => category.Services
-                    .Where(service => service.IsDeleted == false))
                 .Include(serviceCategory => serviceCategory.ServiceCategoryTasks
-                    .Where(serviceCategoryTask => serviceCategoryTask.IsDeleted == false))   
-                .FirstOrDefaultAsync(category => category.Name == name && category.IsDeleted == false);
-        }
+                    .Where(serviceCategoryTask => serviceCategoryTask.IsDeleted == false))                
+                .FirstOrDefaultAsync( category => category.Name == name && category.IsDeleted == false);
+
+                if(serviceCategory != null){
+                    serviceCategory.Services = await _context.Services
+                    .Include(service => service.Target)
+                    .Include(service => service.Account)
+                    .Include(service => service.ServiceType)
+                    .Include(service => service.RequiredServiceDocument.Where(row => row.IsDeleted == false))
+                        .ThenInclude(row => row.RequiredServiceDocument)
+                    .Include(service => service.RequredServiceQualificationElement.Where(row => row.IsDeleted == false))
+                    .ThenInclude(row => row.RequredServiceQualificationElement)
+                    .Where( service => service.ServiceCategoryId == serviceCategory.Id && service.IsDeleted == false)
+                    .ToListAsync();
+                }
+
+                return serviceCategory;        }
 
         public async Task<IEnumerable<ServiceCategory>> FindAllServiceCategories()
         {
