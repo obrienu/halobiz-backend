@@ -65,9 +65,11 @@ namespace HaloBiz.Data
     public DbSet<ControlAccount> ControlAccounts {get; set; }
     public DbSet<Zone> Zones {get; set; }   
     public DbSet<Contract> Contracts {get; set; }   
-    public DbSet<ContractService> ContractServices {get; set; }   
+    public DbSet<ContractService> ContractServices {get; set; }
+    public DbSet<NegotiationDocument> NegotiationDocuments { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder builder)
+
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             //Defines many to many relationship between SBU and AccountMaster
             builder.Entity<SBUAccountMaster>()
