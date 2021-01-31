@@ -103,6 +103,39 @@ namespace HaloBiz.MyServices.Impl.LAMS
             return new ApiOkResponse(leadTransferDTOs);
         }
 
+        public async Task<ApiResponse> DropLead(HttpContext context, long id, DropLeadReceivingDTO dropLeadReceivingDTO)
+        {
+
+            var leadToUpdate = await _leadRepo.FindLeadById(id);
+            if (leadToUpdate == null)
+            {
+                return new ApiResponse(404);
+            }
+            
+            leadToUpdate.DropReasonId = dropLeadReceivingDTO.DropReasonId;
+            leadToUpdate.DropLearning = dropLeadReceivingDTO.DropLearning;
+            leadToUpdate.IsLeadDropped = true;
+            var updatedLead = await _leadRepo.UpdateLead(leadToUpdate);
+
+            if(updatedLead == null)
+            {
+                return new ApiResponse(500);
+            }
+
+
+            ModificationHistory history = new ModificationHistory()
+            {
+                ModelChanged = "Lead",
+                ChangeSummary = $"this lead was dropped by user with id: {context.GetLoggedInUserId()}",
+                ChangedById = context.GetLoggedInUserId(),
+                ModifiedModelId = updatedLead.Id
+            };
+
+            await _historyRepo.SaveHistory(history);
+
+            var leadTransferDTOs = _mapper.Map<LeadTransferDTO>(updatedLead);
+            return new ApiOkResponse(leadTransferDTOs);
+        }
         public async Task<ApiResponse> UpdateLead(HttpContext context, long id, LeadReceivingDTO leadReceivingDTO)
         {
 

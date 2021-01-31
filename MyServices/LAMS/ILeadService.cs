@@ -12,6 +12,7 @@ namespace HaloBiz.MyServices.LAMS
         Task<ApiResponse> AddLead(HttpContext context, LeadReceivingDTO leadReceivingDTO);
         Task<ApiResponse> GetAllLead();
         Task<ApiResponse> GetLeadById(long id);
+        Task<ApiResponse> DropLead(HttpContext context, long id, DropLeadReceivingDTO dropLeadReceivingDTO);
         Task<ApiResponse> GetLeadByReferenceNumber(string refNumber);
         Task<ApiResponse> UpdateLead(HttpContext context, long id, LeadReceivingDTO leadReceivingDTO);
         Task<ApiResponse> UpdateLeadStagesStatus(long leadId, LeadStages stage);
