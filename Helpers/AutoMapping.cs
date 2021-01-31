@@ -131,6 +131,9 @@ namespace HaloBiz.Helpers
             CreateMap<Region, RegionTransferDTO>();
             CreateMap<ZoneReceivingDTO, Zone>();
             CreateMap<Zone, ZoneTransferDTO>();
+            CreateMap<NegotiationDocument, NegotiationDocumentTransferDTO>();
+            CreateMap<NegotiationDocumentReceivingDTO, NegotiationDocument>();
+            CreateMap<NegotiationDocument, DocumentSetupTransferDTO>();
         }
     }
 }

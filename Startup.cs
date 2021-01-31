@@ -133,6 +133,8 @@ namespace HaloBiz
             services.AddScoped<ISBUToQuoteServiceProportionsService, SBUToQuoteServiceProportionsServiceImpl>();
             services.AddScoped<IRegionService, RegionServiceImpl>();
             services.AddScoped<IZoneService, ZoneServiceImpl>();
+            services.AddScoped<INegotiationDocumentService, NegotiationDocumentServiceImpl>();
+
 
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
@@ -187,6 +189,7 @@ namespace HaloBiz
             services.AddScoped<ISBUToQuoteServiceProportionRepository, SBUToQuoteServiceProportionRepositoryImpl>();
             services.AddScoped<IRegionRepository, RegionRepositoryImpl>();
             services.AddScoped<IZoneRepository, ZoneRepositoryImpl>();
+            services.AddScoped<INegotiationDocumentRepository, NegotiationDocumentRepositoryImpl>();
 
 
 
