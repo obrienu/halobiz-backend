@@ -93,6 +93,16 @@ namespace HaloBiz.Controllers.LAMS
             return Ok(lead);
         }
 
+        [HttpPut("{id}/DropLead")]
+        public async Task<IActionResult> DropLead(long id, DropLeadReceivingDTO dropReasonDto)
+        {
+            var response = await _leadService.DropLead(HttpContext, id, dropReasonDto);
+            if (response.StatusCode >= 400)
+                return StatusCode(response.StatusCode, response);
+            var lead = ((ApiOkResponse)response).Result;
+            return Ok(lead);
+        }
+
         [HttpPut("{id}/UpdateLeadConversion")]
         public async Task<IActionResult> UpdateConversionStatus(long id)
         {

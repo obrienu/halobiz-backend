@@ -16,6 +16,8 @@ namespace HaloBiz.Model.LAMS
         [Required]
         public long StrategicBusinessUnitId { get; set; }
         public StrategicBusinessUnit StrategicBusinessUnit { get; set; }
+        public UserProfile UserInvolved { get; set; }        
+        public long UserInvolvedId { get; set; }        
         public long CreatedById { get; set; }
         public virtual UserProfile CreatedBy { get; set; }
         public bool IsDeleted { get; set; } = false;

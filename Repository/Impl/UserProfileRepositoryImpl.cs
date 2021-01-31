@@ -32,18 +32,22 @@ namespace HaloBiz.Repository.Impl
         public async Task<UserProfile> FindUserById(long Id)
         {
             return await _context.UserProfiles
+                .Include(x => x.SBU)
                 .FirstOrDefaultAsync( user => user.Id == Id && user.IsDeleted == false);
         }
 
         public async Task<UserProfile> FindUserByEmail(string email)
         {
             return await _context.UserProfiles
+                .Include(x => x.SBU)
                 .FirstOrDefaultAsync( user => user.Email == email && user.IsDeleted == false);
         }
 
         public async Task<IEnumerable<UserProfile>> FindAllUserProfile()
         {
-            return await _context.UserProfiles.Where(user => user.IsDeleted == false)
+            return await _context.UserProfiles
+                .Include(x => x.SBU)
+                .Where(user => user.IsDeleted == false)
                 .OrderBy(user => user.Email)
                 .ToListAsync();
         }

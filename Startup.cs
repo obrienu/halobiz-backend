@@ -130,6 +130,7 @@ namespace HaloBiz
             services.AddScoped<IQuoteServiceDocumentService, QuoteServiceDocumentServiceImpl>();
             services.AddScoped<IContractService, ContractServiceImpl>();
             services.AddScoped<IContractServiceService, ContractServiceServiceImpl>();
+            services.AddScoped<ISBUToQuoteServiceProportionsService, SBUToQuoteServiceProportionsServiceImpl>();
 
             //repositories
             services.AddScoped<IStateRepository, StateRepositoryImpl>();
@@ -181,6 +182,7 @@ namespace HaloBiz
             services.AddScoped<IClosureDocumentRepository, ClosureDocumentRepositoryImpl>();
             services.AddScoped<IQuoteServiceDocumentRepository, QuoteServiceDocumentRepositoryImpl>();
             services.AddScoped<IContractServiceRepository, ContractServiceRepositoryImpl>();
+            services.AddScoped<ISBUToQuoteServiceProportionRepository, SBUToQuoteServiceProportionRepositoryImpl>();
 
 
 
