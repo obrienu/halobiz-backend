@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using HaloBiz.Data;
 using HaloBiz.DTOs.ApiDTOs;
 using HaloBiz.DTOs.ReceivingDTOs;
 using HaloBiz.DTOs.TransferDTOs.LAMS;
@@ -22,26 +23,71 @@ namespace HaloBiz.MyServices.Impl.LAMS
         private readonly ILogger<QuoteServiceImpl> _logger;
         private readonly IModificationHistoryRepository _historyRepo;
         private readonly IQuoteRepository _quoteRepo;
+        private readonly IQuoteServiceRepository _quoteServiceRepo;
         private readonly IMapper _mapper;
+        private readonly DataContext _context;
 
-        public QuoteServiceImpl(IModificationHistoryRepository historyRepo, IQuoteRepository quoteRepo, ILogger<QuoteServiceImpl> logger, IMapper mapper)
+        public QuoteServiceImpl(IModificationHistoryRepository historyRepo, 
+            IQuoteRepository quoteRepo, 
+            IQuoteServiceRepository quoteServiceRepo, 
+            ILogger<QuoteServiceImpl> logger, 
+            IMapper mapper,
+            DataContext context)
         {
             this._mapper = mapper;
             this._historyRepo = historyRepo;
             this._quoteRepo = quoteRepo;
+            this._quoteServiceRepo = quoteServiceRepo;
             this._logger = logger;
+            this._context = context;
         }
 
         public async Task<ApiResponse> AddQuote(HttpContext context, QuoteReceivingDTO quoteReceivingDTO)
         {
-            var quote = _mapper.Map<Quote>(quoteReceivingDTO);
-            quote.CreatedById = context.GetLoggedInUserId();
-            var savedQuote = await _quoteRepo.SaveQuote(quote);
-            if (savedQuote == null)
+            Quote savedQuote = null;
+
+            using (var transaction = await _context.Database.BeginTransactionAsync())
             {
-                return new ApiResponse(500);
+                try
+                {
+                    var createdById = context.GetLoggedInUserId();
+
+                    var quote = _mapper.Map<Quote>(quoteReceivingDTO);
+                    var quoteServices = quote.QuoteServices;
+
+                    quote.QuoteServices = null;
+                    quote.CreatedById = createdById;
+                    savedQuote = await _quoteRepo.SaveQuote(quote);
+
+                    if (savedQuote == null)
+                    {
+                        return new ApiResponse(500);
+                    }
+
+                    foreach (var item in quoteServices)
+                    {
+                        item.QuoteId = savedQuote.Id;
+                        item.CreatedById = createdById;
+                    }
+
+                    var savedSuccessfully = await _quoteServiceRepo.SaveQuoteServiceRange(quoteServices);
+                    if (!savedSuccessfully)
+                    {
+                        return new ApiResponse(500);
+                    }
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e.Message);
+                    await transaction.RollbackAsync();
+                    return new ApiResponse(500);
+                }                   
             }
-            var quoteTransferDTO = _mapper.Map<QuoteTransferDTO>(savedQuote);
+
+            var quoteFromDatabase = await _quoteRepo.FindQuoteById(savedQuote.Id);          
+            var quoteTransferDTO = _mapper.Map<QuoteTransferDTO>(quoteFromDatabase);
             return new ApiOkResponse(quoteTransferDTO);
         }
 

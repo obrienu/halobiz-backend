@@ -30,6 +30,12 @@ namespace HaloBiz.Repository.Impl.LAMS
             return null;
         }
 
+        public async Task<bool> SaveQuoteServiceRange(IEnumerable<QuoteService> quoteServices)
+        {
+            await _context.QuoteServices.AddRangeAsync(quoteServices);
+            return await SaveChanges();
+        }
+
         public async Task<QuoteService> FindQuoteServiceById(long Id)
         {
             return await _context.QuoteServices
