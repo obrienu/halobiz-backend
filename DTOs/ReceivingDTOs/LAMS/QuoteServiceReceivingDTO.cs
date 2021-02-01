@@ -48,7 +48,6 @@ namespace HaloBiz.DTOs.ReceivingDTOs
         public DateTime? TentativeDateOfSiteVisit { get; set; }
         public bool IsConvertedToContractService { get; set; } = false;
         public long ServiceId { get; set; }
-        public long QuoteId { get; set; }
         public long OfficeId { get; set; }
         public long BranchId { get; set; }
         public VersionType Version { get; set; } = VersionType.Latest;

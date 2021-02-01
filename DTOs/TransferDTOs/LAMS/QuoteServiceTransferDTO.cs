@@ -53,7 +53,6 @@ namespace HaloBiz.DTOs.TransferDTOs.LAMS
         public long ServiceId { get; set; }
         public Services Service { get; set; }
         public long QuoteId { get; set; }
-        public Quote Quote { get; set; }
         public long OfficeId { get; set; }
         public virtual Office Office { get; set; }
         public long BranchId { get; set; }

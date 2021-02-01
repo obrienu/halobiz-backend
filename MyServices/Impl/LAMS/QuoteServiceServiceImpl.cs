@@ -110,8 +110,7 @@ namespace HaloBiz.MyServices.Impl.LAMS
             quoteServiceToUpdate.TentativeDateOfSiteVisit = quoteServiceReceivingDTO.TentativeDateOfSiteVisit;
             quoteServiceToUpdate.IsConvertedToContractService = quoteServiceReceivingDTO.IsConvertedToContractService;
 
-            quoteServiceToUpdate.ServiceId = quoteServiceReceivingDTO.ServiceId;
-            quoteServiceToUpdate.QuoteId = quoteServiceReceivingDTO.QuoteId;
+            quoteServiceToUpdate.ServiceId = quoteServiceReceivingDTO.ServiceId;            
             quoteServiceToUpdate.OfficeId = quoteServiceReceivingDTO.OfficeId;
             quoteServiceToUpdate.BranchId = quoteServiceReceivingDTO.BranchId;
             quoteServiceToUpdate.Version = quoteServiceReceivingDTO.Version;

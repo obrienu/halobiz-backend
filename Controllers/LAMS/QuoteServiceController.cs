@@ -42,16 +42,6 @@ namespace Controllers.Controllers
             return Ok(quoteService);
         }
 
-        [HttpPost("")]
-        public async Task<ActionResult> AddNewQuoteService(QuoteServiceReceivingDTO quoteServiceReceiving)
-        {
-            var response = await _quoteServiceService.AddQuoteService(HttpContext, quoteServiceReceiving);
-            if (response.StatusCode >= 400)
-                return StatusCode(response.StatusCode, response);
-            var quoteService = ((ApiOkResponse)response).Result;
-            return Ok(quoteService);
-        }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateById(long id, QuoteServiceReceivingDTO quoteServiceReceivingDTO)
         {
