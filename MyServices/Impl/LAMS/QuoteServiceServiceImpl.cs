@@ -112,8 +112,6 @@ namespace HaloBiz.MyServices.Impl.LAMS
 
             quoteServiceToUpdate.ServiceId = quoteServiceReceivingDTO.ServiceId;
             quoteServiceToUpdate.QuoteId = quoteServiceReceivingDTO.QuoteId;
-            quoteServiceToUpdate.OfficeId = quoteServiceReceivingDTO.OfficeId;
-            quoteServiceToUpdate.BranchId = quoteServiceReceivingDTO.BranchId;
             quoteServiceToUpdate.Version = quoteServiceReceivingDTO.Version;
 
             var updatedQuoteService = await _quoteServiceRepo.UpdateQuoteService(quoteServiceToUpdate);
