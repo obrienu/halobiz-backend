@@ -24,13 +24,13 @@ namespace HaloBiz.Model.LAMS
         public string Email { get; set; }
         [StringLength(1000)]
         public string LogoUrl { get; set; }
-        public long PrimaryContactId { get; set; }
+        public long? PrimaryContactId { get; set; }
         public virtual LeadDivisionContact PrimaryContact { get; set; }
         public long? SecondaryContactId { get; set; }
         public LeadDivisionContact SecondaryContact { get; set; }
-        public long BranchId { get; set; }
+        public long? BranchId { get; set; }
         public virtual Branch Branch { get; set; }
-        public long OfficeId { get; set; }
+        public long? OfficeId { get; set; }
         public virtual Office Office { get; set; }
         public long LeadId { get; set; }
         public virtual Lead Lead { get; set; }
