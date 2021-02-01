@@ -55,9 +55,9 @@ namespace HaloBiz.Model.LAMS
         public Services Service { get; set; }
         public long QuoteId { get; set; }
         public Quote Quote { get; set; }
-        public long OfficeId { get; set; }
+        public long? OfficeId { get; set; }
         public virtual Office Office { get; set; }
-        public long BranchId { get; set; }
+        public long? BranchId { get; set; }
         public Branch Branch { get; set; }
         public IEnumerable<ContractService> ContractServices { get; set; }
         public IEnumerable<QuoteServiceDocument> QuoteServiceDocuments { get; set; }

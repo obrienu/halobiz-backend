@@ -33,24 +33,48 @@ namespace HaloBiz.Repository.Impl.LAMS
         public async Task<LeadDivision> FindLeadDivisionById(long Id)
         {
             return await _context.LeadDivisions
+                .Include(x => x.Branch)
+                .Include(x => x.Office)
+                .Include(x => x.PrimaryContact)
+                .Include(x => x.SecondaryContact)
+                .Include(x => x.LeadDivisionKeyPersons)
+                .Include(x => x.LeadOrigin)
                 .FirstOrDefaultAsync( leadDivision => leadDivision.Id == Id && leadDivision.IsDeleted == false);
         }
 
         public async Task<LeadDivision> FindLeadDivisionByName(string name)
         {
             return await _context.LeadDivisions
+                .Include(x => x.Branch)
+                .Include(x => x.Office)
+                .Include(x => x.PrimaryContact)
+                .Include(x => x.SecondaryContact)
+                .Include(x => x.LeadDivisionKeyPersons)
+                .Include(x => x.LeadOrigin)
                 .FirstOrDefaultAsync( leadDivision => leadDivision.DivisionName == name && leadDivision.IsDeleted == false);
         }
 
         public async Task<LeadDivision> FindLeadDivisionByRCNumber(string rcNumber)
         {
             return await _context.LeadDivisions
+                .Include(x => x.Branch)
+                .Include(x => x.Office)
+                .Include(x => x.PrimaryContact)
+                .Include(x => x.SecondaryContact)
+                .Include(x => x.LeadDivisionKeyPersons)
+                .Include(x => x.LeadOrigin)
                 .FirstOrDefaultAsync(leadDivision => leadDivision.RCNumber == rcNumber && leadDivision.IsDeleted == false);
         }
 
         public async Task<IEnumerable<LeadDivision>> FindAllLeadDivision()
         {
             return await _context.LeadDivisions
+                .Include(x => x.Branch)
+                .Include(x => x.Office)
+                .Include(x => x.PrimaryContact)
+                .Include(x => x.SecondaryContact)
+                .Include(x => x.LeadDivisionKeyPersons)
+                .Include(x => x.LeadOrigin)
                 .Where(leadDivision => leadDivision.IsDeleted == false)
                 .OrderBy(leadDivision => leadDivision.CreatedAt)
                 .ToListAsync();

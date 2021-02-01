@@ -106,10 +106,10 @@ namespace HaloBiz.MyServices.Impl.LAMS
             leadDivisionToUpdate.PhoneNumber = leadDivisionReceivingDTO.PhoneNumber;
             leadDivisionToUpdate.Email = leadDivisionReceivingDTO.Email;
             leadDivisionToUpdate.LogoUrl = leadDivisionReceivingDTO.LogoUrl;
-            leadDivisionToUpdate.PrimaryContactId = leadDivisionReceivingDTO.PrimaryContactId;
+            leadDivisionToUpdate.PrimaryContactId = (Int64) leadDivisionReceivingDTO.PrimaryContactId;
             leadDivisionToUpdate.SecondaryContactId = leadDivisionReceivingDTO.SecondaryContactId;
-            leadDivisionToUpdate.BranchId = leadDivisionReceivingDTO.BranchId;
-            leadDivisionToUpdate.OfficeId = leadDivisionReceivingDTO.OfficeId;
+            leadDivisionToUpdate.BranchId = (Int64) leadDivisionReceivingDTO.BranchId;
+            leadDivisionToUpdate.OfficeId = (Int64) leadDivisionReceivingDTO.OfficeId;
             leadDivisionToUpdate.LeadId = leadDivisionReceivingDTO.LeadId;
 
             var updatedLeadDivision = await _leadDivisionRepo.UpdateLeadDivision(leadDivisionToUpdate);
